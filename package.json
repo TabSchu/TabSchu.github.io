@@ -4,8 +4,8 @@
   "private": true,
   "homepage": "https://tabschu.github.io/",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/TabSchu/TabSchu.github.io"
+    "type": "git",
+    "url": "https://github.com/TabSchu/TabSchu.github.io"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "typescript": "^3.9.2"
   }
 }
