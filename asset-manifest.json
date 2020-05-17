@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/zphere/static/css/main.914a385f.chunk.css",
+    "main.js": "/zphere/static/js/main.3085998a.chunk.js",
+    "main.js.map": "/zphere/static/js/main.3085998a.chunk.js.map",
+    "runtime-main.js": "/zphere/static/js/runtime-main.ebec3b58.js",
+    "runtime-main.js.map": "/zphere/static/js/runtime-main.ebec3b58.js.map",
+    "static/js/2.4cfc888f.chunk.js": "/zphere/static/js/2.4cfc888f.chunk.js",
+    "static/js/2.4cfc888f.chunk.js.map": "/zphere/static/js/2.4cfc888f.chunk.js.map",
+    "index.html": "/zphere/index.html",
+    "precache-manifest.de25041e0d76ff62a95e3fb3e7bbd9ce.js": "/zphere/precache-manifest.de25041e0d76ff62a95e3fb3e7bbd9ce.js",
+    "service-worker.js": "/zphere/service-worker.js",
+    "static/css/main.914a385f.chunk.css.map": "/zphere/static/css/main.914a385f.chunk.css.map",
+    "static/js/2.4cfc888f.chunk.js.LICENSE.txt": "/zphere/static/js/2.4cfc888f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ebec3b58.js",
+    "static/js/2.4cfc888f.chunk.js",
+    "static/css/main.914a385f.chunk.css",
+    "static/js/main.3085998a.chunk.js"
+  ]
+}
