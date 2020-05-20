@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
+import { setSyntheticLeadingComments } from 'typescript';
 
 class HeaderBar extends Component {
 
     render() {
+       const  title = "zphere";
+    //   setTitle(x) {
+    //     title = x
+    //   }
         return(
             <div id="headerBar">
-
-               <h1 id="wortmarke">zphere</h1>
-                <a id="filter">Filter</a>
-
+                <ul>
+                    <li>z</li>                    
+                    <li>{title}</li>
+                    <li>f
+                        {/* <img src=""/> */}
+                    </li>
+                </ul>
             </div>
         )
     }

@@ -1,54 +1,90 @@
 body{
-  top: 0;
+  height: 100%;
+  width: 100%;
   margin: 0;
-  position: absolute;
+  padding: 0;
   font-family: Ubuntu;
 }
-
 #root{
   position: absolute;
 }
-
-h1{
-  font-weight: normal;
-}
 #headerBar{
-  position: absolute;
+  position: fixed;
+  z-index: 1;
   top: 0;
+  left: 0;
   height: 50px;
-  margin: 0;
-  border-bottom: 1px black solid;
   width: 100vw;
-  clear: both;
-}
-
-#wortmarke {
- /*
-
-  position: absolute;
-  top:0;
- margin: 10px  auto;
-  o r u l   // o&u r&l
-clear: right;
-  text-align:center;
-  vertical-align: central;*/
-
-  display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   clear: both;
-  top: 0;
-  height: 50px;
-  margin: 0 auto;
-  width: 100vw;
-
-
+  color: #fff;
+  background: #212121;
 }
-
-#filter {
+#headerBar ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+}
+#headerBar ul li{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /3); 
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 36px;
+  font-style: italic;
+}
+#navBar{
+  z-index: 2;
+  position: fixed;
+  top: calc(100vh - 50px);
+  left: 0;
+  height: 50px;
+  width: 100vw;
   clear: both;
-  top: 18px;
-  position: absolute;
-  margin-right: 5px;
-  left: 85vw;
+  color: #fff;
+  background: #212121;
+}
+#navBar ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#navBar ul li{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /3); 
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#content{
+  margin-top: 50px;
+  width: calc(100vw - 20px); 
+  height: auto;
+  min-height: 100vh;
+  /* padding abziehen */
+  padding: 10px;
+  background-color: #101010;
+  z-index: 30;
+}
+#navBar ul li a:visited,
+#navBar ul li a{
+  text-decoration: none;
+  color: inherit;
 }
