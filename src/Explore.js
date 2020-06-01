@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import HeaderBar from "./HeaderBar";
 
 class Explore extends Component {
 
     render() {
         return(
-            <div id="content">
-                <h1>Explore</h1>
+            <div>
+                <HeaderBar/>
+                <div id="content">
+                    <h1>test</h1>
+                </div>
             </div>
         )
     }

@@ -83,6 +83,22 @@ body{
   background-color: #101010;
   z-index: 30;
 }
+
+#HeaderBarMerkliste{
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 140px;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  clear: both;
+  color: #fff;
+  background: #000000;
+
+
+}
 #navBar ul li a:visited,
 #navBar ul li a{
   text-decoration: none;

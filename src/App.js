@@ -3,6 +3,8 @@ import React, {Component} from "react";
 // import Form from './Form';
 import HeaderBar from "./HeaderBar";
 import NavBar from "./NavBar";
+import Beitrag from "./Beitrag";
+import HeaderBarMerkliste from "./HeaderBarMerkliste";
 
 class App extends Component {
 
@@ -10,8 +12,13 @@ class App extends Component {
 
       return (
         <div className="container">
-        <HeaderBar />
-        <NavBar/>
+              
+          
+            
+              <NavBar/>
+              
+              
+
         </div>
     )
   }
