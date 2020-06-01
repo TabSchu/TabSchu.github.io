@@ -11,12 +11,11 @@ class Beitrag extends Component {
                         Maria wechselt den Verein!
                     </div>
                     <div class="teaser">
-                        <p>
                         <ul>
                             <li>sie wechselt nach Frankfurt</li>
                             <li>„sehr glücklich über die Entscheidung“</li>
-                            </ul>
-                        </p>
+                        </ul>
+                        <p></p>
                     </div>
                     <div class="">
                     </div>

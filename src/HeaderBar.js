@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { setSyntheticLeadingComments } from 'typescript';
+// import { setSyntheticLeadingComments } from 'typescript';
 
 class HeaderBar extends Component {
 
