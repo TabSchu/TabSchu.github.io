@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Beitrag from "./Beitrag";
+import TestHook from "./testHook";
 
 class Home extends Component {
 
@@ -8,6 +9,7 @@ class Home extends Component {
             <div id="content">
                 <div>
                 {/* *ng For */}
+                <TestHook />>
                 <Beitrag />
                 <Beitrag />
                 <Beitrag />
