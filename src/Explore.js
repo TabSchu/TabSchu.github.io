@@ -6,54 +6,53 @@ class Explore extends Component {
         return(
             <div id="content">
                 <h3>sportarten</h3>
-                <div class="middleBlock">
-                    <div class="middleBox">
+                <div className="middleBlock">
+                    <div className="middleBox">
                         <h4>Breakdance</h4>
                     </div>
-                    <div class="middleBox">
+                    <div className="middleBox">
                         <h4>Breakdance</h4>
                     </div> 
-                    <div class="middleBox">
+                    <div className="middleBox">
                         <h4>Breakdance</h4>
                     </div> 
-                    <div class="middleBox">
+                    <div className="middleBox">
                         <h4>Breakdance</h4>
                     </div>     
                 </div>
                 <h3>sportler</h3>
-                <div class="smallBlock">
-                    <div class="smallBox">
+                <div className="smallBlock">
+                    <div className="smallBox">
                             <h4>Ben</h4>
                     </div> 
-                    <div class="smallBox">
+                    <div className="smallBox">
                             <h4>Ben</h4>
                     </div> 
-                    <div class="smallBox">
+                    <div className="smallBox">
                             <h4>Ben</h4>
                     </div>
-                    <div class="smallBox">
+                    <div className="smallBox">
                             <h4>Ben</h4>
                     </div>
-                    <div class="smallBox">
+                    <div className="smallBox">
                             <h4>Ben</h4>
                     </div> 
-                    <div class="smallBox">
+                    <div className="smallBox">
                             <h4>Ben</h4>
                     </div> 
                 </div>
                 <h3>top story</h3>
-                <div class="bigBlock">
-                    <div class="bigBox">
+                <div className="bigBlock">
+                    <div className="bigBox">
                             <h4>Background Story</h4>
                     </div>
                 </div>
-                <div class="stories">
-                    <div class="story"><h3>story</h3><h4>David</h4></div>
-                    <div class="story"><h3>story</h3><h4>David</h4></div>
-                    <div class="story"><h3>story</h3><h4>David</h4></div>
-                    <div class="story"><h3>story</h3><h4>David</h4></div>
+                <div className="stories">
+                    <div className="story"><h3>story</h3><h4>David</h4></div>
+                    <div className="story"><h3>story</h3><h4>David</h4></div>
+                    <div className="story"><h3>story</h3><h4>David</h4></div>
+                    <div className="story"><h3>story</h3><h4>David</h4></div>
                 </div>
-                {/* <div id="footer"></div> */}
             </div>
         )
     }
