@@ -4,5 +4,7 @@ import App from './App'; //'./Api';//
 import './index.css';
 import './Explore.css'
 import './Beitrag.css';
+import './Merkliste.css';
+import '.'
 
 ReactDOM.render(<App />, document.getElementById('root'))

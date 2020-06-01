@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import HeaderBar from "./HeaderBar";
 
 class Explore extends Component {
 
     render() {
         return(
+            <div>
+            <HeaderBar/>
+            
+
             <div id="content">
                 <h3>sportarten</h3>
                 <div className="middleBlock">
@@ -51,8 +56,9 @@ class Explore extends Component {
                     <div className="story"><h3>story</h3><h4>David</h4></div>
                     <div className="story"><h3>story</h3><h4>David</h4></div>
                     <div className="story"><h3>story</h3><h4>David</h4></div>
-                    <div className="story"><h3>story</h3><h4>David</h4></div>
-                </div>
+                    <div className="story"><h3>story</h3><h4>David</h4></div>                
+            </div>
+            </div>
             </div>
         )
     }
