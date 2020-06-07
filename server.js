@@ -39,11 +39,11 @@
     */
     // local dev db
     const pool = mysql.createPool({
-        host: "localhost",
-        port: "3306",
-        user: "root",
-        password: 'password',
-        database: "zphere"
+        host: "195.37.176.178",
+        port: "20133",
+        user: "BAPSportberichtPlattform",
+        password: "bflFo#Qi@0O~tq2z.;kVF+VX0;Ddi%^e",
+        database: "BAP_Sportbericht_Plattform_DB"
     });
 
 
@@ -56,7 +56,7 @@
 
     app.get('/beitrag', function (req, res) {
 
-        const sql = "SELECT b.*, s.sportart, k.kategorie FROM zphere.beitrag b\n" +
+        const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
             "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie;";
         pool.query(sql, function (error, results, fields) {
