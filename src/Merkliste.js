@@ -1,61 +1,43 @@
-import React, { Component, useState, useEffect} from 'react'
-import { isConstructorDeclaration } from 'typescript'
-import Beitrag from './Beitrag';
-
-
-
+import React, { Component } from 'react'
+import Beitrag from "./Beitrag"
+import HeaderBarMyZphere from "./HeaderBarMyZphere"
 
 class Merkliste extends Component{
 
-
     constructor(props){
-        super(props);
-        this.state = {
-            show:false
-        }
+        super(props)
+            this.state = {
+                showMe: true
 
-        this.handleshow = this.handleshow.bind(this);
+            }
+        
     }
-
-    handleshow(){
-        this.setState({show: this.state.show});
+    funktion= () =>{
+        this.setState({
+            showMe: false
+        })
     }
-
-
-
-
 
     render(){
-
-        
-
-        /*useEffect(() =>{
-
-        },[]);
-
-        //eckige klammern = wird nur ausgeführt wenn component ausgeführt? wird
-
-
-        //API Abfrage - Was ist deine Merkliste? useState enthält Daten von API - useEffect runt diese Daten
-        //async weil es von einer datenbank kommt
-        const fetchMerkbeiträge = async () =>{
-                const data = await fetch(Datenbank wo Daten herkommen)
-                console.log(data);
-        }*/
-
-        //when your show state is true submit button will show up otherwise it will not shown up
-
-        
         return(
-            <div className = "contentMerkliste">
-                <Beitrag />
-                <Beitrag />
-
+            
+                
+            
+            <div className="contentMerkliste">
+                <div>
+                    {
+                        this.state.showMe ?
+                        
+                    <p>Hide Me</p>
+                    :null
+                    }
+                    <button onClick={this.funktion}>Click</button>
+                    </div>        
             </div>
+            
         )
-
-        
     }
 }
 
-export default Merkliste
+
+export default Merkliste;

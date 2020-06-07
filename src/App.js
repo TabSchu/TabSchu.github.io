@@ -4,14 +4,14 @@ import React, {Component} from "react";
 import HeaderBar from "./HeaderBar";
 import NavBar from "./NavBar";
 import Beitrag from "./Beitrag";
-import HeaderBarMerkliste from "./HeaderBarMerkliste";
+import HeaderBarMyZphere from "./HeaderBarMyZphere";
 
 class App extends Component {
 
   render() {
 
       return (
-        <div className="container">
+        <div>
               
           
             

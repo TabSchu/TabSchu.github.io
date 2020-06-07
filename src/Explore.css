@@ -1,6 +1,13 @@
 #content{
-    background-color: #212121;
-}
+    margin-top: 50px;
+    width: calc(100vw - 20px); 
+    height: auto;
+    min-height: 100vh;
+    /* padding abziehen */
+    padding: 10px;
+    background-color:black;
+    z-index: 25;
+  }
 h3{
     text-transform: uppercase;
     color: white;

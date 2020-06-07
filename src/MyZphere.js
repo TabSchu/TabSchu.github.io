@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import HeaderBarMerkliste from './HeaderBarMerkliste'
+import HeaderBarMyZphere from './HeaderBarMyZphere'
 import Merkliste from './Merkliste';
 
 class MyZphere extends Component {
@@ -7,14 +7,11 @@ class MyZphere extends Component {
     render() {
         return(
             <div>
-                <HeaderBarMerkliste/>
-                <div id="content">
-                    <h1>MyZphere</h1>
-                    <Merkliste/>
-                </div>
+                <HeaderBarMyZphere />
             </div>
         )
     }
 }
+
 
 export default MyZphere;

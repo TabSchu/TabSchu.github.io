@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Home from "./Home";
 import Explore from "./Explore";
 import MyZphere from "./MyZphere";
-/*import Merkliste from "./Merkliste";*/
+import Merkliste from "./Merkliste";
 import {
     BrowserRouter as Router,
     Switch,
@@ -20,15 +20,15 @@ class NavBar extends Component {
                 <ul>
                     <li><Link to="/">home</Link> </li>
                     <li><Link to="/explore">explore</Link></li>
-                    <li><Link to="/myzphere">MyZphere</Link></li>
+                    <li><Link to="/merkliste">MyZphere</Link></li>
                 
                 </ul>
             </div>
             <Switch> 
                 <Route path="/explore">
-                <Explore />
+                    <Explore />
                 </Route>
-                <Route path="/myzphere">
+                <Route path="/merkliste">
                     <MyZphere />
                 </Route>
                 <Route path="/">

@@ -1,26 +1,10 @@
-.contentMerkliste{ 
-  height: auto;
-  min-height: 100vh;
-  padding: 10px;
-  background-color: #101010;
-  z-index: inherit;
-  
-}
-
-h1{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#contentMerkliste{
+     width: auto;
+     height: 400px;
 
 }
 
-h2{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#HeaderBarMerkliste{
-  position: absolute;
-  top: 0;
-  z-index: 1;
+
+#contentMerkliste button{
+    margin-top: 200px;
 }
