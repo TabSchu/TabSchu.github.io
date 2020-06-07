@@ -27,17 +27,8 @@
         res.json(["Test","ist","erfolgreich","yeah","Food"]);
     });
 
-    /*
+
     //db on hochschul server
-    const pool = mysql.createPool({
-        host: "195.37.176.178",
-        port: "20133",
-        user: "Gruppe4",
-        password: '',
-        database: "20_Gruppe4_DB"
-    });
-    */
-    // local dev db
     const pool = mysql.createPool({
         host: "195.37.176.178",
         port: "20133",
@@ -45,6 +36,15 @@
         password: 'bflFo#Qi@0O~tq2z.;kVF+VX0;Ddi%^e',
         database: "BAP_Sportbericht_Plattform_DB"
     });
+
+ /*   // local dev db
+    const pool = mysql.createPool({
+        host: "localhost",
+        port: "3306",
+        user: "root",
+        password: 'password',
+        database: "zphere"
+    }); */
 
 
     var server = app.listen(SERVER_PORT, function (){
@@ -65,3 +65,16 @@
 
         });
     });
+/*
+    app.get('/beitragByTags', function (req, res) {
+       // const tags =
+        const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+            "JOIN sportart s ON b.sport = s.id_sportart\n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie;";
+        pool.query(sql, function (error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+
+        });
+    });
+*/

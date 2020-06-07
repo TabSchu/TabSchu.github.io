@@ -28,13 +28,13 @@ class Beitrag extends Component {
         return(
 
            
-            <div class="beitrag">
-                <div class="beitraginhalt">
-                    <div class="beitragstitel">
-                        <div class="beitragskategorien">Breaking News: </div>
+            <div className="beitrag">
+                <div className="beitraginhalt">
+                    <div className="beitragstitel">
+                        <div className="beitragskategorien">Breaking News: </div>
                         Maria wechselt den Verein!
                     </div>
-                    <div class="teaser">
+                    <div className="teaser">
                         <ul>
                             <li>sie wechselt nach Frankfurt</li>
                             <li>„sehr glücklich über die Entscheidung“</li>
@@ -46,7 +46,7 @@ class Beitrag extends Component {
                     </div>
                    
                     
-                    <div class="">
+                    <div className="">
                     </div>
                 </div>
             </div>
