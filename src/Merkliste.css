@@ -8,3 +8,10 @@
 #contentMerkliste button{
     margin-top: 200px;
 }
+
+.conditionalLoadingButton {
+    color: red;
+    background-color: yellow;
+    z-index: 26;
+    margin-top: 150px;
+}

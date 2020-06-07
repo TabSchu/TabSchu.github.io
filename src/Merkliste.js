@@ -68,7 +68,7 @@ function Greeting(props) {
 
 function LoginButton(props) {
     return (
-        <button onClick={props.onClick}>
+        <button className="conditionalLoadingButton"  onClick={props.onClick}>
             Merkliste anzeigen
         </button>
     );
@@ -76,7 +76,7 @@ function LoginButton(props) {
 
 function LogoutButton(props) {
     return (
-        <button onClick={props.onClick}>
+        <button className="conditionalLoadingButton" onClick={props.onClick}>
             Artikel anzeigen
         </button>
     );
