@@ -4,8 +4,6 @@ import Beitrag from './Beitrag';
 import ArtikelTest from "./ArtikelTest";
 
 
-
-
 class Merkliste extends Component{
 
 
@@ -35,7 +33,7 @@ class Merkliste extends Component{
         }
 
         return (
-            <div>
+            <div id="contentMerkliste">
                 {button}
                 <Greeting isLoggedIn={isLoggedIn} />
             </div>

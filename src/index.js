@@ -9,6 +9,7 @@ import './Beitrag.css';
 import './HeaderBarMyZphere.css';
 import './editProfil.css';
 import './Favoriten.css';
+import './Merkliste.css';
 import './Home.css';
 import './HeaderBarProfilEdit.css'
 import '.'
