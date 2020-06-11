@@ -57,6 +57,7 @@
     app.get('/beitrag', function (req, res) {
 
         const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
             "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie;";
         pool.query(sql, function (error, results, fields) {
