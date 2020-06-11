@@ -52,6 +52,25 @@ h3{
     margin-right: 18px;
 }
 
+.boxcontent{
+    position: relative;
+    height: inherit;
+    width: inherit;
+    padding-bottom: 3px;
+}
+.boxcontent h3{
+    bottom: 25px;
+    left: 7px;
+    position: absolute;
+    margin: 0;
+}
+.boxcontent h4{
+    bottom: 7px;
+    left: 7px;
+    position: absolute;
+    margin: 0;
+}
+
 .bigBlock{
     width: 85vw;
     height: 355px;

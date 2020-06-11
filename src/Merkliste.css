@@ -1,10 +1,26 @@
-#contentMerkliste{
+/*#contentMerkliste{
      width: auto;
      height: 400px;
 
 }
 
-
 #contentMerkliste button{
     margin-top: 200px;
+}*/
+
+
+#contentMerkliste{
+    margin-top: 140px;
+    width: calc(100vw - 20px);
+    height: auto;
+    min-height: 100vh;
+    /* padding abziehen */
+    padding: 10px;
+    background-color:black;
+    z-index: 25;
+
+}
+
+.conditionalLoadingButton {
+    z-index: 26;
 }
