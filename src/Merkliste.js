@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect} from 'react'
 import { isConstructorDeclaration } from 'typescript'
 import Beitrag from './Beitrag';
+import ArtikelTest from "./ArtikelTest";
 
 
 
@@ -8,54 +9,77 @@ import Beitrag from './Beitrag';
 class Merkliste extends Component{
 
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {
-            show:false
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.state = {isLoggedIn: false};
+    }
+
+    handleLoginClick() {
+        this.setState({isLoggedIn: true});
+    }
+
+    handleLogoutClick() {
+        this.setState({isLoggedIn: false});
+    }
+
+    render() {
+        const isLoggedIn = this.state.isLoggedIn;
+        let button;
+
+        if (isLoggedIn) {
+            button = <LogoutButton onClick={this.handleLogoutClick} />;
+        } else {
+            button = <LoginButton onClick={this.handleLoginClick} />;
         }
 
-        this.handleshow = this.handleshow.bind(this);
-    }
-
-    handleshow(){
-        this.setState({show: this.state.show});
-    }
-
-
-
-
-
-    render(){
-
-        
-
-        /*useEffect(() =>{
-
-        },[]);
-
-        //eckige klammern = wird nur ausgeführt wenn component ausgeführt? wird
-
-
-        //API Abfrage - Was ist deine Merkliste? useState enthält Daten von API - useEffect runt diese Daten
-        //async weil es von einer datenbank kommt
-        const fetchMerkbeiträge = async () =>{
-                const data = await fetch(Datenbank wo Daten herkommen)
-                console.log(data);
-        }*/
-
-        //when your show state is true submit button will show up otherwise it will not shown up
-
-        
-        return(
-            <div className = "contentMerkliste">
-                <Beitrag />
-                <Beitrag />
-
+        return (
+            <div>
+                {button}
+                <Greeting isLoggedIn={isLoggedIn} />
             </div>
-        )
-
-        
+        );
     }
+}
+
+function UserGreeting(props) {
+    return <h1>Welcome back!</h1>;
+}
+
+function GuestGreeting(props) {
+    return <h1>Please sign up.</h1>;
+}
+
+function Greeting(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedIn) {
+        return (
+            <div id={"testBeitragsListe"}>
+                <Beitrag />
+                <Beitrag />
+                <Beitrag />
+            </div>
+        );
+    }
+    return <ArtikelTest />;
+}
+
+
+function LoginButton(props) {
+    return (
+        <button className="conditionalLoadingButton"  onClick={props.onClick}>
+            Merkliste anzeigen
+        </button>
+    );
+}
+
+function LogoutButton(props) {
+    return (
+        <button className="conditionalLoadingButton" onClick={props.onClick}>
+            Artikel anzeigen
+        </button>
+    );
 }
 
 export default Merkliste

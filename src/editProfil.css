@@ -1,0 +1,23 @@
+#contentProfil{
+    margin-top: 140px;
+    width: calc(100vw - 20px); 
+    height: auto;
+    min-height: 100vh;
+    /* padding abziehen */
+    padding: 10px;
+    background-color:black;
+    z-index: 25;
+  }
+
+
+  h3{
+      color: white;
+      margin: 18px 0;
+  }
+
+  input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }

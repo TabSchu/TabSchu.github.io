@@ -1,0 +1,66 @@
+
+
+#HeaderBarMyZphere h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#HeaderBarMyZphere h2{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  
+
+
+}
+
+
+
+
+
+#HeaderBarMyZphere{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 140px;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  clear: both;
+  color: #fff;
+  background: #212121;
+
+}
+
+#HeaderBarMyZphere ul{
+  position: absolute;
+  list-style: none;
+  width: 100vw;
+  top : 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
+
+#HeaderBarMyZphere ul li{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /2); 
+  top: 100px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+ 
+
+}

@@ -24,6 +24,12 @@
 .beitragstitel{
     font-size: 20pt;
 }
-.teaser{
+.teaser ul li{
+  list-style: none;
 
+}
+
+.button{
+  position: absolute;
+  left: 80%;
 }
