@@ -4,7 +4,7 @@ function TestHook() {
     const [data, loading] = useFetch(
         "http://localhost:8080/beitrag"
     );
-    //{img_url} //img/maria.png  //  "/logo192.png"
+    //src="/img/maria2.png"
     return (
         <>
             <h1>Photos/Beiträge</h1>
@@ -15,7 +15,7 @@ function TestHook() {
                     {data.map(({ id_beitrag, titel, img_url }) => (
                         <div className="testHookDiv" key={`photo-${id_beitrag}`} >
                             {titel}
-                            <img alt={titel} src="../data/img/maria.png" />
+                            <img alt={titel} src={img_url}  style={{width: '250px'}}/>
                         </div>
                     ))}
                 </div>
