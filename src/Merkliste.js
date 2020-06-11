@@ -52,6 +52,13 @@ class Merkliste extends Component{
                 <Beitrag />
 
             </div>
+
+            
+                
+            
+            <div className="content">
+              
+
         )
 
         
