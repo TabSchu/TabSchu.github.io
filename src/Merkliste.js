@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect} from 'react'
 import { isConstructorDeclaration } from 'typescript'
 import Beitrag from './Beitrag';
 import ArtikelTest from "./ArtikelTest";
+import BeitragHook from "./beitragHook";
 
 
 class Merkliste extends Component{
@@ -54,9 +55,7 @@ function Greeting(props) {
     if (isLoggedIn) {
         return (
             <div id={"testBeitragsListe"}>
-                <Beitrag />
-                <Beitrag />
-                <Beitrag />
+                <BeitragHook />
             </div>
         );
     }
