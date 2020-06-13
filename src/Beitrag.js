@@ -1,50 +1,35 @@
 import React, { Component, useState } from 'react'
-import Merkliste from './Merkliste';
+
 
 
 
 class Beitrag extends Component {
     
 
-    /*const [gemerkteBeiträge, setGemerkteBeiträge] = useState([])
-    const [Beitrag, setBeitrag] = useState("")
-
-
-    
-    addBeitragZuMerkliste = () => {
-    
-
-    setGemerkteBeiträge(gemerkteBeiträge => gemerkteBeiträge.concat(Beitrag)
-
-    }*/
-   
-
-   
-
-
-
 
     render() {
-        return(
 
-           
-            <div className="beitrag">
+        var arr = [];
+        arr = this.parseTeaserElement(arr);
+
+        return(
+            <div className="beitrag"  key={this.props.beitrag_id}
+                 style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
                 <div className="beitraginhalt">
                     <div className="beitragstitel">
-                        <div className="beitragskategorien">Breaking News: </div>
-                        Maria wechselt den Verein!
+                        <div className="beitragskategorien">{this.props.kategorie} </div>
+                        {this.props.titel}
                     </div>
                     <div className="teaser">
                         <ul>
-                            <li>sie wechselt nach Frankfurt</li>
-                            <li>„sehr glücklich über die Entscheidung“</li>
-                        
+                            { arr.map(item =><li key={item}>- {item}</li>) }
                         </ul>
-                        <button onClick={this.addBeitragZuMerkliste}>M</button>
-
-
+                        <div >
+                            <button onClick={this.addBeitragZuMerkliste}>M</button>
+                            <p key={this.props.sport_id} style={{float: "right", marginLeft:"5px"}}>{this.props.sportart}</p>
+                            <p style={{float: "right"}}>{this.props.medientyp} </p>
+                        </div>
                     </div>
-                   
                     
                     <div className="">
                     </div>
@@ -54,6 +39,19 @@ class Beitrag extends Component {
             
         )
     }
+
+    // ggf. gibt es keinen Teaser dann bleibt es leer, z.B. bei Audio
+    parseTeaserElement(arr){
+        if(this.props.teaser!=undefined){
+            var json = JSON.parse(this.props.teaser);    //console.log(json);
+            Object.keys(json).forEach(function(key) {
+                console.log(key);
+                arr.push(json[key]);
+            });
+        }
+        return arr;
+    }
 }
+
 
 export default Beitrag;
