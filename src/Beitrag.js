@@ -24,10 +24,22 @@ class Beitrag extends Component {
                         <ul>
                             { arr.map(item =><li key={item}>- {item}</li>) }
                         </ul>
-                        <div >
-                            <button onClick={this.addBeitragZuMerkliste}>M</button>
-                            <p key={this.props.sport_id} style={{float: "right", marginLeft:"5px"}}>{this.props.sportart}</p>
-                            <p style={{float: "right"}}>{this.props.medientyp} </p>
+                        <div className="extra">
+                            <ul>
+                                <li> 
+                                    <p 
+                                    // style={{float: "right"}}
+                                    >{this.props.medientyp} </p>  
+
+                                    <p key={this.props.sport_id} 
+                                    // style={{float: "right", marginLeft:"5px"}}
+                                    > {this.props.sportart}</p>
+                                    
+                                </li>
+                                <li></li>
+                                <li><button onClick={this.addBeitragZuMerkliste}>M</button> </li>                                
+                            </ul>
+                            
                         </div>
                     </div>
                     

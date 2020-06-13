@@ -9,7 +9,7 @@ function BeitragHook() {
 
     return (
         <>
-            <h1>Photos/Beiträge</h1>
+            {/* <h1>Photos/Beiträge</h1> */}
             {loading ? (
                 "Loading..."
             ) : (

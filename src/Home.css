@@ -9,7 +9,8 @@
   justify-content: center;
   clear: both;
   color: #fff;
-  background: #212121;
+  /* background: #212121; */
+  background-color: #303030;
 }
 #headerBar ul{
   list-style: none;
@@ -40,6 +41,8 @@
     min-height: 100vh;
     /* padding abziehen */
     padding: 10px;
-    background-color: #101010;
+    /* background-color: #101010; */
+    background-color: #212121;
     z-index: 30;
+    padding-bottom: 55px;
   }

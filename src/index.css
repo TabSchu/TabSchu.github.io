@@ -20,7 +20,7 @@ body{
   justify-content: center;
   clear: both;
   color: #fff;
-  background: #212121;
+  /* background: #212121; */
 }
 #headerBar ul{
   list-style: none;
@@ -53,7 +53,8 @@ body{
   width: 100vw;
   clear: both;
   color: #fff;
-  background: #212121;
+  /* background: #212121; */
+  background-color: #303030;
 }
 #navBar ul{
   list-style: none;
