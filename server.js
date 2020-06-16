@@ -66,16 +66,17 @@
 
         });
     });
-/*
-    app.get('/beitragByTags', function (req, res) {
-       // const tags =
-        const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
-            "JOIN sportart s ON b.sport = s.id_sportart\n" +
-            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie;";
-        pool.query(sql, function (error, results, fields) {
-            if (error) throw error;
-            res.send(results);
 
-        });
+    //http://localhost:8080/beitragByTags?tags[]=10&tags[]=6
+    app.get('/beitragByTags', function (req, res) {
+        const tags = req.query.tags; //[6,4,10];
+        console.log(tags);
+        const sql = 'SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b JOIN sportart s ON b.sport = s.id_sportart JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie JOIN beitrag_tag bt  ON bt.fk_beitrag_id = b.id_beitrag WHERE fk_tag_id IN (?);';
+        const value = [tags];
+            pool.query(sql, value,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
     });
-*/
+

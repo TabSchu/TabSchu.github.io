@@ -9,10 +9,12 @@
   background-size: cover;
   display: flex;
   position: relative;
+  border-radius: 7px;
 
 }
 .beitraginhalt{
-    background-color: rgba(26, 26, 26, 0.8);
+    background-color: rgba(26, 26, 26, 0.7);
+    width: calc(100% - 30px );
     color: #fff;
     padding: 5px;
     height: auto;
@@ -20,13 +22,56 @@
     position: absolute;
     bottom: 0;
     margin-top: 110px;
-}
+    border-radius: 5px;
+  }
+
 .beitragstitel{
-    font-size: 20pt;
+  font-size: 18pt;
+  font-weight: bold;
+  line-height: 28px;
+}
+.beitragskategorien{
+  font-size: 12pt;
+  color: #A1A1A1;
+  line-height: 18px;
+}
+.teaser ul{
+  padding: 0;
+  margin: 0;
 }
 .teaser ul li{
   list-style: none;
-
+  font-size: 12pt;
+  line-height: 20px;
+}
+.teaser .extra{
+  color: #A1A1A1;
+  width: auto;
+  height: 30px;
+}
+.extra ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+}
+.extra ul li{
+  display: block; 
+  float: left; 
+  margin: 0;
+  height: 100%; 
+  width: calc(100% /3); 
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.extra ul li:nth-child(1){
+  justify-content: flex-start;
+}
+.extra ul li:nth-child(3){
+  justify-content: flex-end;
 }
 
 .button{

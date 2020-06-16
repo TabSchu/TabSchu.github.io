@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Beitrag from "./Beitrag";
-import TestHook from "./testHook";
+import BeitragHook from "./beitragHook";
 import HeaderBar from "./HeaderBar";
 
 
@@ -13,11 +13,7 @@ class Home extends Component {
                 <HeaderBar/>
             <div id="content">
                 <div>
-                {/* *ng For */}
-                <TestHook />
-                <Beitrag />
-                <Beitrag />
-                <Beitrag />
+                    <BeitragHook />
                 </div>
 
             </div>
