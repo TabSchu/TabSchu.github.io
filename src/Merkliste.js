@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect} from 'react'
-import { isConstructorDeclaration } from 'typescript'
 import Beitrag from './Beitrag';
 import ArtikelTest from "./ArtikelTest";
+import HeaderBarMyZphere from './HeaderBarMyZphere';
 
 
 class Merkliste extends Component{
@@ -41,13 +41,6 @@ class Merkliste extends Component{
     }
 }
 
-function UserGreeting(props) {
-    return <h1>Welcome back!</h1>;
-}
-
-function GuestGreeting(props) {
-    return <h1>Please sign up.</h1>;
-}
 
 function Greeting(props) {
     const isLoggedIn = props.isLoggedIn;

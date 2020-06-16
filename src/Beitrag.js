@@ -1,5 +1,8 @@
 import React, { Component, useState } from 'react'
 import Merkliste from './Merkliste';
+import ArtikelIcon from './img/Artikel.png'
+import MerklisteIcon from './img/Merkliste_leer.png'
+import TeilenIcon from './img/Teilen.png'
 
 
 
@@ -40,7 +43,17 @@ class Beitrag extends Component {
                             <li>„sehr glücklich über die Entscheidung“</li>
                         
                         </ul>
-                        <button onClick={this.addBeitragZuMerkliste}>M</button>
+                         
+                    <div className="icons">
+                        <ul>
+                            <li><img src={ArtikelIcon} />Tanzen</li>
+                            <li>vor 7 Minuten</li>
+                            <li><img src={TeilenIcon} /></li>
+                            <li><img src={MerklisteIcon} /></li>
+
+
+                        </ul>
+                    </div>
 
 
                     </div>
