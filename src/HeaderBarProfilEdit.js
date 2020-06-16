@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ProfilBildIcon from './img/profilMenueleiste.png'
 
 
 class HeaderBarProfilEdit extends Component{
@@ -8,22 +9,15 @@ class HeaderBarProfilEdit extends Component{
 
 render(){
     return(
-        <div id="contenProfilEdit">
+        <div id="HeaderBarProfilEdit">
             <div>
             <ul>
                 <li>X</li>
-                <li>Profil bearbeiten</li>
-                <li>Fertig</li>
+                <li>fertig</li>
                 <h1>Max Mustermann</h1>
-                <h2>ICON</h2>
-                <h3>Profilbild ändern</h3>
+                <h2><img src={ProfilBildIcon}/></h2>
             </ul>
 
-            <ul>
-                <li>Sportarten</li>
-                <li>Sportler</li>
-                <li>Verein</li>
-            </ul>
             </div>
         </div>
     )

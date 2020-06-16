@@ -1,8 +1,8 @@
 import React, { Component, useState } from 'react'
-
-
-
-
+import Merkliste from './Merkliste';
+import ArtikelIcon from './img/Artikel.png'
+import MerklisteIcon from './img/Merkliste_leer.png'
+import TeilenIcon from './img/Teilen.png'
 class Beitrag extends Component {
     
 
@@ -30,6 +30,7 @@ class Beitrag extends Component {
                                     <p 
                                     // style={{float: "right"}}
                                     >{this.props.medientyp} </p>  
+                                    <img src={ArtikelIcon} />
 
                                     <p key={this.props.sport_id} 
                                     // style={{float: "right", marginLeft:"5px"}}
@@ -37,7 +38,7 @@ class Beitrag extends Component {
                                     
                                 </li>
                                 <li></li>
-                                <li><button onClick={this.addBeitragZuMerkliste}>M</button> </li>                                
+                                <li><img src={TeilenIcon} /> <img src={MerklisteIcon} /><button onClick={this.addBeitragZuMerkliste}>M</button> </li>                                
                             </ul>
                             
                         </div>

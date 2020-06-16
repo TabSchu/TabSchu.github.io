@@ -76,6 +76,11 @@ body{
   justify-content: center;
 }
 
+#navBar img{
+  width: 35px;
+  height: 35px;
+}
+
 
 
 #navBar ul li a:visited,
@@ -84,6 +89,68 @@ body{
   color: inherit;
 }
 
+
 .beitragHookDiv{
+}
+button{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /3);
+  height: 35px;
+  width: 35px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.testHookDiv{
+
  /* background-image: url('./img/maria2.png');*/
+}
+
+#Links {
+  z-index: 100;
+  position: absolute;
+  top: calc(38vw - 50px);
+  left: 0;
+  height: 50px;
+  width: 100vw;
+  clear: both;
+  color: #fff;
+  background: #212121;
+}
+
+
+#Links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
+
+#Links ul li{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /3); 
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+#Links img {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 30px;
 }
