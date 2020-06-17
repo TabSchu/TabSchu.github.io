@@ -1,75 +1,111 @@
-import React, { Component } from 'react'
+
 // import 'materialize-css'
 // import {TextInput} from 'react-materialize'
 import { isThisTypeNode } from 'typescript'
+import React, { Component, useState } from 'react'
 import HeaderBarProfilEdit from "./HeaderBarProfilEdit"
 import HeaderBarMyZphere from "./HeaderBarMyZphere"
 
 
+
 class EditProfil extends Component{
 
+    userData;
 
     constructor(props){
-        super(props)
-        this.state={
-
-            Vorname: null,
-            Nachname: null,
-            Alter: null,
-            Geschlecht: null,
-            Wohnort: null,
-
-
-
-
+        super(props);
+        
+                
+            this.onChangeVorname = this.onChangeVorname.bind(this);
+            this.onChangeNachname = this.onChangeVorname.bind(this);
+            this.onChangeAlter = this.onChangeAlter.bind(this);
+            this.onChangeWohnort = this.onChangeWohnort.bind(this);
+            this.onSubmit = this.onSubmit.bind(this);
+            this.state ={
+                vorname: '',
+                nachname: '',
+                alter: '',
+                wohnort:''
+            }
         }
-    }
+      
 
-    handleEingabe = (event) => {
-        event.preventDefault()
-        const data = this.state
-        console.log(data) //Hier Datenbankeinbindung möglich
-    }
-
-    handleChange = (event) =>{
-        this.setState({
-            [event.target.name]: event.target.value,
-        })
-
-    }
-    /*componentDidMount(){
-        if(window.location.pathname === './EditProfil'){
-            this.setState()
+        onChangeVorname(e) {
+            this.setState({vorname : e.target.value})
         }
-    }*/
+        onChangeNachname(e){
+            this.setState({nachname: e.target.value})
+        }
+        onChangeAlter(e){
+            this.setState({alter: e.target.value})
+        }
+        onChangeWohnort(e){
+            this.setState({wohnort: e.target.value})
+        }
+        onSubmit(e){
+            e.preventDefault()
+        }
+        componentDidMount(){
+            this.userData = JSON.parse(localStorage.getItem('user'));
+
+            if(localStorage.getItem('user')){
+                this.setState({
+                    vorname: this.userData.vorname,
+                    nachname: this.userData.nachname,
+                    alter: this.userData.alter,
+                    wohnort: this.userData.wohnort,
+                })
+            }else{
+                this.setState ={
+                    vorname: '',
+                    nachname: '',
+                    alter: '',
+                    wohnort:''
+                }
+            }
+            
+        }
+
+        componentDidUpdate(nextProps, nextState){
+            localStorage.setItem('user', JSON.stringify(nextState));
+        }
+
+
+
+    
 
     render(){
-        const {Vorname} = this.state
-        const {Nachname} = this.state
-        const {Alter} = this.state
-        const {Geschlecht} = this.state
-        const {Wohnort} = this.state
+       
+       
         
         return(
                 <div>
-                   {/* <HeaderBarProfilEdit /> */}
+                    <HeaderBarProfilEdit/>
         
                 <div id="contentProfil">    
-                <form onSubmit ={this.handleEingabe}>
-                    <p>Vorname: {Vorname}</p>
-                    <p><input type='text' placeholder='Vorname'      name ='Vorname' onChange = {this.handleChange}/> </p>
-                    <p>Nachname: {Nachname}</p>
-                    <p><input type='text' placeholder='Nachname'     name ='Nachname' onChange = {this.handleChange}/> </p>
-                    <p>Alter: {Alter}</p>
-                    <p><input type='text' placeholder='Alter'        name ='Alter'    onChange = {this.handleChange}/> </p>
-                    <p>Geschlecht: {Geschlecht}</p>
-                    <p><input type='text' placeholder='Geschlecht'   name ='Geschlecht'onChange = {this.handleChange} /> </p>
-                    <p>Wohnort: {Wohnort}</p>
-                    <p><input type='text' placeholder='Wohnort'      name ='Wohnort' onChange = {this.handleChange} /> </p>
+                
+                    <p>Vorname</p>
+                    <p><input type='input' class="form__field"    value={this.state.vorname}        name ='Vorname'  onChange = {this.onChangeVorname.bind(this)}/> </p>
+                    <p>Nachname</p>
+                    <p><input type='input' class="form__field" value={this.state.nachname}          name='Nachname' onChange = {this.onChangeNachname.bind(this)}/></p>
+                    <p>Geburtsdatum</p>
+                    <p><input type='input' class="form__field"   value={this.state.alter}           name ='Alter'    onChange = {this.onChangeAlter.bind(this)}/> </p>
+                    <p>Geschlecht</p>
+                    <select>
+                        <option value ="männlich">männlich</option>
+                        <option value ="weiblich">weiblich</option>
+                        <option value="divers">divers</option>
+                    </select>
+                    <p>Lebt in</p>
+                    
+                    <p><input type='input' class="form__field"   value={this.state.wohnort}     name ='Wohnort'  onChange = {this.onChangeWohnort.bind(this)} /> </p>
 
-                </form>
+               
             </div>
             </div>
+            
+
+    
             
             
         )

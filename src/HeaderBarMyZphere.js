@@ -8,18 +8,50 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import HeaderBarProfilEdit from './HeaderBarProfilEdit';
 
 class HeaderBarMyZphere extends Component {
 
-   /* <Image source={require("./img/Profilbild.png")}><Link to ="/ProfilBearbeiten">icon</Link></Image>*/
-    render() {
+    /*constructor(props){
+        super(props);
+            
+            this.moveToEditProfil = this.moveToEditProfil.bind(this),
+            this.moveToMyZphere = this.moveToMyZphere.bind(this),
+            this.setState = {showHeaderEditProfil : false};
         
+    }
+
+    moveToEditProfil() {
+        this.setState ({showHeaderEditProfil: true});
+    }
+
+    moveToMyZphere(){
+        this.setState ({showHeaderEditProfil : false})
+    }*/
+
+   
+    render() {
         return(
-            <Router>
+            <div id="HeaderBarMyZphere">
+                <h1>Max Mustermann</h1>
+                </div>
+
+        /*const showHeaderEditProfil = this.state.showHeaderEditProfil;
+        let button;
+
+       if(!showHeaderEditProfil){
+            
+        }else {
+           button = <Logout    onClick={this.moveToEditProfil} />
+        }*/
+        
+            /*<Router>
             <div id="HeaderBarMyZphere">
                <ul>
                    <h1>Max Mustermann</h1>
+                   
                    <h2><Link to="/editProfil">icon</Link></h2>
+                   
                    <li><Link to="/merkliste">Merkliste</Link></li>
                    <li><Link to ="/favoriten">Favoriten</Link></li>
                </ul>
@@ -35,7 +67,7 @@ class HeaderBarMyZphere extends Component {
                 <Merkliste />
             </Route>
             </Switch>
-            </Router>
+            </Router> */
         )
     }
 }

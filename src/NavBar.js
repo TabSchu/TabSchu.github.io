@@ -10,6 +10,10 @@ import {
     Link
   } from "react-router-dom";
 import Beitrag from './Beitrag';
+import HeaderBarMyZphere from './HeaderBarMyZphere';
+import zphereLogo from './img/zphere_logo_klein.png'
+import ProfilbildIcon from './img/profilMenueleiste.png'
+import ExploreIcon from './img/explore_leer.png'
 
 class NavBar extends Component {
 
@@ -18,21 +22,37 @@ class NavBar extends Component {
         <Router>
             <div id="navBar">
                 <ul>
-                    <li><Link to="/">home</Link> </li>
-                    <li><Link to="/explore">explore</Link></li>
-                    <li><Link to="/merkliste">MyZphere</Link></li>
+                    <li><Link to="/">
+                    <img src={zphereLogo} />  
+                    </Link> 
+                    </li>
+                    <li>
+                    <Link to="/explore">
+                    <img src={ExploreIcon} />
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/merkliste">
+                    <img src={ProfilbildIcon} /> 
+                    </Link>
+                    </li>
                 
                 </ul>
             </div>
             <Switch> 
-                <Route path="/explore">
-                    <Explore />
+                <Route path="/explore" component={Explore}>
+                    
                 </Route>
-                <Route path="/merkliste">
-                    <MyZphere />
-                </Route>
-                <Route path="/">
-                    <Home />
+                <Route path="/merkliste" render={props =>
+                <div>
+                <HeaderBarMyZphere />
+                <MyZphere />
+                </div>
+                }/>
+                    
+                
+                <Route path="/" component ={Home}>
+                    
                 </Route>
             </Switch>
         </Router>

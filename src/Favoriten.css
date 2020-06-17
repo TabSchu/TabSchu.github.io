@@ -106,7 +106,7 @@ h3{
 }
 
 .box {
-  display: flex;
+    display: flex;
     background-color: #212121;
     float: left;
     color: #fff;
@@ -118,6 +118,9 @@ h3{
     top: 200px;
   
     
+}
+.searchButton{
+  z-index: 26;
 }
 
 
