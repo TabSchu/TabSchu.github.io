@@ -3,6 +3,7 @@ import Beitrag from './Beitrag';
 import ArtikelTest from "./ArtikelTest";
 import BeitragHook from "./hooks/BeitragHook";
 import HeaderBarMyZphere from './HeaderBarMyZphere';
+import Artikel from "./Artikel";
 
 
 
@@ -47,9 +48,12 @@ class Merkliste extends Component{
 function Greeting(props) {
     const isLoggedIn = props.isLoggedIn;
     if (isLoggedIn) {
+        let fetch_url = "http://localhost:8080/beitrag";
         return (
             <div id={"testBeitragsListe"}>
-                <BeitragHook />
+                <div>
+                    <BeitragHook  fetch_url={fetch_url}/>
+                </div>
             </div>
         );
     }
