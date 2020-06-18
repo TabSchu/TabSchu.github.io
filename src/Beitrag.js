@@ -24,13 +24,13 @@ class Beitrag extends Component {
                         <div className="extra">
                             <ul>
                                 <li> 
-                                    <img src={ArtikelIcon} />   
-                                    {this.props.medientyp}   
+                                    <img src={ArtikelIcon} />
+                                    {this.props.medientyp}
                                     {this.props.sportart}
                                     
                                 </li>
                                 <li></li>
-                                <li><img src={TeilenIcon} /> <img src={MerklisteIcon} onClick={this.addBeitragZuMerkliste}/></li>                                
+                                <li><img src={TeilenIcon} /> <img src={MerklisteIcon} onClick={this.addBeitragZuMerkliste}/></li>
                             </ul>
                             
                         </div>
@@ -43,6 +43,17 @@ class Beitrag extends Component {
           
             
         )
+
+        /*
+        * <p>{this.props.medientyp} </p>
+                                    <img className="iconBar" src={ArtikelIcon} />
+
+                                    <p key={this.props.sport_id} > {this.props.sportart}</p>
+
+          *
+          *
+          <li ><img className="iconBar" src={TeilenIcon} /> <img  className="iconBar" src={MerklisteIcon} /><button onClick={this.addBeitragZuMerkliste}>M</button> </li>
+        * */
     }
 
     // ggf. gibt es keinen Teaser dann bleibt es leer, z.B. bei Audio

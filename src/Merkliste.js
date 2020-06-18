@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect} from 'react'
 import Beitrag from './Beitrag';
 import ArtikelTest from "./ArtikelTest";
-import BeitragHook from "./beitragHook";
+import BeitragHook from "./hooks/BeitragHook";
 import HeaderBarMyZphere from './HeaderBarMyZphere';
 
 

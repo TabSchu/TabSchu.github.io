@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Beitrag from "./Beitrag";
-import BeitragHook from "./beitragHook";
+import BeitragHook from "./hooks/BeitragHook";
 import HeaderBar from "./HeaderBar";
 import Tanzen_leer from "./img/icon/Tanzen_leer.png";
 import Parkour_leer from "./img/icon/Parkour_leer.png";
@@ -30,6 +30,7 @@ filterclose(){
     console.log("close")
 }
     render() {
+        let fetch_url = "http://localhost:8080/beitrag";
         return(
             <div>
                 <HeaderBar/>
@@ -81,7 +82,7 @@ filterclose(){
             <div id="content">
               
                 <div>
-                    <BeitragHook />
+                    <BeitragHook  fetch_url={fetch_url}/>
                 </div>
 
             </div>

@@ -23,11 +23,22 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import BeitragHook from "./hooks/BeitragHook";
+import StoryHook from "./hooks/StoryHook";
+import SubSportartHook from "./hooks/SubSportartHook";
+import PersonHook from "./hooks/PersonHook";
+import ThemenbereichHook from "./hooks/ThemenbereichHook";
 
 class Explore extends Component {
 
 
     render() {
+        let fetch_url_newest_beitrag = "http://localhost:8080/beitrag/newest";
+        let fetch_url_stories = "http://localhost:8080/beitrag";
+        let fetch_url_subsportart = "http://localhost:8080/subsportart";
+        let fetch_url_person_group = "http://localhost:8080/person";
+        let fetch_url_themenbereich = "http://localhost:8080/themenbereich";
+
         return(
             <Router>
             <div id="explore">
@@ -96,74 +107,14 @@ class Explore extends Component {
             
                 <div id="content">
                     <h3>sportarten</h3>
-                    
-                    <div className="middleBlock">
-                        <div className="middleBox">
-                            <div className="boxcontent"><Link to="/artikel">
-                            <h4>Breakdance</h4></Link>
-                            </div>
-                        </div>
-                        <div className="middleBox">
-                            <div className="boxcontent">
-                            <h4>Breakdance</h4>
-                            </div>
-                        </div> 
-                        <div className="middleBox">
-                            <div className="boxcontent">
-                            <h4>Breakdance</h4>
-                            </div>
-                        </div> 
-                        <div className="middleBox">
-                            <div className="boxcontent">
-                            <h4>Breakdance</h4>
-                            </div>
-                        </div>     
-                    </div>
+                    <SubSportartHook  fetch_url={fetch_url_subsportart}/>
                     <h3>sportler</h3>
-                    <div className="smallBlock">
-                        <div className="smallBox">
-                            <div className="boxcontent">
-                                <h4>Ben</h4>
-                            </div>
-                        </div> 
-                        <div className="smallBox">
-                            <div className="boxcontent">
-                                <h4>Ben</h4>
-                            </div>
-                        </div> 
-                        <div className="smallBox">
-                            <div className="boxcontent">
-                                <h4>Ben</h4>
-                            </div>
-                        </div>
-                        <div className="smallBox">
-                            <div className="boxcontent">
-                                <h4>Ben</h4>
-                            </div>
-                        </div>
-                        <div className="smallBox">
-                            <div className="boxcontent">
-                                <h4>Ben</h4>
-                            </div>
-                        </div> 
-                        <div className="smallBox">
-                            <div className="boxcontent">
-                                <h4>Ben</h4>
-                            </div>
-                        </div> 
-                    </div>
-                    <h3>top story</h3>
-                    <div className="bigBlock">
-                        <div className="bigBox">
-                                <h4>Background Story</h4>
-                        </div>
-                    </div>
-                    <div className="stories">
-                        <div className="story"><div className="boxcontent"><h3>story</h3><h4>David</h4></div></div> 
-                        <div className="story"><div className="boxcontent"><h3>story</h3><h4>David</h4></div></div> 
-                        <div className="story"><div className="boxcontent"><h3>story</h3><h4>David</h4></div></div> 
-                        <div className="story"><div className="boxcontent"><h3>story</h3><h4>David</h4></div></div>                 
-                    </div>
+                    <PersonHook fetch_url={fetch_url_person_group}/>
+                    <Link to="/artikel"> <h3>top story</h3></Link>
+                    <BeitragHook  fetch_url={fetch_url_newest_beitrag}/>
+                    <h3  className="titelThemenbereich" >Themenbereich</h3>
+                    <StoryHook fetch_url={fetch_url_stories}/>
+                    <ThemenbereichHook fetch_url={fetch_url_themenbereich}/>
                 </div>
             </div>
             <Switch> 
