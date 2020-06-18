@@ -103,3 +103,70 @@ h3{
     margin: 0;
     margin-right: 18px;
 }
+#filterOverlay{
+    background: rgb(000, 000, 000, 0.7);
+    position: absolute;
+    top: 50px;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    z-index: 1;
+    position: fixed;
+    
+}
+#filterblock{
+    background: #303030;
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    max-height: 40vh;
+    width: 100vw;
+}
+#filterblock #close{
+    height: 25px;
+    width: 100vw;
+    padding: 5px 0;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+#filterblock #close img{
+    height: 25px;
+    width: auto;
+    transform: rotate(-90deg);
+}
+#filter{
+    padding: 0 10px;
+    width: 320px;
+    margin: 0 auto;
+}
+#filterrow{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, minmax(70px, 80px));
+    grid-template-rows: minmax(70px, 80px);
+    grid-auto-flow: dense;
+    padding: 5px 0;
+    border-bottom: 1px solid #212121;
+}
+#filterrow:nth-last-child(1){
+    border-bottom: 0px solid #212121;
+}
+#filterrow .filtericon{
+    display: grid;
+    place-items: center;
+    text-align: center;
+    min-height: 60px;
+    min-width: 60px;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 0;
+    border-right: 1px solid #212121;
+}
+#filterrow .filtericon:nth-last-child(1){
+    border-right: 0px solid #212121;   
+}
+#filterrow .filtericon img{
+    max-height: 40px;
+    width: auto;
+    margin: 0;
+}

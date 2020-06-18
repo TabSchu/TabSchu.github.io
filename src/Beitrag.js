@@ -1,14 +1,11 @@
 import React, { Component, useState } from 'react'
 import Merkliste from './Merkliste';
-import ArtikelIcon from './img/Artikel.png'
-import MerklisteIcon from './img/Merkliste_leer.png'
-import TeilenIcon from './img/Teilen.png'
+import ArtikelIcon from './img/icon/Artikel.png'
+import MerklisteIcon from './img/icon/Merkliste_leer.png'
+import TeilenIcon from './img/icon/Teilen.png'
 class Beitrag extends Component {
-    
-
 
     render() {
-
         var arr = [];
         arr = this.parseTeaserElement(arr);
 
@@ -27,18 +24,13 @@ class Beitrag extends Component {
                         <div className="extra">
                             <ul>
                                 <li> 
-                                    <p 
-                                    // style={{float: "right"}}
-                                    >{this.props.medientyp} </p>  
-                                    <img src={ArtikelIcon} />
-
-                                    <p key={this.props.sport_id} 
-                                    // style={{float: "right", marginLeft:"5px"}}
-                                    > {this.props.sportart}</p>
+                                    <img src={ArtikelIcon} />   
+                                    {this.props.medientyp}   
+                                    {this.props.sportart}
                                     
                                 </li>
                                 <li></li>
-                                <li><img src={TeilenIcon} /> <img src={MerklisteIcon} /><button onClick={this.addBeitragZuMerkliste}>M</button> </li>                                
+                                <li><img src={TeilenIcon} /> <img src={MerklisteIcon} onClick={this.addBeitragZuMerkliste}/></li>                                
                             </ul>
                             
                         </div>
