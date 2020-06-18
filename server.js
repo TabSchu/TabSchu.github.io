@@ -67,6 +67,19 @@
         });
     });
 
+    app.get('/beitrag/newest', function (req, res) {
+
+        const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+            "JOIN sportart s ON b.sport = s.id_sportart\n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+            "ORDER BY id_beitrag DESC LIMIT 1;";
+        pool.query(sql, function (error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+
+        });
+    });
+
     //http://localhost:8080/beitragByTags?tags[]=10&tags[]=6
     app.get('/beitragByTags', function (req, res) {
         const tags = req.query.tags; //[6,4,10];
@@ -74,6 +87,53 @@
         const sql = 'SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b JOIN sportart s ON b.sport = s.id_sportart JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie JOIN beitrag_tag bt  ON bt.fk_beitrag_id = b.id_beitrag WHERE fk_tag_id IN (?);';
         const value = [tags];
             pool.query(sql, value,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
+    //http://localhost:8080/beitragByThemenbereich?themenbereich=6
+    app.get('/beitragByThemenbereich', function (req, res) {
+        const themenbereich = req.query.themenbereich; //[6,4,10];
+        console.log(themenbereich);
+        const sql = 'SELECT * FROM BAP_Sportbericht_Plattform_DB.beitrag b\n' +
+            'JOIN  BAP_Sportbericht_Plattform_DB.beitrag_themenbereich bt \n' +
+            'ON b.id_beitrag = bt.fk_beitrag\n' +
+            'WHERE bt.fk_themenbereich=?;';
+        const value = [themenbereich];
+        pool.query(sql, value,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
+    //
+    app.get('/subsportart', function (req, res) {
+        const sql = 'SELECT * FROM sub_sportart;';
+        pool.query(sql,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
+    app.get('/person', function (req, res) {
+        // TODO: filter param fk_person_group
+        const fk_person_group = 1;
+        const sql = 'SELECT * FROM person WHERE fk_person_group = ?;';
+        const value = [fk_person_group];
+        pool.query(sql, value,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
+    app.get('/themenbereich', function (req, res) {
+        const sql = 'SELECT * FROM themenbereich;';
+        pool.query(sql,
             function (error, results, fields) {
                 if (error) throw error;
                 res.send(results);
