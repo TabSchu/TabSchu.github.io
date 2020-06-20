@@ -1,35 +1,37 @@
 #contentFavoriten{
-  margin-top: 140px;
-  width: calc(100vw - 20px); 
-  height: auto;
-  min-height: 100vh;
-  /* padding abziehen */
-  padding: 10px;
-  background-color:black;
-  z-index: 25;
+  background: #212121;
+    position: absolute;
+    top: 140px;
+    width: 100vw;
+    height: calc(89vh - 100px);
+    z-index: 1;
+    position: fixed;
+}
+
+
+#Favoriten{
+   background: #212121;
+    position: absolute;
+    top: 200px;
+    width: 100vw;
+    height: calc(83vh - 100px);
+    z-index: 1;
+    position: fixed;
 
 }
 
 
-h3{
-    text-transform: uppercase;
-    color: white;
-    margin:  1px;
-    align-items: center;
-    justify-items: center;
-    position: relative;
-}
+
 
 .obereLeiste{
-  z-index: 2;
   position: absolute;
-  top: 140px;
+  top: 0px;
   left: 0;
   height: 30px;
   width: 100vw;
   clear: both;
   color: #fff;
-  background: black;
+  background: #212121;
   
 }
 
@@ -57,71 +59,72 @@ h3{
 }
 
 .untereLeiste{
-  z-index: 2;
+  z-index: 10000;
   position: absolute;
-  top: 170px;
+  display: block;
+  top: 30px;
   left: 0;
   height: 30px;
   width: 100vw;
   clear: both;
   color: #fff;
-  background: #212121;
+  background: #707070;
+  border-radius: 10px;
 }
 .untereLeiste ul{
   list-style: none;
-  margin: 0;
   padding: 0;
   height: 100%;
+  margin:0;
+
 
 }
 .untereLeiste ul li{
   display: block; 
   text-decoration: none;
   float: left; 
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
   width: calc(100% /3); 
   height: 100%;
   padding: 0;
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-.block{
-    position: relative;
-    display: flex;
-    min-width: 85vw;
-    top: 40px;
-    height: 100px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    align-items: center;
-    justify-items: center;
-  
-    
+ 
 
 }
 
-.box {
-    display: flex;
-    background-color: #212121;
-    float: left;
-    color: #fff;
-    border-radius: 5px;
-    height: 100px;
-    width: 100px;
-    margin-right: 10px;
-    margin-left: 10px;
+#Sportlerzeile {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(124px, 100px));
+    grid-auto-flow: dense;
+    margin: 0;
+    grid-template-rows: minmax(90px, 100px);
+    padding: 5px 0;
     top: 200px;
+    border-bottom: 1px solid #303030;
+    align-items: center;
+
+}
+
+
+.Sportler{
+
+    display: grid;
+    min-height: 90px;
+    min-width: 60px;
+    place-items: center;
+    text-align: center;
+    padding: 5px;
+    font-size: 16px;
+    background-position: center;
+    border-right: 1px solid #303030;
+
+
+}
+.Sportler img{
+  height: 50px;
+  width: 50px;
   
-    
 }
-.searchButton{
-  z-index: 26;
-}
-
-
-

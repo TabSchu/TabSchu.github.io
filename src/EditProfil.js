@@ -80,7 +80,6 @@ class EditProfil extends Component{
         
         return(
                 <div>
-                    <HeaderBarProfilEdit/>
         
                 <div id="contentProfil">    
                 

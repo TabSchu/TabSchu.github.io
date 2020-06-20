@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Home from "./Home";
 import Explore from "./Explore";
-import MyZphere from "./MyZphere";
 import Merkliste from "./Merkliste";
 import {
     BrowserRouter as Router,
@@ -19,7 +18,6 @@ class NavBar extends Component {
 
     render() {
         return(
-        <Router>
             <div id="navBar">
                 <ul>
                     <li><Link to="/">
@@ -39,23 +37,7 @@ class NavBar extends Component {
                 
                 </ul>
             </div>
-            <Switch> 
-                <Route path="/explore" component={Explore}>
-                    
-                </Route>
-                <Route path="/merkliste" render={props =>
-                <div>
-                <HeaderBarMyZphere />
-                <MyZphere />
-                </div>
-                }/>
-                    
-                
-                <Route path="/" component ={Home}>
-                    
-                </Route>
-            </Switch>
-        </Router>
+        
         )
     }
 }

@@ -33,7 +33,7 @@ filterclose(){
         let fetch_url = "http://localhost:8080/beitrag";
         return(
             <div>
-                <HeaderBar/>
+            
                 <div id="filterOverlay" 
                 // style={{display: this.state.displayFilter ? 'block' : 'none' }}
                 >

@@ -6,68 +6,32 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    NavLink,
     Link
   } from "react-router-dom";
 import HeaderBarProfilEdit from './HeaderBarProfilEdit';
+import ProfilBearbeitenIcon from './img/profilBearbeiten.png'
 
 class HeaderBarMyZphere extends Component {
-
-    /*constructor(props){
-        super(props);
-            
-            this.moveToEditProfil = this.moveToEditProfil.bind(this),
-            this.moveToMyZphere = this.moveToMyZphere.bind(this),
-            this.setState = {showHeaderEditProfil : false};
-        
-    }
-
-    moveToEditProfil() {
-        this.setState ({showHeaderEditProfil: true});
-    }
-
-    moveToMyZphere(){
-        this.setState ({showHeaderEditProfil : false})
-    }*/
 
    
     render() {
         return(
-            <div id="HeaderBarMyZphere">
-                <h1>Max Mustermann</h1>
-                </div>
-
-        /*const showHeaderEditProfil = this.state.showHeaderEditProfil;
-        let button;
-
-       if(!showHeaderEditProfil){
-            
-        }else {
-           button = <Logout    onClick={this.moveToEditProfil} />
-        }*/
         
-            /*<Router>
+       
+        
+            
             <div id="HeaderBarMyZphere">
                <ul>
-                   <h1>Max Mustermann</h1>
+                   <p>Max Mustermann</p>
                    
-                   <h2><Link to="/editProfil">icon</Link></h2>
+                   <p><Link to="/editProfil"><img src={ProfilBearbeitenIcon} /></Link></p>
                    
-                   <li><Link to="/merkliste">Merkliste</Link></li>
-                   <li><Link to ="/favoriten">Favoriten</Link></li>
+                   <li><NavLink to="/merkliste" exact className="main-nav" activeClassName="active"  style={{textDecoration: 'none', color: 'white'}}>Merkliste</NavLink></li>
+                   <li><NavLink to ="/favoriten" exact className="main-nav2" activeClassName="active" style={{textDecoration: 'none', color: 'white'}}>Favoriten</NavLink></li>
                </ul>
             </div>
-            <Switch>
-            <Route path="/editProfil">
-                <EditProfil />
-            </Route>
-            <Route path="/favoriten">
-                <Favoriten />
-            </Route>
-            <Route path="/merkliste">
-                <Merkliste />
-            </Route>
-            </Switch>
-            </Router> */
+            
         )
     }
 }
