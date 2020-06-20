@@ -12,12 +12,28 @@
   /* background: #212121; */
   background-color: #303030;
 }
+#Beitragsart{
+  position: fixed;
+  z-index: 1;
+  top: 50px;
+  left: 0;
+  height: 30px;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  clear: both;
+  color: #fff;
+  /* background: #212121; */
+  background-color: #303030;
+}
+#Beitragsart ul,
 #headerBar ul{
   list-style: none;
   margin: 0;
   padding: 0;
   height: 100%; 
 }
+#Beitragsart ul li,
 #headerBar ul li{
   display: block; 
   text-decoration: none;
@@ -34,6 +50,16 @@
   font-size: 36px;
   font-style: italic;
 }
+#Beitragsart ul li{
+  width: calc(100% /3 - 3px); 
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  border: 1px solid black;
+}
+#Beitragsart ul li p:hover{
+  border-bottom: 1px solid #00B3A6;
+}
 #headerBar ul li img{
   height: 25px;
   width: auto;
@@ -49,4 +75,8 @@
     background-color: #212121;
     z-index: 30;
     padding-bottom: 55px;
+  }
+  a{
+    text-decoration: none;
+    color: white;
   }

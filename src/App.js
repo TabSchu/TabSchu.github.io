@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import HeaderBar from "./HeaderBar";
 import NavBar from "./NavBar";
 import Beitrag from "./Beitrag";
+import Themengebiet from "./Themengebiet";
 import HeaderBarMyZphere from "./HeaderBarMyZphere";
 import Explore from "./Explore";
 import Merkliste from "./Merkliste";
@@ -18,11 +19,13 @@ import {
 import EditProfil from "./EditProfil";
 import HeaderBarProfilEdit from "./HeaderBarProfilEdit";
 import Favoriten from "./Favoriten";
+import BeitragHook from "./hooks/BeitragHook";
 
 class App extends Component {
 
 
 render(){
+  let fetch_url = "http://localhost:8080/beitrag";
       return (
          <Router>
           <div>
@@ -39,7 +42,34 @@ render(){
                 </div>
                 } 
                 />
+                <Route path="/themengebiet/artikel" render={props =>
+                <div>
                     
+               
+                <BeitragHook fetch_url={fetch_url}/>
+                <Themengebiet/>
+                </div>
+                
+                } 
+                />    
+                <Route path="/themengebiet/podcast" render={props =>
+                <div>
+
+                <Themengebiet/>
+
+                </div>
+                
+                } 
+                />  
+                <Route path="/themengebiet/video" render={props =>
+                <div>
+
+                <Themengebiet/>
+                
+                </div>
+                
+                } 
+                />  
                 <Route path="/merkliste" render={props =>
                 <div>
                 <HeaderBarMyZphere />
@@ -66,21 +96,12 @@ render(){
                   <Home />
                   <HeaderBar />
                 </div>
-              } />
-
-                
-                    
+              } />       
             </Switch>
             </div>
         </Router>
-              
-
-        
     )
   }
-
-
-
 }
 
 export default App;

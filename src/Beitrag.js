@@ -8,6 +8,7 @@ class Beitrag extends Component {
     render() {
         var arr = [];
         arr = this.parseTeaserElement(arr);
+        if(merklisteActive){ MerklisteIcon= ididid}
 
         return(
             <div className="beitrag"  key={this.props.beitrag_id}
@@ -27,7 +28,6 @@ class Beitrag extends Component {
                                     <img src={ArtikelIcon} />
                                     {this.props.medientyp}
                                     {this.props.sportart}
-                                    
                                 </li>
                                 <li></li>
                                 <li><img src={TeilenIcon} /> <img src={MerklisteIcon} onClick={this.addBeitragZuMerkliste}/></li>
