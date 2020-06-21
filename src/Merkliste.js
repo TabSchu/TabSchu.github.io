@@ -52,7 +52,7 @@ function Greeting(props) {
         return (
             <div id={"testBeitragsListe"}>
                 <div>
-                    <BeitragHook  fetch_url={fetch_url}/>
+                    <BeitragHook  merklisteActive={true} fetch_url={fetch_url}/>
                 </div>
             </div>
         );
