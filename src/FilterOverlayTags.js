@@ -24,55 +24,59 @@ class FilterOverlayTags extends Component {
                     <div id="filter">
                         <div id="filterrow">
                             <div className="filtericon">
-                                <img src={tutorials_leer}/>
+                                <img id_tag="1" src={tutorials_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(1)}
+                                />
                                 Tutorials
                             </div>
                             <div className="filtericon">
-                                <img src={verletzungen_leer}/>
+                                <img id_tag="2" src={verletzungen_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(2)}
+                                />
                                 Verletzung
                             </div>
                             <div className="filtericon">
-                                <img src={ernaehrung_leer}/>
+                                <img id_tag="3" src={ernaehrung_leer} onClick={() => this.props.parentShallToggleFilter(3)}/>
                                 Ernährung
                             </div>
                             <div className="filtericon">
-                                <img src={breakdance_leer}/>
+                                <img id_tag="8" src={breakdance_leer} onClick={() => this.props.parentShallToggleFilter(8)}/>
                                 Break Dance
                             </div>
                         </div>
                         <div id="filterrow">
                             <div className="filtericon">
-                                <img src={tipps_leer}/>
+                                <img id_tag="4" src={tipps_leer} onClick={() => this.props.parentShallToggleFilter(4)}/>
                                 Tipps
                             </div>
                             <div className="filtericon">
-                                <img src={tricks_leer}/>
+                                <img id_tag="5" src={tricks_leer} onClick={() => this.props.parentShallToggleFilter(5)}/>
                                 Tricks
                             </div>
                             <div className="filtericon">
-                                <img src={events_leer}/>
+                                <img id_tag="6" src={events_leer} onClick={() => this.props.parentShallToggleFilter(6)}/>
                                 Events
                             </div>
                             <div className="filtericon">
-                                <img src={diy_leer}/>
+                                <img id_tag="7" src={diy_leer} onClick={() => this.props.parentShallToggleFilter(7)}/>
                                 DIY
                             </div>
                         </div>
                         <div id="filterrow">
                             <div className="filtericon">
-                                <img src={diskussionen_leer}/>
+                                <img id_tag="9" src={diskussionen_leer} onClick={() => this.props.parentShallToggleFilter(9)}/>
                                 Diskussion
                             </div>
                             <div className="filtericon">
-                                <img src={trends_leer}/>
+                                <img id_tag="10" src={trends_leer} onClick={() => this.props.parentShallToggleFilter(10)}/>
                                 Trends
                             </div>
                             <div className="filtericon">
-                                <img src={funFacts_leer}/>
+                                <img id_tag="11" src={funFacts_leer} onClick={() => this.props.parentShallToggleFilter(11)}/>
                                 Fun Facts
                             </div>
                             <div className="filtericon">
-                                <img src={Muelleimer}/>
+                                <img id_tag="0"  src={Muelleimer} onClick={() => this.props.parentShallToggleFilter(0)}/>
                                 Alle löschen
                             </div>
                         </div>

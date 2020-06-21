@@ -17,7 +17,7 @@ function BeitragHook(props) {
                         <div className="bigBox">
                             {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport }) => (
                                 <div key={`beitrag_${id_beitrag}`}>
-                                    <Beitrag merklisteActive={props.merklisteActive}
+                                    <Beitrag /*merklisteActive={props.merklisteActive}*/
                                         id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
                                         kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
                                     />

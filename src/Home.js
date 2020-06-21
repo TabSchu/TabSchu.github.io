@@ -82,7 +82,7 @@ filterclose(){
             <div id="content">
               
                 <div>
-                    <BeitragHook merklisteActive={false}  fetch_url={fetch_url}/>
+                    <BeitragHook /*merklisteActive={false}*/  fetch_url={fetch_url}/>
                 </div>
 
             </div>
