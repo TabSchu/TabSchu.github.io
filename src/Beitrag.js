@@ -1,15 +1,22 @@
 import React, { Component, useState } from 'react'
 import Merkliste from './Merkliste';
 import ArtikelIcon from './img/icon/Artikel.png'
+import AudioIcon from './img/icon/Audio.png'
+import VideoIcon from './img/icon/Video.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'
 import TeilenIcon from './img/icon/Teilen.png'
 class Beitrag extends Component {
 
     render() {
+        var typ = ArtikelIcon;
         var arr = [];
         arr = this.parseTeaserElement(arr);
         /*if(merklisteActive){ MerklisteIcon= ididid} */
-
+        if (this.props.medientyp=="Video"){
+            typ = VideoIcon;
+        }else if (this.props.medientyp=="Audio"){
+            typ = AudioIcon;
+        }
         return(
             <div className="beitrag"  key={this.props.beitrag_id}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
@@ -25,17 +32,16 @@ class Beitrag extends Component {
                         <div className="extra">
                             <ul>
                                 <li> 
-                                    <img src={ArtikelIcon} />
-                                    {this.props.medientyp}
+                                    <img src={typ} />
+                                    {/* <img src={ArtikelIcon} /> */}
+                                    {/* {this.props.medientyp} */}
                                     {this.props.sportart}
                                 </li>
                                 <li></li>
                                 <li><img src={TeilenIcon} /> <img src={MerklisteIcon} onClick={this.addBeitragZuMerkliste}/></li>
-                            </ul>
-                            
+                            </ul> 
                         </div>
-                    </div>
-                    
+                    </div> 
                     <div className="">
                     </div>
                 </div>

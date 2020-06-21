@@ -26,7 +26,6 @@ class App extends Component {
 
 
 render(){
-  let fetch_url = "http://localhost:8080/beitrag";
       return (
          <Router>
           <div>
@@ -47,7 +46,7 @@ render(){
                 <div>
                     
                
-                <BeitragHook fetch_url={fetch_url}/>
+
                 <Themengebiet/>
                 </div>
                 

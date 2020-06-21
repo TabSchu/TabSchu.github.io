@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-// import BeitragHook from "./beitragHook";
+import BeitragHook from "./hooks/BeitragHook";
+import BeitragPodcastHook from "./hooks/BeitragPodcastHook";
 import Zurueck from "./img/icon/Zurueck.png";
 import ReactDOM from 'react-dom';
 import {
@@ -8,6 +9,11 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import BeitragPodcast from './BeitragPodcast';
+
+import AudioIcon from './img/icon/Audio.png'
+import MerklisteIcon from './img/icon/Merkliste_leer.png'
+import TeilenIcon from './img/icon/Teilen.png'
 
 
 class Themengebiet extends Component {
@@ -29,11 +35,15 @@ filterclose(){
     console.log("close")
 }
     render() {
+        let fetch_url = "http://localhost:8080/beitrag";
+        let fetch_url_latein_artikel = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Artikel";
+        let fetch_url_latein_video = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Video";
+        let fetch_url_latein_podcast = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Podcast";
         return(
             <div>
                 <div id="headerBar">
                     <ul>
-                        <li><img src={Zurueck}/></li>                    
+                        <li><img src={Zurueck} style={{}}/></li>                    
                         <li>Themengebiet</li>
                         <li></li>
                     </ul>
@@ -45,13 +55,17 @@ filterclose(){
                         <li><Link to="/themengebiet/video"><p> Video </p></Link> </li>
                     </ul>
                 </div>
-            <div id="content">
-                <div>
-                    {/* <BeitragHook /> */}
+                {/* <BeitragPodcast /> */}
+                {/* <BeitragPodcast /> */}
+                {/* <BeitragPodcast /> */}
+                <div id="content" style={{marginTop: "80px"}}>
+                    <BeitragPodcast />
+                    <BeitragPodcastHook fetch_url={{ fetch_url_latein_podcast}}/>
+                    {/* <BeitragHook fetch_url={{fetch_url_latein_artikel}}/>  */}
+                    {/*  fetch_url*/}
+                    
                 </div>
-            </div>
-           </div>
-           
+           </div>           
         )
     }
 }

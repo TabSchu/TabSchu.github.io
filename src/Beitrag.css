@@ -10,7 +10,23 @@
   display: flex;
   position: relative;
   border-radius: 7px;
-
+}
+.beitragPodcast{
+  position: relative;
+  min-height: 80px;
+  height: auto;
+  padding: 5px;
+  width: calc(100% - 10px);
+  background-color: #444444;
+  border-radius: 7px;
+}
+.beitragPodcast .beitraginhalt{
+  padding: 5px;
+  background-color: #444444;
+}
+.beitraginhalt img{
+  height: 30px;
+  margin-right: 15px;
 }
 .beitraginhalt{
     background-color: rgba(26, 26, 26, 0.7);
@@ -21,10 +37,15 @@
     margin: 10px;
     position: absolute;
     bottom: 0;
-    margin-top: 110px;
+    /* margin-top: 110px; */
     border-radius: 5px;
   }
-
+.beitragPodcast .beitraginhalt .beitragstitel{
+  height: 30px;
+  display:flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
 .beitragstitel{
   font-size: 18pt;
   font-weight: bold;
@@ -44,11 +65,13 @@
   font-size: 12pt;
   line-height: 20px;
 }
+.beitragPodcast .extra,
 .teaser .extra{
   color: #A1A1A1;
   width: auto;
   height: 30px;
 }
+.beitragPodcast .extra img,
 .teaser .extra img{
   height: 20px;
   margin: 0 5px;
