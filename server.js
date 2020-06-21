@@ -140,3 +140,18 @@
             });
     });
 
+    //http://localhost:8080/themenbereichByTags?tags[]=10&tags[]=6
+    app.get('/themenbereichByTags', function (req, res) {
+        const tags = req.query.tags; //[6,4,10];
+        console.log(tags);
+        const sql = 'SELECT * FROM themenbereich t\n' +
+            'JOIN themenbereich_tag  tt ON t.id_themenbereich = tt.fk_themenbereich_id\n' +
+            'WHERE fk_tag_id IN (?) ;';
+        const value = [tags];
+        pool.query(sql, value,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
