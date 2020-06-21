@@ -51,8 +51,8 @@ function Greeting(props) {
         let fetch_url = "http://localhost:8080/beitrag";
         return (
             <div id={"testBeitragsListe"}>
-                <div>
-                    <BeitragHook  merklisteActive={true} fetch_url={fetch_url}/>
+                <div> /*merklisteActive={true}*/
+                    <BeitragHook   fetch_url={fetch_url}/>
                 </div>
             </div>
         );
