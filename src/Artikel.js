@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
 
 class Artikel extends Component { 
-    constructor(props){
+    /*constructor(props){
         super(props);
         this.state = {
             hidevalue : 1
@@ -32,13 +32,13 @@ class Artikel extends Component {
                  hideValue : 0
               });
            }
-       }
+       }*/
 
     render() {
         return(
-            <Router>
+            
             <div id="contentArtikel">
-            <HeaderBar/>
+            
                 <div id="banner"></div>
                 <div id="titel">
                     <h5>Breaking News:</h5>
@@ -66,18 +66,6 @@ class Artikel extends Component {
                     <div className="story"><div className="boxcontent"><h3>story</h3><h4>David</h4></div></div>                  */}
                 </div>
             </div>
-            <Switch> 
-                <Route path="/">
-                    {/* < /> */}
-                </Route>
-                <Route path="/">
-                    {/* < /> */}
-                </Route>
-                <Route path="/">
-                    {/* < /> */}
-                </Route>
-            </Switch>
-        </Router>
         )
     }
 }

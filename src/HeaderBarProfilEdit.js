@@ -12,7 +12,7 @@ render(){
         <div id="HeaderBarProfilEdit">
             <div>
             <ul>
-                <li>X</li>
+                <li>X </li>
                 <li>fertig</li>
                 <h1>Max Mustermann</h1>
                 <h2><img src={ProfilBildIcon}/></h2>

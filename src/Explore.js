@@ -40,7 +40,6 @@ class Explore extends Component {
         }
 
         return(
-            <Router>
             <div id="explore">
             <HeaderBar parentShallHandleFilterClick={this.handleChildsFilterClick} />
 
@@ -50,25 +49,14 @@ class Explore extends Component {
                     <SubSportartHook  fetch_url={fetch_url_subsportart}/>
                     <h3>sportler</h3>
                     <PersonHook fetch_url={fetch_url_person_group}/>
-                    <Link to="/artikel"> <h3>top story</h3></Link>
+                    <Link to="/artikel" > <h3>top story</h3></Link>
                     <BeitragHook  fetch_url={fetch_url_newest_beitrag}/>
                     <h3  className="titelThemenbereich" >Themenbereich</h3>
                     <StoryHook fetch_url={fetch_url_stories}/>
                     <ThemenbereichHook fetch_url={fetch_url_themenbereich}/>
                 </div>
             </div>
-            <Switch> 
-                <Route path="/Artikel" component={Artikel} exact>
-                    {/* < Artikel/> */}
-                </Route>
-                <Route path="/">
-                    {/* < /> */}
-                </Route>
-                <Route path="/">
-                    {/* < /> */}
-                </Route>
-            </Switch>
-        </Router>
+            
         )
     }
 

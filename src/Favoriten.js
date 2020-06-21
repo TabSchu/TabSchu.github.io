@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import SportlerProfil from './img/icon/profil.png'
 
 
-
-
 class Favoriten extends Component{
     render(){
         return(

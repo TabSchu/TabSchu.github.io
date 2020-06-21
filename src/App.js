@@ -8,6 +8,7 @@ import HeaderBarMyZphere from "./HeaderBarMyZphere";
 import Explore from "./Explore";
 import Merkliste from "./Merkliste";
 import Home from "./Home";
+import Artikel from "./Artikel";
 
 import {
   BrowserRouter as Router,
@@ -35,7 +36,7 @@ render(){
                 <div>
 
                 <Explore/>
-                <HeaderBar />
+                
                 </div>
                 } 
                 />
@@ -51,6 +52,13 @@ render(){
                 <div>
                 <EditProfil/>
                 <HeaderBarProfilEdit />
+                </div>
+                }/>
+
+                <Route path="/artikel" render={props =>
+                <div>
+                <Artikel />
+                <HeaderBar />
                 </div>
                 }/>
 

@@ -30,7 +30,7 @@ filterclose(){
     console.log("close")
 }
     render() {
-        let fetch_url = "http://localhost:8080/beitrag";
+        let fetch_url = "http://localhost:8080/beitrag/";
         return(
             <div>
             
@@ -91,8 +91,4 @@ filterclose(){
         )
     }
 }
-ReactDOM.render(
-    <Home />,
-    document.getElementById('root')
-  );
 export default Home;
