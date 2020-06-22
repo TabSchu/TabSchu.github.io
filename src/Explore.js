@@ -18,6 +18,8 @@ import ThemenbereichHook from "./hooks/ThemenbereichHook";
 import FilterOverlayTags from "./FilterOverlayTags";
 import {forEach} from "react-bootstrap/cjs/ElementChildren";
 import Themengebiet from './Themengebiet';
+import Filter_leer from "./img/icon/Filter_leer.png";
+import Suche from "./img/icon/suche_lupe.png";
 
 class Explore extends Component {
 
@@ -95,13 +97,24 @@ class Explore extends Component {
         let seite;
         if(!this.state.showThemengebiet){
             seite = <div id="explore">
-            <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenFilterOverlayClick} />
+            {/* <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenFilterOverlayClick} /> */}
+
+            <div id="headerBar">
+                <ul>
+                    <li><img src={Suche}/></li>                    
+                    <li>entdecken</li>
+                    <li>
+                        <img src={Filter_leer}  onClick={this.handleChildsOpenFilterOverlayClick} />
+                    </li>
+                </ul>
+            </div>
 
             {filterOverlayTags}
             {content}
             </div>
         }else{
-            seite = <Themengebiet/>;
+            seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleChildsShowThemengebiet}/>;
+            // parentShallHandleShowThemengebiet={this.handleChildsShowThemengebiet}/>;
         }
 
         return(
@@ -110,7 +123,9 @@ class Explore extends Component {
     }
     handleChildsShowThemengebiet(){
         console.log("in explore show themenbereich");
-        this.setState({showThemengebiet: true});
+        // this.setState({showThemengebiet: true});
+        this.setState({showThemengebiet: !this.state.showThemengebiet});
+        
     }
     handleChildsOpenFilterOverlayClick() {
        //  console.log("Filter clicked in my Child Component");

@@ -14,8 +14,6 @@ function BeitragPodcastHook(props) {
                 "Loading..."
             ) : (
                 <div>
-                    <div className="bigBlock">
-                        <div className="bigBox">
                             {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport }) => (
                                 <div key={`beitrag_${id_beitrag}`}>
                                     <BeitragPodcast 
@@ -23,9 +21,6 @@ function BeitragPodcastHook(props) {
                                     />
                                 </div>
                             ))}
-                        </div>
-                    </div>
-
                 </div>
             )}
         </>

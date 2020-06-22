@@ -15,7 +15,7 @@ class Story extends Component {
             <div className="story"  key={this.props.beitrag_id}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
 
-                <div className="boxcontent">
+                <div className="boxcontent" style={{display:"flex"}}>
                     <p ><img src={typ} style={{height: "20px", margin:"5px"}}/>
                         {/* {this.props.medientyp}  */}
                         </p>

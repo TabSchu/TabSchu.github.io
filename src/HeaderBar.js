@@ -14,7 +14,8 @@ class HeaderBar extends Component {
         return(
             <div id="headerBar">
                 <ul>
-                    <li><img src={Zurueck}/></li>                    
+                    <li></li>
+                    {/* <li><img src={Zurueck}/></li>                     */}
                     <li>{title}</li>
                     <li>
                         <img src={Filter_leer}  onClick={this.props.parentShallHandleFilterClick} />

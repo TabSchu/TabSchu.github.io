@@ -12,17 +12,30 @@
   border-radius: 7px;
 }
 .beitragPodcast{
-  position: relative;
   min-height: 80px;
   height: auto;
   padding: 5px;
   width: calc(100% - 10px);
   background-color: #444444;
   border-radius: 7px;
+  margin: 10px 0;
+  display: flex;
+  position: relative;
+  border-radius: 7px;
 }
 .beitragPodcast .beitraginhalt{
   padding: 5px;
   background-color: #444444;
+  height: auto;
+}
+.beitragPodcast .beitraginhalt .beitragstitel{
+  /* min-height: 30px;
+  height: auto; 
+  max-height: 50px;*/
+  height: 30px;
+  display:flex;
+  align-items: center;
+  margin-bottom: 5px;
 }
 .beitraginhalt img{
   height: 30px;
@@ -40,12 +53,7 @@
     /* margin-top: 110px; */
     border-radius: 5px;
   }
-.beitragPodcast .beitraginhalt .beitragstitel{
-  height: 30px;
-  display:flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
+
 .beitragstitel{
   font-size: 18pt;
   font-weight: bold;
