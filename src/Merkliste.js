@@ -34,31 +34,15 @@ class Merkliste extends Component{
         } else {
             button = <LoginButton onClick={this.handleLoginClick} />;
         }
-
+        let fetch_url = "http://localhost:8080/beitragFromMerklisteByUserID?user_id=1";
         return (
             <div id="contentMerkliste">
-                {button}
-                <Greeting isLoggedIn={isLoggedIn} />
+                <BeitragHook  isMerkliste={true} fetch_url={fetch_url}/>
             </div>
         );
     }
 }
 
-
-function Greeting(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
-        let fetch_url = "http://localhost:8080/beitrag";
-        return (
-            <div id={"testBeitragsListe"}>
-                <div>
-                    <BeitragHook  merklisteActive={true} fetch_url={fetch_url}/>
-                </div>
-            </div>
-        );
-    }
-    return <ArtikelTest />;
-}
 
 
 function LoginButton(props) {

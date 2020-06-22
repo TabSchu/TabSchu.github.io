@@ -1,88 +1,35 @@
 import React, { Component } from 'react'
-import Beitrag from "./Beitrag";
+
 import BeitragHook from "./hooks/BeitragHook";
 import HeaderBar from "./HeaderBar";
-import Tanzen_leer from "./img/icon/Tanzen_leer.png";
-import Parkour_leer from "./img/icon/Parkour_leer.png";
-import Golf_leer from "./img/icon/Golf_leer.png";
-import Kampf_leer from "./img/icon/Kampf_leer.png";
-import Reiten_leer from "./img/icon/Reiten_leer.png";
-import Tischtennis_leer from "./img/icon/Tischtennis_leer.png";
-import Volleyball_leer from "./img/icon/Volleyball_leer.png";
-import Muelleimer from "./img/icon/Muelleimer.png";
-import Zurueck from "./img/icon/Zurueck.png";
-import ReactDOM from 'react-dom';
+import FilterOverlaySportarten from "./FilterOverlaySportarten";
+
 
 
 class Home extends Component {
-// constructor(props){
-//     super(props);
-//     this.state = {isToggleOn: true};
-//     this.displayFilter = this.displayFilter.bind(this);
-//     this.filterclose = this.filterclose.bind(this);
-// }
+    constructor(props){
+        super(props);
+        this.handleChildsOpenSportFilterOverlayClick = this.handleChildsOpenSportFilterOverlayClick.bind(this);
+        this.handleHideSportFilterForChild = this.handleHideSportFilterForChild.bind(this);
 
-displayFilter() {
-  }
-
-filterclose(){
-    // document.getElementById("filterOverlay").style.display="none";
-    console.log("close")
-}
+        this.state = {  showFilterSportOverlay: false};
+    }
     render() {
         let fetch_url = "http://localhost:8080/beitrag/";
+
+        let FilterOverlaySportartenElement;
+        if (this.state.showFilterSportOverlay) {
+            FilterOverlaySportartenElement = <FilterOverlaySportarten parentShallHideSportFilter={this.handleHideSportFilterForChild} />
+        }
+
         return(
             <div>
-            
-                <div id="filterOverlay" 
-                // style={{display: this.state.displayFilter ? 'block' : 'none' }}
-                >
-                    <div id="filterblock">
-                        <div id="close"><img src={Zurueck} onClick={this.filterclose()}/></div>
-                        <div id="filter">
-                            <div id="filterrow">
-                                <div className="filtericon">
-                                    <img src={Tanzen_leer}/>
-                                    Tanzen
-                                </div>
-                                <div className="filtericon">
-                                    <img src={Parkour_leer}/>
-                                    Parkour
-                                </div>
-                                <div className="filtericon">
-                                    <img src={Golf_leer}/>
-                                    Golf
-                                </div>
-                                <div className="filtericon">
-                                    <img src={Kampf_leer}/>
-                                    Kampfsport
-                                </div>
-                            </div>
-                            <div id="filterrow">
-                                <div className="filtericon">
-                                    <img src={Reiten_leer}/>
-                                    Reiten
-                                </div>
-                                <div className="filtericon">
-                                <img src={Tischtennis_leer}/>
-                                    Tischtennis
-                                </div>
-                                <div className="filtericon">
-                                    <img src={Volleyball_leer}/>
-                                    Volleyball
-                                </div>
-                                <div className="filtericon">
-                                <img src={Muelleimer}/>
-                                Alle löschen
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenSportFilterOverlayClick} />
+                {FilterOverlaySportartenElement}
             <div id="content">
               
                 <div>
-                    <BeitragHook merklisteActive={false}  fetch_url={fetch_url}/>
+                    <BeitragHook /*merklisteActive={false}*/  fetch_url={fetch_url}/>
                 </div>
 
             </div>
@@ -90,5 +37,17 @@ filterclose(){
            
         )
     }
+
+    handleChildsOpenSportFilterOverlayClick() {
+        //  console.log("Filter clicked in my Child Component");
+        this.setState({showFilterSportOverlay: !this.state.showFilterSportOverlay});
+    }
+
+    handleHideSportFilterForChild() {
+        //  console.log("from my Child Component: Parent shall hide filter");
+        this.setState({showFilterSportOverlay: false});
+    }
+
+
 }
 export default Home;

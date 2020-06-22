@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-// import BeitragHook from "./beitragHook";
+import BeitragHook from "./hooks/BeitragHook";
+import BeitragPodcastHook from "./hooks/BeitragPodcastHook";
 import Zurueck from "./img/icon/Zurueck.png";
 import ReactDOM from 'react-dom';
 import {
@@ -8,51 +9,89 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import BeitragPodcast from './BeitragPodcast';
+
+import AudioIcon from './img/icon/Audio.png'
+import MerklisteIcon from './img/icon/Merkliste_leer.png'
+import TeilenIcon from './img/icon/Teilen.png'
 
 
 class Themengebiet extends Component {
 constructor(props){
     super(props);
-    this.state = {isToggleOn: true};
-    this.displayFilter = this.displayFilter.bind(this);
-    this.filterclose = this.filterclose.bind(this);
-    this.state = {onfilter: false};
+    this.state = {showArtikel: true,
+                  showPodacst: false,
+                  showVideo: false,  
+                    };
+    this.changeBeitragVideo = this.changeBeitragVideo.bind(this);
+    this.changeBeitragPodcast = this.changeBeitragPodcast.bind(this);
+    this.changeBeitragArtikel = this.changeBeitragArtikel.bind(this);
 }
 
-displayFilter() {
-    this.setState({onfilter: true});
-}
-
-filterclose(){
-    // document.getElementById("filterOverlay").style.display="none";
-    this.setState({onfilter: false});
-    console.log("close")
-}
     render() {
+ 
+     
+        let fetch_url = "http://localhost:8080/beitrag";
+        let fetch_url_latein_artikel = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Artikel";
+        let fetch_url_latein_video = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Video";
+        let fetch_url_latein_podcast = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Podcast";
+        
+        let beitrag ;
+        // =<BeitragHook fetch_url={fetch_url_latein_artikel}/>;
+        if(this.state.showArtikel){beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>}
+        if(this.state.showPodacst){beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>}
+        if(this.state.showVideo){beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>}
+
         return(
             <div>
                 <div id="headerBar">
                     <ul>
-                        <li><img src={Zurueck}/></li>                    
-                        <li>Themengebiet</li>
+                        <li style={{justifyContent:"flex-start"}}><img src={Zurueck} 
+                        onClick={this.props.parentShallShowThemengebiet}
+                            style={{marginLeft: "15px"}}/></li>                    
+                        <li>Latein</li>
                         <li></li>
                     </ul>
                 </div>
                 <div id="Beitragsart">
                     <ul>
-                        <li><Link to="/themengebiet/podcast"><p> Podcast </p></Link> </li>                    
-                        <li><Link to="/themengebiet/artikel"><p> Artikel </p></Link> </li>
-                        <li><Link to="/themengebiet/video"><p> Video </p></Link> </li>
+                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
                     </ul>
                 </div>
-            <div id="content">
-                <div>
-                    {/* <BeitragHook /> */}
+
+                <div id="content" style={{marginTop: "80px"}}>
+                    {/* <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/> */}
+                    {/* <BeitragHook fetch_url={fetch_url_latein_artikel}/>  */}
+                    {/*  fetch_url*/}
+                    {beitrag}
+                    
                 </div>
-            </div>
-           </div>
-           
+           </div>           
         )
     }
+            
+changeBeitragArtikel (){
+    // this.setState({showBeitrag:});
+    this.setState({showArtikel: true});
+    this.setState({showPodacst: false});
+    this.setState({showVideo: false});
+    // console.log(" changeBeitragArtikel")
+}   
+changeBeitragVideo () {
+    this.setState({showArtikel: false});
+    this.setState({showPodacst: false});
+    this.setState({showVideo: true});
+    // this.setState({showBeitrag:});
+    // console.log(" changeBeitragVideo")
+}   
+changeBeitragPodcast () {
+    this.setState({showArtikel: false});
+    this.setState({showPodacst: true});
+    this.setState({showVideo: false});
+    // this.setState({showBeitrag:});
+    // console.log(" changeBeitragPodcast")
+}  
 }
 export default Themengebiet;

@@ -57,7 +57,6 @@
     app.get('/beitrag', function (req, res) {
 
         const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
-
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
             "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie;";
         pool.query(sql, function (error, results, fields) {
@@ -72,13 +71,31 @@
         const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
             "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
-            "ORDER BY id_beitrag DESC LIMIT 1;";
+            "WHERE b.id_beitrag=1;"; //"ORDER BY id_beitrag DESC LIMIT 1;";
         pool.query(sql, function (error, results, fields) {
             if (error) throw error;
             res.send(results);
 
         });
     });
+
+    //beitragBySubsportart?subsportart=1&medientyp=Artikel
+        app.get('/beitragBySubsportart', function (req, res) {
+            const subsportart = req.query.subsportart;
+            const medientyp = req.query.medientyp;
+            const sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+                "JOIN sportart s ON b.sport = s.id_sportart\n" +
+                "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n" +
+                "JOIN beitrag_subsportart sb ON sb.fk_beitrag = b.id_beitrag\n" +
+                "WHERE sb.fk_subsportart=? AND b.typ=?  ; ";
+            const value = [subsportart, medientyp ];
+            pool.query(sql, value,
+                function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+
+            });
+        });
 
     //http://localhost:8080/beitragByTags?tags[]=10&tags[]=6
     app.get('/beitragByTags', function (req, res) {
@@ -109,6 +126,25 @@
             });
     });
 
+//http://localhost:8080/beitragFromMerklisteByUserID?user_id=1
+app.get('/beitragFromMerklisteByUserID', function (req, res) {
+    const fk_user_id = req.query.user_id; //[6,4,10];
+    console.log(fk_user_id);
+    const sql =  "SELECT b.*, s.sportart, k.kategorie FROM beitrag b \n" +
+            "JOIN sportart s ON b.sport = s.id_sportart \n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie \n" +
+            "JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
+            "WHERE m.fk_user_id=? ORDER BY date_added DESC;";
+    const value = [fk_user_id];
+    pool.query(sql, value,
+        function (error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+        });
+});
+
+
+
     //
     app.get('/subsportart', function (req, res) {
         const sql = 'SELECT * FROM sub_sportart;';
@@ -134,6 +170,29 @@
     app.get('/themenbereich', function (req, res) {
         const sql = 'SELECT * FROM themenbereich;';
         pool.query(sql,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
+    //http://localhost:8080/themenbereichByTags?tags[]=10&tags[]=6
+    app.get('/themenbereichByTags', function (req, res) {
+        const tags = req.query.tags; //[6,4,10];
+        console.log(tags);
+        let sql;
+        let  value = [];
+
+        if(tags && tags.length>0){
+             sql = 'SELECT * FROM themenbereich t\n' +
+                'JOIN themenbereich_tag  tt ON t.id_themenbereich = tt.fk_themenbereich_id\n' +
+                'WHERE fk_tag_id IN (?) ;';
+             value = [tags];
+        }else{
+             sql = 'SELECT * FROM themenbereich ;';
+
+        }
+        pool.query(sql, value,
             function (error, results, fields) {
                 if (error) throw error;
                 res.send(results);

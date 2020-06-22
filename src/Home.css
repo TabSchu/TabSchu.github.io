@@ -51,11 +51,12 @@
   font-style: italic;
 }
 #Beitragsart ul li{
-  width: calc(100% /3 - 3px); 
+  /* width: calc(100% /3 - 3px);  */
+  width: calc(100% /3); ;
   font-size: 14px;
   font-weight: normal;
   font-style: normal;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 #Beitragsart ul li p:hover{
   border-bottom: 1px solid #00B3A6;

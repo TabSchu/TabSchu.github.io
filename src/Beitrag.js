@@ -1,22 +1,44 @@
 import React, { Component, useState } from 'react'
 import Merkliste from './Merkliste';
 import ArtikelIcon from './img/icon/Artikel.png'
+import AudioIcon from './img/icon/Audio.png'
+import VideoIcon from './img/icon/Video.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'
+import MerklisteIcon_ausgefuellt from './img/icon/Merkliste_ausgefuellt.png'
 import TeilenIcon from './img/icon/Teilen.png'
+import {Link} from "react-router-dom";
+import Play from './img/icon/Play.png'
 class Beitrag extends Component {
 
     render() {
+        var typ = ArtikelIcon;
+        var playicon;
         var arr = [];
         arr = this.parseTeaserElement(arr);
-        //if(merklisteActive){ MerklisteIcon= ididid}
+        
+
+
+        /*if(merklisteActive){ MerklisteIcon= ididid} */
+        if (this.props.medientyp=="Video"){
+            typ = VideoIcon;
+            playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Play}/>;
+        }else if (this.props.medientyp=="Audio"){
+            typ = AudioIcon;
+        }
+        var merkIcon = MerklisteIcon;
+        if(this.props.isMerkliste){
+            merkIcon = MerklisteIcon_ausgefuellt
+        }
 
         return(
             <div className="beitrag"  key={this.props.beitrag_id}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
                 <div className="beitraginhalt">
+                    {playicon}
                     <div className="beitragstitel">
+
                         <div className="beitragskategorien">{this.props.kategorie} </div>
-                        {this.props.titel}
+                        <Link to="/artikel"> {this.props.titel}</Link>
                     </div>
                     <div className="teaser">
                         <ul>
@@ -25,17 +47,16 @@ class Beitrag extends Component {
                         <div className="extra">
                             <ul>
                                 <li> 
-                                    <img src={ArtikelIcon} />
-                                    {this.props.medientyp}
+                                    <img src={typ} />
+                                    {/* <img src={ArtikelIcon} /> */}
+                                    {/* {this.props.medientyp} */}
                                     {this.props.sportart}
                                 </li>
                                 <li></li>
-                                <li><img src={TeilenIcon} /> <img src={MerklisteIcon} onClick={this.addBeitragZuMerkliste}/></li>
-                            </ul>
-                            
+                                <li><img src={TeilenIcon} /> <img src={merkIcon} onClick={this.addBeitragZuMerkliste}/></li>
+                            </ul> 
                         </div>
-                    </div>
-                    
+                    </div> 
                     <div className="">
                     </div>
                 </div>
