@@ -44,7 +44,7 @@ filterclose(){
                 <div id="headerBar">
                     <ul>
                         <li><img src={Zurueck} style={{}}/></li>                    
-                        <li>Themengebiet</li>
+                        <li>Lateins</li>
                         <li></li>
                     </ul>
                 </div>

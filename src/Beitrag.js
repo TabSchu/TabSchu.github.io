@@ -4,6 +4,7 @@ import ArtikelIcon from './img/icon/Artikel.png'
 import AudioIcon from './img/icon/Audio.png'
 import VideoIcon from './img/icon/Video.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'
+import MerklisteIcon_ausgefuellt from './img/icon/Merkliste_ausgefuellt.png'
 import TeilenIcon from './img/icon/Teilen.png'
 class Beitrag extends Component {
 
@@ -16,6 +17,10 @@ class Beitrag extends Component {
             typ = VideoIcon;
         }else if (this.props.medientyp=="Audio"){
             typ = AudioIcon;
+        }
+        var merkIcon = MerklisteIcon;
+        if(this.props.isMerkliste){
+            merkIcon = MerklisteIcon_ausgefuellt
         }
         return(
             <div className="beitrag"  key={this.props.beitrag_id}
@@ -38,7 +43,7 @@ class Beitrag extends Component {
                                     {this.props.sportart}
                                 </li>
                                 <li></li>
-                                <li><img src={TeilenIcon} /> <img src={MerklisteIcon} onClick={this.addBeitragZuMerkliste}/></li>
+                                <li><img src={TeilenIcon} /> <img src={merkIcon} onClick={this.addBeitragZuMerkliste}/></li>
                             </ul> 
                         </div>
                     </div> 

@@ -57,7 +57,7 @@ render(){
                 />    
                 <Route path="/themengebiet/podcast" render={props =>
                 <div>
-                  <BeitragHook medientyp={"Podcast"} fetch_url={fetch_url_latein_podcast}/>
+                  {/* <BeitragHook medientyp={"Podcast"} fetch_url={fetch_url_latein_podcast}/> */}
                 <Themengebiet/>
 
                 </div>
@@ -66,7 +66,7 @@ render(){
                 />  
                 <Route path="/themengebiet/video" render={props =>
                 <div>
-                  <BeitragHook medientyp={"Video"} fetch_url={fetch_url_latein_video}/>
+                  {/* <BeitragHook medientyp={"Video"} fetch_url={fetch_url_latein_video}/> */}
                 <Themengebiet/>
                 
                 </div>
@@ -90,7 +90,7 @@ render(){
                 <Route path="/artikel" render={props =>
                 <div>
                 <Artikel />
-                <HeaderBar />
+                
                 </div>
                 }/>
 

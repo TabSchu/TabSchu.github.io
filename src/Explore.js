@@ -17,6 +17,7 @@ import PersonHook from "./hooks/PersonHook";
 import ThemenbereichHook from "./hooks/ThemenbereichHook";
 import FilterOverlayTags from "./FilterOverlayTags";
 import {forEach} from "react-bootstrap/cjs/ElementChildren";
+import Themengebiet from './Themengebiet';
 
 class Explore extends Component {
 
@@ -28,10 +29,12 @@ class Explore extends Component {
         this.handleToggleFilterForChild = this.handleToggleFilterForChild.bind(this);
         this.toggleStatusFilterItem = this.toggleStatusFilterItem.bind(this);
         this.resetAllFilterItemsToFalse = this.resetAllFilterItemsToFalse.bind(this);
+        this.handleChildsShowThemengebiet = this.handleChildsShowThemengebiet.bind(this);
         this.setUrlThema = this.setUrlThema.bind(this);
 
         this.state = {  showFilterOverlay: false,
                         tagFilterActive: false,
+                        showThemengebiet: false,
                   //      filter_1: false, filter_2: false, filter_3: false, filter_4: false, filter_5: false,
                    //     filter_6: false, filter_7: false, filter_8: false, filter_9: false, filter_10: false, filter_11: false,
             filterTagList: [
@@ -43,7 +46,6 @@ class Explore extends Component {
         };
         let themenbereiche;
     }
-
 
 
     render() {
@@ -58,6 +60,7 @@ class Explore extends Component {
             filterOverlayTags = <FilterOverlayTags parentShallHideFilter={this.handleHideFilterForChild}
                                                    parentShallToggleFilter={this.handleToggleFilterForChild}/>
         } //else {   console.log("don't show FilterOverlay");  }
+        
         let content;
         let tagFilterActive = this.state.tagFilterActive; //this.state.filter_1;//
        // let tagFilterUpdated = this.state.tagFilterUpdated;
@@ -66,12 +69,11 @@ class Explore extends Component {
             this.setState({tagFilterUpdated: false });
             themenbereiche = '';
         } */
-
         if (!tagFilterActive){
             themenbereiche =  <ThemenbereichHook fetch_url={fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
             content = <div id="content">
                         <h3>sportarten</h3>
-                        <SubSportartHook  fetch_url={fetch_url_subsportart}/>
+                        <SubSportartHook parentShallForGrandChildsShowThemengebiet={this.handleChildsShowThemengebiet} fetch_url={fetch_url_subsportart}/>
                         <h3>sportler</h3>
                         <PersonHook fetch_url={fetch_url_person_group}/>
                         <Link to="/artikel"> <h3>top story</h3></Link>
@@ -90,16 +92,26 @@ class Explore extends Component {
                 {themenbereiche}
             </div>
         }
-        return(
-               <div id="explore">
-                    <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenFilterOverlayClick} />
+        let seite;
+        if(!this.state.showThemengebiet){
+            seite = <div id="explore">
+            <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenFilterOverlayClick} />
 
-                    {filterOverlayTags}
-                    {content}
-                </div>
+            {filterOverlayTags}
+            {content}
+            </div>
+        }else{
+            seite = <Themengebiet/>;
+        }
+
+        return(
+               <div>{seite}</div>
         )
     }
-
+    handleChildsShowThemengebiet(){
+        console.log("in explore show themenbereich");
+        this.setState({showThemengebiet: true});
+    }
     handleChildsOpenFilterOverlayClick() {
        //  console.log("Filter clicked in my Child Component");
         this.setState({showFilterOverlay: !this.state.showFilterOverlay});

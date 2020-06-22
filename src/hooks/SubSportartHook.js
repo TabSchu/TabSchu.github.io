@@ -6,8 +6,6 @@ function SubSportartHook(props) {
     const [data, loading] = useFetch(
         props.fetch_url
     );
-
-
     return (
         <>
             {loading ? (
@@ -17,7 +15,7 @@ function SubSportartHook(props) {
                     <div className="middleBlock">
                     {data.map(({ id_sub_sportart, titel, img_url }) => (
                         <div key={`sub_sportart${id_sub_sportart}`}>
-                            <SubSportart
+                            <SubSportart parentShallShowThemengebiet={props.parentShallForGrandChildsShowThemengebiet}
                                 id_sub_sportart={id_sub_sportart}  titel={titel}   img_url={img_url}
                             />
                         </div>
@@ -28,9 +26,5 @@ function SubSportartHook(props) {
         </>
     );
 }
-/*
-<div className="middleBlock">
 
-
-* */
 export default SubSportartHook;
