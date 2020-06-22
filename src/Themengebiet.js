@@ -36,11 +36,43 @@ constructor(props){
         let fetch_url_latein_video = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Video";
         let fetch_url_latein_podcast = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Podcast";
         
-        let beitrag ;
+        let beitrag;
+        let beitragArt;
         // =<BeitragHook fetch_url={fetch_url_latein_artikel}/>;
-        if(this.state.showArtikel){beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>}
-        if(this.state.showPodacst){beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>}
-        if(this.state.showVideo){beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>}
+        if(this.state.showArtikel){
+            beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>
+            
+            beitragArt= 
+            <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p style={{borderBottom:"2px solid #00B3A6"}}> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
+                    </ul>
+                </div>
+    }
+        if(this.state.showPodacst){
+            beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>
+            beitragArt= 
+            <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast} ><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel} ><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
+                    </ul>
+                </div>
+    }
+        if(this.state.showVideo){
+            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>
+            beitragArt= 
+            <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo} ><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
+                    </ul>
+                </div>
+    }
 
         return(
             <div>
@@ -53,20 +85,17 @@ constructor(props){
                         <li></li>
                     </ul>
                 </div>
-                <div id="Beitragsart">
+                {beitragArt}
+                {/* <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
                         <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
                         <li onClick={this.changeBeitragVideo}><p> Video </p></li>
                     </ul>
-                </div>
+                </div> */}
 
                 <div id="content" style={{marginTop: "80px"}}>
-                    {/* <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/> */}
-                    {/* <BeitragHook fetch_url={fetch_url_latein_artikel}/>  */}
-                    {/*  fetch_url*/}
                     {beitrag}
-                    
                 </div>
            </div>           
         )
