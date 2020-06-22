@@ -27,8 +27,8 @@ class Explore extends Component {
         super(props);
         this.handleChildsOpenFilterOverlayClick = this.handleChildsOpenFilterOverlayClick.bind(this);
         this.handleHideFilterForChild = this.handleHideFilterForChild.bind(this);
-
         this.handleToggleFilterForChild = this.handleToggleFilterForChild.bind(this);
+
         this.toggleStatusFilterItem = this.toggleStatusFilterItem.bind(this);
         this.resetAllFilterItemsToFalse = this.resetAllFilterItemsToFalse.bind(this);
         this.handleChildsShowThemengebiet = this.handleChildsShowThemengebiet.bind(this);
@@ -101,7 +101,7 @@ class Explore extends Component {
 
             <div id="headerBar">
                 <ul>
-                    <li><img src={Suche}/></li>                    
+                    <li><img src={Suche}/></li>
                     <li>entdecken</li>
                     <li>
                         <img src={Filter_leer}  onClick={this.handleChildsOpenFilterOverlayClick} />
@@ -125,7 +125,7 @@ class Explore extends Component {
         console.log("in explore show themenbereich");
         // this.setState({showThemengebiet: true});
         this.setState({showThemengebiet: !this.state.showThemengebiet});
-        
+
     }
     handleChildsOpenFilterOverlayClick() {
        //  console.log("Filter clicked in my Child Component");

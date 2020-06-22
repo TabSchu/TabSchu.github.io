@@ -104,7 +104,7 @@ render(){
                 <Route path="/" exact render={props =>
                 <div>
                   <Home />
-                  <HeaderBar />
+
                 </div>
               } />       
             </Switch>
