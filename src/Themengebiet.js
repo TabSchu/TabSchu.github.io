@@ -60,8 +60,8 @@ filterclose(){
                 {/* <BeitragPodcast /> */}
                 <div id="content" style={{marginTop: "80px"}}>
                     <BeitragPodcast />
-                    <BeitragPodcastHook fetch_url={{ fetch_url_latein_podcast}}/>
-                    {/* <BeitragHook fetch_url={{fetch_url_latein_artikel}}/>  */}
+                    <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>
+                    {/* <BeitragHook fetch_url={fetch_url_latein_artikel}/>  */}
                     {/*  fetch_url*/}
                     
                 </div>
