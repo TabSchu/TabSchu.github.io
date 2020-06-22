@@ -10,12 +10,18 @@
 #banner{
     height: 30vh;
     max-height: 200px;
+    background-image: url('./img/TanzenFoto.jpg');
+    background-size: 40vh 200px;
+    background-repeat: no-repeat;
+    
 }
 #titel{
     width: calc(100vw - 50px);
-    font-size: 18px;
+    font-size: 21px;
     padding:  10px 0;
     border-bottom: 2px solid #A1A1A1;
+    height: 100px;
+    
 }
 #titel h5{
     /* font-size: 12px; */
@@ -29,17 +35,32 @@
     width: 100%;
     color:#A1A1A1;
     margin: 10px 0;
+    
+    
 }
 #autor .icon{
     float: right;
 }
+
+#autor .icon img{
+    margin-top: 20px;
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+
 #text{
     width:  calc(100vw - 50px);
+    
 }
 #info{
     margin: 10px 0;
     width: calc(100vw - 50px);
     list-style: none;
+    height: 200px;
+
 }
 #info #hashtag{
     text-transform: uppercase;
@@ -58,7 +79,37 @@
     line-height: 21pt;
     font-size: 18px;
 }
+
+#info ul li img{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    align-content: center;
+    justify-content: center;
+}
 #info h3{
     text-transform: none;
     font-size: 24px;
+    margin: 12px;
+    margin-left: 0;
+}
+#autor img{
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+#icon img{
+    width: 20px;
+    height: 20px;
+    float:right;
+    
+    justify-content: center;
+    align-items: center;
+}
+#zurueck img{
+    width: 20px;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
 }

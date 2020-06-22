@@ -8,7 +8,7 @@ class Beitrag extends Component {
     render() {
         var arr = [];
         arr = this.parseTeaserElement(arr);
-        if(merklisteActive){ MerklisteIcon= ididid}
+        //if(merklisteActive){ MerklisteIcon= ididid}
 
         return(
             <div className="beitrag"  key={this.props.beitrag_id}

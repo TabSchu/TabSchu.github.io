@@ -10,7 +10,8 @@ import Explore from "./Explore";
 import Merkliste from "./Merkliste";
 import Home from "./Home";
 import Artikel from "./Artikel";
-
+import NavBarExplore from "./NavBarExplore"
+import NavBarMerkliste from "./NavBarMerkliste"
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,13 +33,14 @@ render(){
           <div>
               
             
-              <NavBar/>
+            
 
               <Switch> 
                 <Route path="/explore" render={props =>
                 <div>
 
                 <Explore/>
+                <NavBarExplore />
                 
                 </div>
                 } 
@@ -75,6 +77,7 @@ render(){
                 <div>
                 <HeaderBarMyZphere />
                 <Merkliste />
+                <NavBarMerkliste />
                 </div>
                 }/>
 
@@ -82,13 +85,14 @@ render(){
                 <div>
                 <EditProfil/>
                 <HeaderBarProfilEdit />
+                <NavBarMerkliste />
                 </div>
                 }/>
 
                 <Route path="/artikel" render={props =>
                 <div>
                 <Artikel />
-                <HeaderBar />
+                
                 </div>
                 }/>
 
@@ -96,13 +100,16 @@ render(){
                 <div>
                   <Favoriten />
                   <HeaderBarMyZphere />
+                  <NavBarMerkliste />
                 </div>
               } />
                     
                 <Route path="/" exact render={props =>
                 <div>
+                   <NavBar />        
                   <Home />
                   <HeaderBar />
+
                 </div>
               } />       
             </Switch>

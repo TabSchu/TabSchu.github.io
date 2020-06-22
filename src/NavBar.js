@@ -16,27 +16,81 @@ import ExploreIcon from './img/explore_leer.png'
 
 class NavBar extends Component {
 
+constructor(props){
+    super(props);
+    this.aktiveUrl = this.aktiveUrl.bind(this);
+    this.state = {
+        url: "Home"
+    };
+}
+
+aktiveUrl(e){
+    
+    
+    this.setState({ url: e})
+    console.log(e)
+}
+
+
     render() {
+        const navStyle = {
+            opacity: 0.5
+        }
+
+        let url = this.state.url;
+
+        let NavBarHighlight;
+
+        let NavBarHome = false;
+        let NavBarExplore = false;
+        let NavBarMerkliste = false;
+
+        if (url = "Home") {
+
+            this.NavBarHome = true;
+
+        } else if ( url = "Explore"){
+
+            this.NavBarExplore = true;
+        } else if (url = "Merkliste"){
+
+            this.NavBarMerkliste = true;
+        }
+
+
+
+        
+        
+            
+        
+
+        
         return(
-            <div id="navBar">
-                <ul>
-                    <li><Link to="/">
-                    <img src={zphereLogo} />  
-                    </Link> 
-                    </li>
-                    <li>
-                    <Link to="/explore">
-                    <img src={ExploreIcon} />
-                    </Link>
-                    </li>
-                    <li>
-                    <Link to="/merkliste">
-                    <img src={ProfilbildIcon} /> 
-                    </Link>
-                    </li>
-                
-                </ul>
-            </div>
+
+        
+                <div id="navBar">
+                 <ul>
+            
+                <li><Link   to="/" onClick ={() => this.aktiveUrl("Home")}>
+                <img src={zphereLogo} />  
+                </Link> 
+                </li>
+                <li>
+                <Link style={navStyle} to="/explore" onClick = {() => this.aktiveUrl("Explore")}>
+                <img src={ExploreIcon} />
+                </Link>
+                </li>
+                <li>
+                <Link style={navStyle}  to="/merkliste" onClick = {() => this.aktiveUrl("Merkliste")}>
+                <img src={ProfilbildIcon} /> 
+                </Link>
+                </li>
+            
+            </ul>
+        </div>
+
+        
+            
         
         )
     }
