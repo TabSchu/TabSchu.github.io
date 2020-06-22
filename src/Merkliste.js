@@ -48,7 +48,7 @@ class Merkliste extends Component{
 function Greeting(props) {
     const isLoggedIn = props.isLoggedIn;
     if (isLoggedIn) {
-        let fetch_url = "http://localhost:8080/beitrag";
+        let fetch_url = "http://localhost:8080/beitragFromMerklisteByUserID?user_id=1";//"http://localhost:8080/beitrag";
         return (
             <div id={"testBeitragsListe"}>
                 <div> /*merklisteActive={true}*/
