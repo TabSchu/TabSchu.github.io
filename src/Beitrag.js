@@ -6,6 +6,7 @@ import VideoIcon from './img/icon/Video.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'
 import MerklisteIcon_ausgefuellt from './img/icon/Merkliste_ausgefuellt.png'
 import TeilenIcon from './img/icon/Teilen.png'
+import {Link} from "react-router-dom";
 import Play from './img/icon/Play.png'
 class Beitrag extends Component {
 
@@ -31,9 +32,9 @@ class Beitrag extends Component {
                 <div className="beitraginhalt">
                     {playicon}
                     <div className="beitragstitel">
-                        
+
                         <div className="beitragskategorien">{this.props.kategorie} </div>
-                        {this.props.titel}
+                        <Link to="/artikel"> {this.props.titel}</Link>
                     </div>
                     <div className="teaser">
                         <ul>
