@@ -75,7 +75,16 @@ body{
   align-items: center;
   justify-content: center;
 }
+#navBar ul li:nth-child(1){
+  justify-content: flex-start;
+  width: calc(100% /3 - 30px); 
+  padding-left: 30px;}
 
+#navBar ul li:nth-child(3){
+  justify-content: flex-end;
+  width: calc(100% /3 - 30px); 
+  padding-right: 30px;
+}
 #navBar img{
   width: 35px;
   height: 35px;
