@@ -79,9 +79,10 @@ constructor(props){
             <div>
                 <div id="headerBar">
                     <ul>
-                        <li style={{justifyContent:"flex-start"}}><img src={Zurueck} 
+                        <li><img src={Zurueck} 
                         onClick={this.props.parentShallShowThemengebiet}
-                            style={{marginLeft: "15px"}}/></li>                    
+                            // style={{marginLeft: "15px"}}
+                            /></li>                    
                         <li>Latein</li>
                         <li></li>
                     </ul>

@@ -39,7 +39,8 @@
   text-decoration: none;
   float: left; 
   margin: 0;
-  width: calc(100% /3); 
+  width: calc(100% /3 - 30px); 
+  /* width: calc(100% /3);  */
   height: 100%;
   padding: 0;
   margin: 0;
@@ -49,6 +50,15 @@
   font-weight: bold;
   font-size: 36px;
   font-style: italic;
+}
+#headerBar ul li:nth-child(1){
+  justify-content: flex-start;
+  padding-left: 30px;}
+#headerBar ul li:nth-child(2){
+  width: calc(100% /3); }
+#headerBar ul li:nth-child(3){
+  justify-content: flex-end;
+  padding-right: 30px;
 }
 #Beitragsart ul li{
   /* width: calc(100% /3 - 3px);  */

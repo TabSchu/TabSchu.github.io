@@ -73,7 +73,7 @@ class Explore extends Component {
         } */
         if (!tagFilterActive){
             themenbereiche =  <ThemenbereichHook fetch_url={fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
-            content = <div id="content">
+            content = <div id="content" style={{marginTop:"80px"}}>
                         <h3>sportarten</h3>
                         <SubSportartHook parentShallForGrandChildsShowThemengebiet={this.handleChildsShowThemengebiet} fetch_url={fetch_url_subsportart}/>
                         <h3>sportler</h3>
@@ -86,7 +86,7 @@ class Explore extends Component {
                     </div>
         } else {
             themenbereiche =  <ThemenbereichHook fetch_url={fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
-            content = <div id="content">
+            content = <div id="content" style={{marginTop:"80px"}}>
                 <Link to="/artikel"><h3>top story</h3>
                 <BeitragHook fetch_url={fetch_url_newest_beitrag}/></Link>
                 <h3 className="titelThemenbereich">Themenbereich</h3>
@@ -108,7 +108,16 @@ class Explore extends Component {
                     </li>
                 </ul>
             </div>
-
+            <div id="Beitragsart" >
+                <ul style={{width: "auto", display: "flex", overflowX: "scroll", padding:"0 10px"}}>
+                    <li style={{width: "auto", margin:"0 10px"}}>Tutorials</li>
+                    <li style={{width: "auto", margin:"0 10px"}}>DIY</li>
+                    <li style={{width: "auto", margin:"0 10px"}}>runnershigh</li>
+                    <li style={{width: "auto", margin:"0 10px"}}>#FreshAndFruity</li>
+                    <li style={{width: "auto", margin:"0 10px"}}>Fortnite</li>
+                    <li style={{width: "auto", margin:"0 10px"}}>Corona</li>
+                </ul>
+            </div>
             {filterOverlayTags}
             {content}
             </div>
