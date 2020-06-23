@@ -80,8 +80,6 @@ class Explore extends Component {
                         <PersonHook fetch_url={fetch_url_person_group}/>
                         <Link to="/artikel"> <h3>top story</h3></Link>
                         <BeitragHook  fetch_url={fetch_url_newest_beitrag}/>
-                        <h3  className="titelThemenbereich" >Themenbereich</h3>
-                        <StoryHook fetch_url={fetch_url_stories}/>
                         {themenbereiche}
                     </div>
         } else {
@@ -89,8 +87,6 @@ class Explore extends Component {
             content = <div id="content" style={{marginTop:"80px"}}>
                 <Link to="/artikel"><h3>top story</h3>
                 <BeitragHook fetch_url={fetch_url_newest_beitrag}/></Link>
-                <h3 className="titelThemenbereich">Themenbereich</h3>
-                <StoryHook fetch_url={fetch_url_stories}/>
                 {themenbereiche}
             </div>
         }
