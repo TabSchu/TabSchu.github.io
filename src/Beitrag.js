@@ -8,6 +8,7 @@ import MerklisteIcon_ausgefuellt from './img/icon/Merkliste_ausgefuellt.png'
 import TeilenIcon from './img/icon/Teilen.png'
 import {Link} from "react-router-dom";
 import Play from './img/icon/Play.png'
+import Kopfhoerer from './img/icon/Kopfhoerer.png'
 class Beitrag extends Component {
 
     render() {
@@ -22,7 +23,8 @@ class Beitrag extends Component {
         if (this.props.medientyp=="Video"){
             typ = VideoIcon;
             playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Play}/>;
-        }else if (this.props.medientyp=="Audio"){
+        }else if (this.props.medientyp=="Podcast"){
+            playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = AudioIcon;
         }
         var merkIcon = MerklisteIcon;

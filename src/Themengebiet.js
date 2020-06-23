@@ -52,6 +52,7 @@ constructor(props){
         }
         if(this.state.showPodacst){
             beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>;
+            // beitrag = <BeitragHook fetch_url={ fetch_url_latein_podcast}/>;
             beitragArt = <div>
                 <div id="Beitragsart">
                     <ul>
