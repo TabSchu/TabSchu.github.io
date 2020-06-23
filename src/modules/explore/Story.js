@@ -16,7 +16,7 @@ class Story extends Component {
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
 
                 <div className="boxcontent" style={{display:"flex"}}>
-                    <p ><img src={typ} style={{height: "20px", margin:"5px"}}/>
+                    <p style={{marginTop:"3px"}}><img src={typ} style={{height: "20px", margin:"5px"}}/>
                         {/* {this.props.medientyp}  */}
                         </p>
                     <h4>{this.props.titel}</h4>

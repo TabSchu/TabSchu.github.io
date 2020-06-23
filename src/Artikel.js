@@ -43,18 +43,16 @@ class Artikel extends Component {
     render() {
         let fetch_url_stories = "http://localhost:8080/beitrag";
         return(
-            
-            <div id="contentArtikel">
-                
-                <div id="banner">
+            <div>
+            <div id="banner">
                 <div id="zurueck"><Link to="/explore" > <img src={Zurueck} /></Link></div>
-                </div>
-                
+            </div>
+            <div id="contentArtikel" >                
                 <div id="titel">
                     <h5>Breaking News:</h5>
                     <h3>Weltmeisterschaft der Tanz-Formation Latein</h3>
                 </div>
-                <div id="autor"><img src={SportlerProfil} style={{alignSelf: 'center'}} align="middle"/> Katharina Schövel<div className="icon"><img src={TeilenIcon}/><img src={MerklisteIcon}/>  </div></div>
+                <div id="autor"><img src={SportlerProfil}/> Katharina Schövel<div className="icon"> <img src={TeilenIcon}/> <img src={MerklisteIcon}/>  </div></div>
                 <div id="text">Samstag, 10. Dezember 2016
                     NDR/RB-Fernsehen
                     Samstag, 10. Dezember 2016,
@@ -81,10 +79,11 @@ class Artikel extends Component {
                     <h3>Ähnliche Beiträge: </h3>
                 </div>
                 
-                <div className="stories">
+                <div style={{width:"40vh", overflowX:"scroll"}}>
                 <StoryHook fetch_url={fetch_url_stories}/>
                                 
                 </div>
+            </div>
             </div>
         )
     }

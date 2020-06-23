@@ -36,11 +36,44 @@ constructor(props){
         let fetch_url_latein_video = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Video";
         let fetch_url_latein_podcast = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Podcast";
         
-        let beitrag ;
-        // =<BeitragHook fetch_url={fetch_url_latein_artikel}/>;
-        if(this.state.showArtikel){beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>}
-        if(this.state.showPodacst){beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>}
-        if(this.state.showVideo){beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>}
+        let beitrag;
+        let beitragArt;
+        if(this.state.showArtikel){
+            beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>;
+            beitragArt = <div>
+                <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p style={{borderBottom:"2px solid #00B3A6"}}> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        if(this.state.showPodacst){
+            beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>;
+            beitragArt = <div>
+                <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast}><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        if(this.state.showVideo){
+            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>;
+            beitragArt = <div>
+                <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
+                    </ul>
+                </div>
+            </div>
+        }
 
         return(
             <div>
@@ -53,18 +86,9 @@ constructor(props){
                         <li></li>
                     </ul>
                 </div>
-                <div id="Beitragsart">
-                    <ul>
-                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
-                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
-                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
-                    </ul>
-                </div>
+                {beitragArt}
 
                 <div id="content" style={{marginTop: "80px"}}>
-                    {/* <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/> */}
-                    {/* <BeitragHook fetch_url={fetch_url_latein_artikel}/>  */}
-                    {/*  fetch_url*/}
                     {beitrag}
                     
                 </div>
@@ -73,25 +97,19 @@ constructor(props){
     }
             
 changeBeitragArtikel (){
-    // this.setState({showBeitrag:});
     this.setState({showArtikel: true});
     this.setState({showPodacst: false});
     this.setState({showVideo: false});
-    // console.log(" changeBeitragArtikel")
 }   
 changeBeitragVideo () {
     this.setState({showArtikel: false});
     this.setState({showPodacst: false});
     this.setState({showVideo: true});
-    // this.setState({showBeitrag:});
-    // console.log(" changeBeitragVideo")
 }   
 changeBeitragPodcast () {
     this.setState({showArtikel: false});
     this.setState({showPodacst: true});
     this.setState({showVideo: false});
-    // this.setState({showBeitrag:});
-    // console.log(" changeBeitragPodcast")
 }  
 }
 export default Themengebiet;

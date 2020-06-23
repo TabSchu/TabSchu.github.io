@@ -87,8 +87,8 @@ class Explore extends Component {
         } else {
             themenbereiche =  <ThemenbereichHook fetch_url={fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
             content = <div id="content">
-                <Link to="/artikel"><h3>top story</h3></Link>
-                <BeitragHook fetch_url={fetch_url_newest_beitrag}/>
+                <Link to="/artikel"><h3>top story</h3>
+                <BeitragHook fetch_url={fetch_url_newest_beitrag}/></Link>
                 <h3 className="titelThemenbereich">Themenbereich</h3>
                 <StoryHook fetch_url={fetch_url_stories}/>
                 {themenbereiche}
