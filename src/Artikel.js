@@ -45,7 +45,8 @@ class Artikel extends Component {
         return(
             <div>
             <div id="banner">
-                <div id="zurueck"><Link to="/explore" > <img src={Zurueck} /></Link></div>
+                <div id="zurueck"><Link to="/" > <img src={Zurueck} /></Link></div>
+                {/* Link to="/explore" */}
             </div>
             <div id="contentArtikel" >                
                 <div id="titel">

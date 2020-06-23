@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
-
+import Artikel from "./Artikel";
 import BeitragHook from "./hooks/BeitragHook";
 import HeaderBar from "./HeaderBar";
 import FilterOverlaySportarten from "./FilterOverlaySportarten";
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 
 class Home extends Component {
@@ -28,8 +33,9 @@ class Home extends Component {
                 {FilterOverlaySportartenElement}
             <div id="content">
               
-                <div>
+                <div><Link to="/artikel">
                     <BeitragHook /*merklisteActive={false}*/  fetch_url={fetch_url}/>
+                    </Link>
                 </div>
 
             </div>
