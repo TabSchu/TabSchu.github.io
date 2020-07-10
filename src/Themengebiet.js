@@ -38,54 +38,84 @@ constructor(props){
         
         let beitrag;
         let beitragArt;
+
         // =<BeitragHook fetch_url={fetch_url_latein_artikel}/>;
         if(this.state.showArtikel){
-            beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>
+            beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>;
             
-            beitragArt= 
-            <div id="Beitragsart">
+           
+            beitragArt = <div>
+                <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
                         <li onClick={this.changeBeitragArtikel}><p style={{borderBottom:"2px solid #00B3A6"}}> Artikel </p></li>
                         <li onClick={this.changeBeitragVideo}><p> Video </p></li>
                     </ul>
                 </div>
-    }
+                </div>
+        }
         if(this.state.showPodacst){
-            beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>
+            beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>;
             beitragArt= 
-            <div id="Beitragsart">
+                <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast} ><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
                         <li onClick={this.changeBeitragArtikel} ><p> Artikel </p></li>
                         <li onClick={this.changeBeitragVideo}><p> Video </p></li>
                     </ul>
                 </div>
-    }
+        }
         if(this.state.showVideo){
-            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>
-            beitragArt= 
-            <div id="Beitragsart">
+            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>;
+            beitragArt = 
+                <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
                         <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
                         <li onClick={this.changeBeitragVideo} ><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
                     </ul>
                 </div>
-    }
+        }
+        if(this.state.showPodacst){
+            beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>;
+            // beitrag = <BeitragHook fetch_url={ fetch_url_latein_podcast}/>;
+            beitragArt = <div>
+                <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast}><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        if(this.state.showVideo){
+            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>;
+            beitragArt = <div>
+                <div id="Beitragsart">
+                    <ul>
+                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragVideo}><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
+                    </ul>
+                </div>
+            </div>
+        }
 
         return(
             <div>
                 <div id="headerBar">
                     <ul>
-                        <li style={{justifyContent:"flex-start"}}><img src={Zurueck} 
+                        <li><img src={Zurueck} 
                         onClick={this.props.parentShallShowThemengebiet}
-                            style={{marginLeft: "15px"}}/></li>                    
+                            // style={{marginLeft: "15px"}}
+                            /></li>                    
                         <li>Latein</li>
                         <li></li>
                     </ul>
                 </div>
                 {beitragArt}
+
                 {/* <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
@@ -94,33 +124,28 @@ constructor(props){
                     </ul>
                 </div> */}
 
+
                 <div id="content" style={{marginTop: "80px"}}>
                     {beitrag}
                 </div>
            </div>           
         )
-    }
-            
+    
+            }          
 changeBeitragArtikel (){
-    // this.setState({showBeitrag:});
     this.setState({showArtikel: true});
     this.setState({showPodacst: false});
     this.setState({showVideo: false});
-    // console.log(" changeBeitragArtikel")
 }   
 changeBeitragVideo () {
     this.setState({showArtikel: false});
     this.setState({showPodacst: false});
     this.setState({showVideo: true});
-    // this.setState({showBeitrag:});
-    // console.log(" changeBeitragVideo")
 }   
 changeBeitragPodcast () {
     this.setState({showArtikel: false});
     this.setState({showPodacst: true});
     this.setState({showVideo: false});
-    // this.setState({showBeitrag:});
-    // console.log(" changeBeitragPodcast")
-}  
-}
-export default Themengebiet;
+} 
+} 
+export default Themengebiet

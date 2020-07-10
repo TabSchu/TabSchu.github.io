@@ -70,8 +70,8 @@
 
         const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
-            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
-            "ORDER BY id_beitrag DESC LIMIT 1;";
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie \n" +
+            "WHERE b.id_beitrag=1;"; //"ORDER BY id_beitrag DESC LIMIT 1;";
         pool.query(sql, function (error, results, fields) {
             if (error) throw error;
             res.send(results);

@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import SportlerProfil from './img/icon/profil.png'
+import SucheIcon from './img/icon/suche_lupe.png'
 
 
 class Favoriten extends Component{
@@ -9,8 +10,7 @@ class Favoriten extends Component{
             <div id="contentFavoriten">
                 <div className="obereLeiste">
                     <ul>
-                    <li>
-                        S
+                    <li><img src={SucheIcon} />
                     </li>
                     <li>+</li>
                     <li>-</li>
@@ -27,11 +27,25 @@ class Favoriten extends Component{
                     <div id="Sportlerzeile">
                          <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Dana Giesel                        
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Bastian Steiger                       
+                    </div>
+                    <div className="Sportler">
+                         <img src={SportlerProfil}/>
+                         Alex Mertens                       
+                    </div>
+                    </div>
+                    <div id="Sportlerzeile">
+                         <div className="Sportler">
+                         <img src={SportlerProfil}/>
+                         Carsten Klug                        
+                    </div>
+                    <div className="Sportler">
+                         <img src={SportlerProfil}/>
+                         Peter Weser                        
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
@@ -41,57 +55,43 @@ class Favoriten extends Component{
                     <div id="Sportlerzeile">
                          <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Maria Sando                       
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Tim Campen                        
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Max Clausen                       
                     </div>
                     </div>
                     <div id="Sportlerzeile">
                          <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Felix Zweier                        
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Sarah Raftsen                        
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Petra Denna                        
                     </div>
                     </div>
                     <div id="Sportlerzeile">
                          <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Carla Sommer                       
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Peter Meyer                        
                     </div>
                     <div className="Sportler">
                          <img src={SportlerProfil}/>
-                         Volker Racho                        
-                    </div>
-                    </div>
-                    <div id="Sportlerzeile">
-                         <div className="Sportler">
-                         <img src={SportlerProfil}/>
-                         Volker Racho                        
-                    </div>
-                    <div className="Sportler">
-                         <img src={SportlerProfil}/>
-                         Volker Racho                        
-                    </div>
-                    <div className="Sportler">
-                         <img src={SportlerProfil}/>
-                         Volker Racho                        
+                         Roman Tisch                        
                     </div>
                 </div>
 

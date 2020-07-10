@@ -16,7 +16,7 @@
     min-height: 100vh;
     /* padding abziehen */
     padding: 10px;
-    background-color:black;
+    background-color:#212121;
     z-index: 25;
 
 }

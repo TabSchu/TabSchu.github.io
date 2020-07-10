@@ -27,8 +27,8 @@ class Explore extends Component {
         super(props);
         this.handleChildsOpenFilterOverlayClick = this.handleChildsOpenFilterOverlayClick.bind(this);
         this.handleHideFilterForChild = this.handleHideFilterForChild.bind(this);
-
         this.handleToggleFilterForChild = this.handleToggleFilterForChild.bind(this);
+
         this.toggleStatusFilterItem = this.toggleStatusFilterItem.bind(this);
         this.resetAllFilterItemsToFalse = this.resetAllFilterItemsToFalse.bind(this);
         this.handleChildsShowThemengebiet = this.handleChildsShowThemengebiet.bind(this);
@@ -73,24 +73,20 @@ class Explore extends Component {
         } */
         if (!tagFilterActive){
             themenbereiche =  <ThemenbereichHook fetch_url={fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
-            content = <div id="content">
+            content = <div id="content" style={{marginTop:"80px"}}>
                         <h3>sportarten</h3>
                         <SubSportartHook parentShallForGrandChildsShowThemengebiet={this.handleChildsShowThemengebiet} fetch_url={fetch_url_subsportart}/>
                         <h3>sportler</h3>
                         <PersonHook fetch_url={fetch_url_person_group}/>
                         <Link to="/artikel"> <h3>top story</h3></Link>
                         <BeitragHook  fetch_url={fetch_url_newest_beitrag}/>
-                        <h3  className="titelThemenbereich" >Themenbereich</h3>
-                        <StoryHook fetch_url={fetch_url_stories}/>
                         {themenbereiche}
                     </div>
         } else {
             themenbereiche =  <ThemenbereichHook fetch_url={fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
-            content = <div id="content">
-                <Link to="/artikel"><h3>top story</h3></Link>
-                <BeitragHook fetch_url={fetch_url_newest_beitrag}/>
-                <h3 className="titelThemenbereich">Themenbereich</h3>
-                <StoryHook fetch_url={fetch_url_stories}/>
+            content = <div id="content" style={{marginTop:"80px"}}>
+                <Link to="/artikel"><h3>top story</h3>
+                <BeitragHook fetch_url={fetch_url_newest_beitrag}/></Link>
                 {themenbereiche}
             </div>
         }
@@ -101,14 +97,16 @@ class Explore extends Component {
 
             <div id="headerBar">
                 <ul>
-                    <li><img src={Suche}/></li>                    
+                    <li><img src={Suche}/></li>
                     <li>entdecken</li>
                     <li>
                         <img src={Filter_leer}  onClick={this.handleChildsOpenFilterOverlayClick} />
                     </li>
                 </ul>
             </div>
-            <div id="Beitragsart">
+
+            <div id="Beitragsart" >
+
                 <ul style={{width: "auto", display: "flex", overflowX: "scroll", padding:"0 10px"}}>
                     <li style={{width: "auto", margin:"0 10px"}}>Tutorials</li>
                     <li style={{width: "auto", margin:"0 10px"}}>DIY</li>
@@ -118,7 +116,6 @@ class Explore extends Component {
                     <li style={{width: "auto", margin:"0 10px"}}>Corona</li>
                 </ul>
             </div>
-
             {filterOverlayTags}
             {content}
             </div>
@@ -135,7 +132,7 @@ class Explore extends Component {
         console.log("in explore show themenbereich");
         // this.setState({showThemengebiet: true});
         this.setState({showThemengebiet: !this.state.showThemengebiet});
-        
+
     }
     handleChildsOpenFilterOverlayClick() {
        //  console.log("Filter clicked in my Child Component");

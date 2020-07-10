@@ -6,7 +6,9 @@ import VideoIcon from './img/icon/Video.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'
 import MerklisteIcon_ausgefuellt from './img/icon/Merkliste_ausgefuellt.png'
 import TeilenIcon from './img/icon/Teilen.png'
+import {Link} from "react-router-dom";
 import Play from './img/icon/Play.png'
+import Kopfhoerer from './img/icon/Kopfhoerer.png'
 class Beitrag extends Component {
 
     render() {
@@ -14,26 +16,31 @@ class Beitrag extends Component {
         var playicon;
         var arr = [];
         arr = this.parseTeaserElement(arr);
+        
+
+
         /*if(merklisteActive){ MerklisteIcon= ididid} */
         if (this.props.medientyp=="Video"){
             typ = VideoIcon;
             playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Play}/>;
-        }else if (this.props.medientyp=="Audio"){
+        }else if (this.props.medientyp=="Podcast"){
+            playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = AudioIcon;
         }
         var merkIcon = MerklisteIcon;
         if(this.props.isMerkliste){
             merkIcon = MerklisteIcon_ausgefuellt
         }
+
         return(
             <div className="beitrag"  key={this.props.beitrag_id}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
                 <div className="beitraginhalt">
                     {playicon}
                     <div className="beitragstitel">
-                        
+
                         <div className="beitragskategorien">{this.props.kategorie} </div>
-                        {this.props.titel}
+                        <Link to="/artikel"> {this.props.titel}</Link>
                     </div>
                     <div className="teaser">
                         <ul>

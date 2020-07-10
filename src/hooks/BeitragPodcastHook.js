@@ -14,12 +14,15 @@ function BeitragPodcastHook(props) {
                 "Loading..."
             ) : (
                 <div>
-                            {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport }) => (
-                                <div key={`beitrag_${id_beitrag}`}>
-                                    <BeitragPodcast 
-                                        id_beitrag={id_beitrag}  titel={titel} sport_id={sport}  sportart={sportart}
-                                    />
-                                </div>
+                            {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport }) => ( 
+
+                                        <div key={`beitrag_${id_beitrag}`}>
+                                            <Beitrag isMerkliste={props.isMerkliste}
+                                                id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
+                                                kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
+                                                />
+                                        </div>
+ 
                             ))}
                 </div>
             )}
@@ -27,3 +30,12 @@ function BeitragPodcastHook(props) {
     );
 }
 export default BeitragPodcastHook;
+// {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport }) => (
+//     <div key={`beitrag_${id_beitrag}`}>
+//          {/* <BeitragPodcast  id_beitrag={id_beitrag}  titel={titel} sport_id={sport}  sportart={sportart} />*/}
+//          <Beitrag id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
+//                     kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart} />
+            
+        
+//     </div>
+// ))}
