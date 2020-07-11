@@ -11,6 +11,17 @@ import diy_leer from "./img/icon/diy_leer.png";
 import diskussionen_leer from "./img/icon/diskussionen_leer.png";
 import trends_leer from "./img/icon/trends_leer.png";
 import funFacts_leer from "./img/icon/funFacts_leer.png";
+import tutorials_ausgefuellt from "./img/icon/tutorials_ausgefuellt.png";
+import verletzungen_ausgefuellt from "./img/icon/verletzungen _ausgefuellt.png";
+import ernaehrung_ausgefuellt from "./img/icon/ernaehrung_ausgefuellt.png";
+import breakdance_ausgefuellt from "./img/icon/breakdance_ausgefuellt.png";
+import tipps_ausgefuellt from "./img/icon/tipps_ausgefuellt.png";
+import tricks_ausgefuellt from "./img/icon/tricks_ausgefuellt.png";
+import events_ausgefuellt from "./img/icon/events_ausgefuellt.png";
+import diy_ausgefuellt from "./img/icon/diy_ausgefuellt.png";
+import diskussionen_ausgefuellt from "./img/icon/diskussionen_ausgefuellt.png";
+import trends_ausgefuellt from "./img/icon/trends_ausgefuellt.png";
+import funFacts_ausgefuellt from "./img/icon/funFacts_ausgefuellt.png";
 
 import Muelleimer from "./img/icon/Muelleimer.png";
 import Zurueck from "./img/icon/Zurueck.png";
@@ -24,59 +35,69 @@ class FilterOverlayTags extends Component {
                     <div id="filter">
                         <div id="filterrow">
                             <div className="filtericon">
-                                <img id_tag="1" src={tutorials_leer}
+                                <img id_tag="1" src={this.props.filterList[0].active ? tutorials_ausgefuellt : tutorials_leer}
                                      onClick={() => this.props.parentShallToggleFilter(1)}
                                 />
                                 Tutorials
                             </div>
                             <div className="filtericon">
-                                <img id_tag="2" src={verletzungen_leer}
+                                <img id_tag="2" src={this.props.filterList[1].active ? verletzungen_ausgefuellt : verletzungen_leer}
                                      onClick={() => this.props.parentShallToggleFilter(2)}
                                 />
                                 Verletzung
                             </div>
                             <div className="filtericon">
-                                <img id_tag="3" src={ernaehrung_leer} onClick={() => this.props.parentShallToggleFilter(3)}/>
+                                <img id_tag="3" src={this.props.filterList[2].active ? ernaehrung_ausgefuellt : ernaehrung_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(3)}/>
                                 Ernährung
                             </div>
                             <div className="filtericon">
-                                <img id_tag="8" src={breakdance_leer} onClick={() => this.props.parentShallToggleFilter(8)}/>
+                                <img id_tag="8" src={this.props.filterList[7].active ? breakdance_ausgefuellt : breakdance_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(8)}/>
                                 Break Dance
                             </div>
                         </div>
                         <div id="filterrow">
                             <div className="filtericon">
-                                <img id_tag="4" src={tipps_leer} onClick={() => this.props.parentShallToggleFilter(4)}/>
+                                <img id_tag="4" src={this.props.filterList[3].active ? tipps_ausgefuellt : tipps_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(4)}/>
                                 Tipps
                             </div>
                             <div className="filtericon">
-                                <img id_tag="5" src={tricks_leer} onClick={() => this.props.parentShallToggleFilter(5)}/>
+                                <img id_tag="5" src={this.props.filterList[4].active ? tricks_ausgefuellt : tricks_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(5)}/>
                                 Tricks
                             </div>
                             <div className="filtericon">
-                                <img id_tag="6" src={events_leer} onClick={() => this.props.parentShallToggleFilter(6)}/>
+                                <img id_tag="6" src={this.props.filterList[5].active ? events_ausgefuellt : events_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(6)}/>
                                 Events
                             </div>
                             <div className="filtericon">
-                                <img id_tag="7" src={diy_leer} onClick={() => this.props.parentShallToggleFilter(7)}/>
+                                <img id_tag="7" src={this.props.filterList[6].active ? diy_ausgefuellt : diy_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(7)}/>
                                 DIY
                             </div>
                         </div>
                         <div id="filterrow">
                             <div className="filtericon">
-                                <img id_tag="9" src={diskussionen_leer} onClick={() => this.props.parentShallToggleFilter(9)}/>
+                                <img id_tag="9" src={this.props.filterList[8].active ? diskussionen_ausgefuellt : diskussionen_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(9)}/>
                                 Diskussion
                             </div>
                             <div className="filtericon">
-                                <img id_tag="10" src={trends_leer} onClick={() => this.props.parentShallToggleFilter(10)}/>
+                                <img id_tag="10" src={this.props.filterList[9].active ? trends_ausgefuellt : trends_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(10)}/>
                                 Trends
                             </div>
                             <div className="filtericon">
-                                <img id_tag="11" src={funFacts_leer} onClick={() => this.props.parentShallToggleFilter(11)}/>
+                                <img id_tag="11" src={this.props.filterList[10].active ? funFacts_ausgefuellt : funFacts_leer}
+                                     onClick={() => this.props.parentShallToggleFilter(11)}/>
                                 Fun Facts
                             </div>
                             <div className="filtericon">
-                                <img id_tag="0"  src={Muelleimer} onClick={() => this.props.parentShallToggleFilter(0)}/>
+                                <img id_tag="0"  src={Muelleimer}
+                                     onClick={() => this.props.parentShallToggleFilter(0)}/>
                                 Alle löschen
                             </div>
                         </div>
@@ -88,23 +109,3 @@ class FilterOverlayTags extends Component {
 }
 
 export default FilterOverlayTags;
-
-/*
-*
-*
-class Beitrag extends Component {
-
-    render() {
-        return()
-     }
-  }
-  *
-
-export default Explore;      *
-*
-*
-*
-*
-*
-*
-* */

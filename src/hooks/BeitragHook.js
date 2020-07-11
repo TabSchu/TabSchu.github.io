@@ -17,7 +17,7 @@ function BeitragHook(props) {
                     {/* <div className="bigBlock">
                         <div className="bigBox"> */}
                             {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport }) => {//(
-                                if(typ==="Podcast"){
+                             /*   if(typ==="Podcast"){
                                     return(
                                             <div key={`beitrag_${id_beitrag}`}>
                                                 <BeitragPodcast
@@ -25,7 +25,7 @@ function BeitragHook(props) {
                                                 />
                                             </div>
                                           )
-                                }else {
+                                }else { */
                                     return (
                                         <div key={`beitrag_${id_beitrag}`}>
                                             <Beitrag isMerkliste={props.isMerkliste}
@@ -34,7 +34,7 @@ function BeitragHook(props) {
                                                 />
                                         </div>
                                     )
-                                }
+                              //  }
                             }
                             //)
                                 )}

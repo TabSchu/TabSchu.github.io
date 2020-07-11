@@ -178,18 +178,18 @@ app.get('/beitragFromMerklisteByUserID', function (req, res) {
 
     //http://localhost:8080/themenbereichByTags?tags[]=10&tags[]=6
     app.get('/themenbereichByTags', function (req, res) {
-        const tags = req.query.tags; //[6,4,10];
+        const tags = req.query.tags;
         console.log(tags);
         let sql;
         let  value = [];
 
         if(tags && tags.length>0){
-             sql = 'SELECT * FROM themenbereich t\n' +
-                'JOIN themenbereich_tag  tt ON t.id_themenbereich = tt.fk_themenbereich_id\n' +
+             sql = 'SELECT DISTINCT t.* FROM themenbereich t \n' +
+                'JOIN themenbereich_tag  tt ON t.id_themenbereich = tt.fk_themenbereich_id \n' +
                 'WHERE fk_tag_id IN (?) ;';
              value = [tags];
         }else{
-             sql = 'SELECT * FROM themenbereich ;';
+             sql = 'SELECT DISTINCT * FROM themenbereich ;';
 
         }
         pool.query(sql, value,
