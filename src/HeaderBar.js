@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Filter_leer from "./img/icon/Filter_leer.png";
 import Zurueck from "./img/icon/Zurueck.png";
-// import Filter_augefuellt from "./img/icon/Filter_augefuellt.png";
+import Filter_ausgefuellt from "./img/icon/Filter_ausgefuellt.png";
 // import { setSyntheticLeadingComments } from 'typescript';
 
 class HeaderBar extends Component {
@@ -18,7 +18,8 @@ class HeaderBar extends Component {
                     {/* <li><img src={Zurueck}/></li>                     */}
                     <li>{title}</li>
                     <li>
-                        <img src={Filter_leer}  onClick={this.props.parentShallHandleFilterClick} />
+                        <img  src={this.props.filterActive ? Filter_ausgefuellt : Filter_leer}
+                             onClick={this.props.parentShallHandleFilterClick} />
                     </li>
                 </ul>
             </div>

@@ -97,10 +97,35 @@
             });
         });
 
+//http://localhost:8080/beitragBySportart?sportart[]=2&sportart[]=3
+app.get('/beitragBySportart', function (req, res) {
+    const sportart = req.query.sportart;
+    let sql;
+    let  value = [];
+    if(sportart && sportart.length>0) {
+        sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+            "JOIN sportart s ON b.sport = s.id_sportart\n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n" +
+            "WHERE b.sport IN (?);";
+        value = [sportart];
+    } else {
+        sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+            "JOIN sportart s ON b.sport = s.id_sportart\n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie";
+    }
+
+    pool.query(sql, value,
+        function (error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+
+        });
+});
+
     //http://localhost:8080/beitragByTags?tags[]=10&tags[]=6
     app.get('/beitragByTags', function (req, res) {
         const tags = req.query.tags; //[6,4,10];
-        console.log(tags);
+       // console.log(tags);
         const sql = 'SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b JOIN sportart s ON b.sport = s.id_sportart JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie JOIN beitrag_tag bt  ON bt.fk_beitrag_id = b.id_beitrag WHERE fk_tag_id IN (?);';
         const value = [tags];
             pool.query(sql, value,
@@ -113,7 +138,7 @@
     //http://localhost:8080/beitragByThemenbereich?themenbereich=6
     app.get('/beitragByThemenbereich', function (req, res) {
         const themenbereich = req.query.themenbereich; //[6,4,10];
-        console.log(themenbereich);
+      //  console.log(themenbereich);
         const sql = 'SELECT * FROM BAP_Sportbericht_Plattform_DB.beitrag b\n' +
             'JOIN  BAP_Sportbericht_Plattform_DB.beitrag_themenbereich bt \n' +
             'ON b.id_beitrag = bt.fk_beitrag\n' +
@@ -179,7 +204,7 @@ app.get('/beitragFromMerklisteByUserID', function (req, res) {
     //http://localhost:8080/themenbereichByTags?tags[]=10&tags[]=6
     app.get('/themenbereichByTags', function (req, res) {
         const tags = req.query.tags;
-        console.log(tags);
+       // console.log(tags);
         let sql;
         let  value = [];
 
