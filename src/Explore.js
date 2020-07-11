@@ -22,7 +22,7 @@ class Explore extends Component {
         this.toggleStatusFilterItemAndSetURL = this.toggleStatusFilterItemAndSetURL.bind(this);
         this.resetAllFilterItemsToFalse = this.resetAllFilterItemsToFalse.bind(this);
         this.handleChildsShowThemengebiet = this.handleChildsShowThemengebiet.bind(this);
-        this.setUrlThema = this.setUrlThema.bind(this);
+        this.setUrlThemenbereich = this.setUrlThemenbereich.bind(this);
 
         this.state = {  showFilterOverlay: false,
                         tagFilterActive: false,
@@ -68,11 +68,12 @@ class Explore extends Component {
                     </div>
         } else {
             themenbereiche =  <ThemenbereichHook fetch_url={this.state.fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
+            //<Link to="/artikel"></Link>
             content = <div id="content" style={{marginTop:"80px"}}>
-                <Link to="/artikel"><h3>top story</h3></Link>
-                <BeitragHook fetch_url={fetch_url_newest_beitrag}/>
-                {themenbereiche}
-            </div>
+                            <h3>top story</h3>
+                        <BeitragHook fetch_url={fetch_url_newest_beitrag}/>
+                        {themenbereiche}
+                    </div>
         }
         let seite;
         if(!this.state.showThemengebiet){
@@ -147,7 +148,7 @@ class Explore extends Component {
                 },
             //Callback: When asynchronous setStatus is finished:
             () => {
-                this.setUrlThema();
+                this.setUrlThemenbereich();
                 this.setWhetherFilterActive();
             }
         );
@@ -166,7 +167,7 @@ class Explore extends Component {
                 this.setState({tagFilterActive: false });
             }
     };
-    setUrlThema(){
+    setUrlThemenbereich(){
         let addFilterToURL = "?";
         this.state.filterTagList.forEach(function(item) {
             if(item.active){
