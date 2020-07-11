@@ -84,7 +84,7 @@ class Beitrag extends Component {
         if(this.props.teaser!=undefined){
             var json = JSON.parse(this.props.teaser);    //console.log(json);
             Object.keys(json).forEach(function(key) {
-                console.log(key);
+             //   console.log(key);
                 arr.push(json[key]);
             });
         }
