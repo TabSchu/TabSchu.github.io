@@ -1,8 +1,7 @@
 import React from "react";
 import { useFetch } from "../hooks";
 import Beitrag from "../Beitrag";
-import BeitragPodcast from "../BeitragPodcast";
-function BeitragPodcastHook(props) {
+function BeitragVideoHook(props) {
     const [data, loading] = useFetch(
         props.fetch_url
     );
@@ -29,4 +28,4 @@ function BeitragPodcastHook(props) {
         </>
     );
 }
-export default BeitragPodcastHook;
+export default BeitragVideoHook;

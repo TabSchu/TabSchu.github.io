@@ -26,6 +26,9 @@ class Beitrag extends Component {
         }else if (this.props.medientyp=="Podcast"){
             playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = AudioIcon;
+        }else if (this.props.medientyp=="Artikel"){
+            //playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
+            typ = ArtikelIcon;
         }
         var merkIcon = MerklisteIcon;
         if(this.props.isMerkliste){

@@ -90,7 +90,9 @@ class Explore extends Component {
                     </li>
                 </ul>
             </div>
+
             <div id="Beitragsart" >
+
                 <ul style={{width: "auto", display: "flex", overflowX: "scroll", padding:"0 10px"}}>
                     <li style={{width: "auto", margin:"0 10px"}}>Tutorials</li>
                     <li style={{width: "auto", margin:"0 10px"}}>DIY</li>
