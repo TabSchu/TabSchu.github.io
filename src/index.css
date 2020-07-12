@@ -100,6 +100,134 @@ body{
 }
 
 
+
+
+#searchBar{
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100vw;
+  clear: both;
+  color: #fff;
+  /* background: #212121; */
+  background-color: #303030;
+}
+
+
+
+
+
+#searchBar ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#searchBar ul li{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /3); 
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchBar img{
+  width: 25px;
+  height: 25px;
+  
+}
+
+#searchBar input {
+  color: white;
+  background-color: #212121;
+  border: 1px solid #707070;
+  outline: none !important;
+  border-radius: 10px;
+  font-weight: 100;
+  
+  
+}
+
+
+
+#searchBar ul li a:visited,
+#searchBar ul li a{
+  text-decoration: none;
+  color: inherit;
+}
+
+#searchBarFav{
+  z-index: 2;
+  position: fixed;
+  top: 140px;
+  left: 0;
+  height: 40px;
+  width: 100vw;
+  clear: both;
+  color: #fff;
+  /* background: #212121; */
+  background-color: #212121;
+}
+
+
+
+
+
+#searchBarFav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#searchBarFav ul li{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /3); 
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchBarFav img{
+  width: 20px;
+  height: 20px;
+  
+}
+
+#searchBarFav input {
+  color: white;
+  background-color: #212121;
+  border: 1px solid #707070;
+  outline: none !important;
+  border-radius: 10px;
+  font-weight: 100;
+  
+  
+}
+
+
+
+#searchBarFav ul li a:visited,
+#searchBarFav ul li a{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
 .beitragHookDiv{
 }
 button{
@@ -121,46 +249,4 @@ button{
 .testHookDiv{
 
  /* background-image: url('./img/maria2.png');*/
-}
-
-#Links {
-  z-index: 100;
-  position: absolute;
-  top: calc(38vw - 50px);
-  left: 0;
-  height: 50px;
-  width: 100vw;
-  clear: both;
-  color: #fff;
-  background: #212121;
-}
-
-
-#Links ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-
-}
-
-#Links ul li{
-  display: block; 
-  text-decoration: none;
-  float: left; 
-  margin: 0;
-  width: calc(100% /3); 
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-}
-
-#Links img {
-    height: 50px;
-    width: 50px;
-    margin-bottom: 30px;
 }

@@ -74,7 +74,7 @@ class Artikel extends Component {
                     <div id="hashtag">#Meister #tanzen</div>
                     <h3>Generelle Infos</h3>
                     <ul>
-                        <li><img src={SportlerProfil} className="center" align="middle"/>1. Deutsche Liga</li>
+                        <li><img src={SportlerProfil} className="center" align="middle" />1. Deutsche Liga</li>
                         <li><img src={SportlerProfil} className="center" align="middle" />Grün Gold Club Bremen</li>
                     </ul>
                     <h3>Ähnliche Beiträge: </h3>

@@ -22,6 +22,7 @@ import EditProfil from "./EditProfil";
 import HeaderBarProfilEdit from "./HeaderBarProfilEdit";
 import Favoriten from "./Favoriten";
 import BeitragHook from "./hooks/BeitragHook";
+import SearchBar from "./SearchBar";
 
 class App extends Component {
 
@@ -45,6 +46,7 @@ render(){
 
                 <Explore/>
                 <NavBarExplore />
+              
                 
                 </div>
                 } 

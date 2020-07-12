@@ -6,8 +6,9 @@
     /* padding abziehen */
     padding: 10px;
     background-color:#212121;
-    z-index: 25;
+  
     overflow-y: hidden;
+    position: fixed;
   }
 
   h3{
@@ -16,11 +17,27 @@
   }
   p{
     font-family: Ubuntu;
+    
   }
 
   input{
     font: Ubuntu;
   }
+  #contentProfil #xd p {
+
+    border-bottom: 2px solid #A1A1A1;
+    padding-bottom: 20px;
+    
+
+  }
+
+  #contentProfil #xd img {
+    width: 25px;
+    height: 20px;
+
+  }
+
+ 
 
 
   select {
@@ -35,6 +52,7 @@
     border-left: 0px;
     border-right: 0px;
     border-bottom: 2px solid #A1A1A1;
+    outline: none !important;
     
   }
 

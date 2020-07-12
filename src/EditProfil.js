@@ -5,71 +5,14 @@ import { isThisTypeNode } from 'typescript'
 import React, { Component, useState } from 'react'
 import HeaderBarProfilEdit from "./HeaderBarProfilEdit"
 import HeaderBarMyZphere from "./HeaderBarMyZphere"
+import Kamera from "./img/icon/kamera.png";
+import Galerie from "./img/icon/galerie.png";
+import Muelleimer from "./img/icon/Muelleimer.png";
+
 
 
 
 class EditProfil extends Component{
-
-    userData;
-
-    constructor(props){
-        super(props);
-        
-                
-            this.onChangeVorname = this.onChangeVorname.bind(this);
-            this.onChangeNachname = this.onChangeVorname.bind(this);
-            this.onChangeAlter = this.onChangeAlter.bind(this);
-            this.onChangeWohnort = this.onChangeWohnort.bind(this);
-            this.onSubmit = this.onSubmit.bind(this);
-            this.state ={
-                vorname: '',
-                nachname: '',
-                alter: '',
-                wohnort:''
-            }
-        }
-      
-
-        onChangeVorname(e) {
-            this.setState({vorname : e.target.value})
-        }
-        onChangeNachname(e){
-            this.setState({nachname: e.target.value})
-        }
-        onChangeAlter(e){
-            this.setState({alter: e.target.value})
-        }
-        onChangeWohnort(e){
-            this.setState({wohnort: e.target.value})
-        }
-        onSubmit(e){
-            e.preventDefault()
-        }
-        componentDidMount(){
-            this.userData = JSON.parse(localStorage.getItem('user'));
-
-            if(localStorage.getItem('user')){
-                this.setState({
-                    vorname: this.userData.vorname,
-                    nachname: this.userData.nachname,
-                    alter: this.userData.alter,
-                    wohnort: this.userData.wohnort,
-                })
-            }else{
-                this.setState ={
-                    vorname: '',
-                    nachname: '',
-                    alter: '',
-                    wohnort:''
-                }
-            }
-            
-        }
-
-        componentDidUpdate(nextProps, nextState){
-            localStorage.setItem('user', JSON.stringify(nextState));
-        }
-
 
 
     
@@ -82,13 +25,15 @@ class EditProfil extends Component{
                 <div>
         
                 <div id="contentProfil">    
+
+                    <div id="xd"><p>Profilbild bearbeiten <img src={Kamera}/> <img src={Galerie} /><img src={Muelleimer} />   </p></div>
                 
                     <p>Vorname</p>
-                    <p><input type='input' class="form__field"    value={this.state.vorname}        name ='Vorname'  onChange = {this.onChangeVorname.bind(this)}/> </p>
+                    <p><input type='input' class="form__field"   /> </p>
                     <p>Nachname</p>
-                    <p><input type='input' class="form__field" value={this.state.nachname}          name='Nachname' onChange = {this.onChangeNachname.bind(this)}/></p>
+                    <p><input type='input' class="form__field"   /></p>
                     <p>Geburtsdatum</p>
-                    <p><input type='input' class="form__field"   value={this.state.alter}           name ='Alter'    onChange = {this.onChangeAlter.bind(this)}/> </p>
+                    <p><input type='input' class="form__field"   /> </p>
                     <p>Geschlecht</p>
                     <select>
                         <option value ="männlich">männlich</option>
@@ -97,7 +42,7 @@ class EditProfil extends Component{
                     </select>
                     <p>Lebt in</p>
                     
-                    <p><input type='input' class="form__field"   value={this.state.wohnort}     name ='Wohnort'  onChange = {this.onChangeWohnort.bind(this)} /> </p>
+                    <p><input type='input' class="form__field"   /> </p>
 
                
             </div>

@@ -10,6 +10,8 @@ import Themengebiet from './Themengebiet';
 import Filter_leer from "./img/icon/Filter_leer.png";
 import Filter_ausgefuellt from "./img/icon/Filter_ausgefuellt.png";
 import Suche from "./img/icon/suche_lupe.png";
+import SearchBar from "./SearchBar";
+
 
 class Explore extends Component {
 
@@ -19,7 +21,13 @@ class Explore extends Component {
         this.handleHideFilterForChild = this.handleHideFilterForChild.bind(this);
         this.handleToggleFilterForChild = this.handleToggleFilterForChild.bind(this);
 
+
         this.toggleStatusFilterItemAndSetURL = this.toggleStatusFilterItemAndSetURL.bind(this);
+
+        this.handleChildsOpenSerachBarClick = this.handleChildsOpenSerachBarClick.bind(this);
+        this.handleSearchBarForChild = this.handleSearchBarForChild.bind(this);
+
+ 
         this.resetAllFilterItemsToFalse = this.resetAllFilterItemsToFalse.bind(this);
         this.handleChildsShowThemengebiet = this.handleChildsShowThemengebiet.bind(this);
         this.setUrlThemenbereich = this.setUrlThemenbereich.bind(this);
@@ -27,12 +35,15 @@ class Explore extends Component {
         this.state = {  showFilterOverlay: false,
                         tagFilterActive: false,
                         showThemengebiet: false,
+                        showSearchBar: false,
+
                         filterTagList: [
                             { id: '1', active: false }, { id: '2', active: false },  { id: '3', active: false }, { id: '4', active: false },
                             { id: '5', active: false }, { id: '6', active: false }, { id: '7', active: false },
                             { id: '8', active: false }, { id: '9', active: false },  { id: '10', active: false }, { id: '11', active: false }
                         ],
                         fetch_url_themenbereich:  "http://localhost:8080/themenbereichByTags"
+
         };
 
 
@@ -45,6 +56,8 @@ class Explore extends Component {
         let fetch_url_person_group = "http://localhost:8080/person";
         let filterOverlayTags;
         let showFilterOverlay = this.state.showFilterOverlay;
+        let searchBar;
+        let showSearchBar = this.state.showSearchBar;
         if (showFilterOverlay) {
             filterOverlayTags = <FilterOverlayTags parentShallHideFilter={this.handleHideFilterForChild}
                                                    parentShallToggleFilter={this.handleToggleFilterForChild}
@@ -52,6 +65,9 @@ class Explore extends Component {
                                 />
         } //else {   console.log("don't show FilterOverlay");  }
         
+        if(showSearchBar){
+            searchBar = <SearchBar parentShallHideSearchBar = {this.handleSearchBarForChild} />
+        }
         let content;
         let tagFilterActive = this.state.tagFilterActive;
         let themenbereiche;
@@ -75,6 +91,7 @@ class Explore extends Component {
                         {themenbereiche}
                     </div>
         }
+
         let seite;
         if(!this.state.showThemengebiet){
             seite = <div id="explore">
@@ -82,11 +99,12 @@ class Explore extends Component {
 
             <div id="headerBar">
                 <ul>
-                    <li><img src={Suche}/></li>
+                    <li><img src={Suche} onClick={this.handleChildsOpenSerachBarClick}/></li>
                     <li>entdecken</li>
                     <li>
                         <img src={this.state.tagFilterActive ? Filter_ausgefuellt : Filter_leer}
                              onClick={this.handleChildsOpenFilterOverlayClick} />
+
                     </li>
                 </ul>
             </div>
@@ -102,6 +120,7 @@ class Explore extends Component {
             </div>
             {filterOverlayTags}
             {content}
+            {searchBar}
             </div>
         }else{
             seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleChildsShowThemengebiet}/>;
@@ -118,6 +137,13 @@ class Explore extends Component {
     }
     handleChildsOpenFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
         this.setState({showFilterOverlay: !this.state.showFilterOverlay});
+    }
+    handleChildsOpenSerachBarClick(){
+        this.setState({showSearchBar: !this.state.showSearchBar});
+    }
+
+    handleSearchBarForChild(){
+        this.setState({showSearchBar: false});
     }
 
     handleHideFilterForChild() {  //  console.log("from my Child Component: Parent shall hide filter");
