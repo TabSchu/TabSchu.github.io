@@ -10,10 +10,10 @@ import {
   import MerklisteIcon from './img/icon/Merkliste_leer.png'
   import TeilenIcon from './img/icon/Teilen.png'
   import Zurueck    from './img/icon/Zurueck.png'
-  import Maria from './img/maria2.png'
   import StoryHook from "./hooks/StoryHook";
+  import Play from './img/icon/Play.png'
 
-class Artikel extends Component { 
+class Video extends Component { 
     render() {
         let fetch_url_stories = "http://localhost:8080/beitrag";
         return(
@@ -21,6 +21,7 @@ class Artikel extends Component {
             <div id="banner">
                 <div id="zurueck"><Link to="/" > <img src={Zurueck} /></Link></div>
                 {/* Link to="/explore" */}
+                <img style={{height:"70px",opacity:"0.8", margin:"auto", position:"absolute", top:"65px", left:"calc(50vw - 31px)"}} src={Play}/>
             </div>
             <div id="contentArtikel" >                
                 <div id="titel">
@@ -28,17 +29,7 @@ class Artikel extends Component {
                     <h3>Weltmeisterschaft der Tanz-Formation Latein</h3>
                 </div>
                 <div id="autor"><img src={SportlerProfil}/> Katharina Schövel<div className="icon"> <img src={TeilenIcon}/> <img src={MerklisteIcon}/>  </div></div>
-                <div id="text">Samstag, 10. Dezember 2016
-                    NDR/RB-Fernsehen
-                    Samstag, 10. Dezember 2016,
-                    23.10-0.15 Uhr Livesendung des Finales im NDR/RB-Fernsehen
-                    ab 20.45 Uhr Livestream der Zwischenrunde auf www.radiobremen.de
-                    Sportclub live:
-                    Weltmeisterschaft der Tanz-Formationen Latein
-                    Übertragung aus der Bremer Stadthalle
-                    In Bremen geht es wieder einmal rund. Auf dem Tanzparkett präsentieren sich die besten Tanzformationen der Welt in der Kategorie Latein und tanzen um den Titel des Weltmeisters.
-                    Die Lateinformation des Bremer Grün Gold Clubs ist international das Maß aller Dinge: sieben Mal Weltmeister, zuletzt vier Mal in Folge. Auch in diesem Jahr gilt der Titelverteidiger mit Heimvorteil als Favorit.
-                    Für Spannung ist dennoch gesorgt, denn die Konkurrenz brennt darauf, endlich einmal diese Bremer Formation zu schlagen – ein Tanzabend im Hochglanzformat.
+                <div id="text">
                     Kommentar: Carsten Flügel
                     Moderation: Felix Krömer
                     In einem unkommentierten Livestream auf www.radiobremen.de können Tanzsportbegeisterte die Zwischenrunde ab 20.45 Uhr verfolgen.
@@ -53,11 +44,13 @@ class Artikel extends Component {
                     </ul>
                     <h3>Ähnliche Beiträge: </h3>
                 </div>
+                
                 <StoryHook fetch_url={fetch_url_stories}/>
+                                
             </div>
             </div>
         )
     }
 }
 
-export default Artikel;
+export default Video;

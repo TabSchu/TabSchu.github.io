@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BeitragHook from "./hooks/BeitragHook";
+import BeitragVideoHook from "./hooks/BeitragVideoHook";
 import BeitragPodcastHook from "./hooks/BeitragPodcastHook";
 import Zurueck from "./img/icon/Zurueck.png";
 import ReactDOM from 'react-dom';
@@ -42,8 +43,6 @@ constructor(props){
         // =<BeitragHook fetch_url={fetch_url_latein_artikel}/>;
         if(this.state.showArtikel){
             beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>;
-            
-           
             beitragArt = <div>
                 <div id="Beitragsart">
                     <ul>
@@ -56,50 +55,25 @@ constructor(props){
         }
         if(this.state.showPodacst){
             beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>;
-            beitragArt= 
+            beitragArt= <div>
                 <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast} ><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
                         <li onClick={this.changeBeitragArtikel} ><p> Artikel </p></li>
                         <li onClick={this.changeBeitragVideo}><p> Video </p></li>
                     </ul>
-                </div>
+                </div></div>
         }
         if(this.state.showVideo){
-            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>;
-            beitragArt = 
+            beitrag = <BeitragVideoHook fetch_url={fetch_url_latein_video}/>;
+            beitragArt = <div>
                 <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
                         <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
                         <li onClick={this.changeBeitragVideo} ><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
                     </ul>
-                </div>
-        }
-        if(this.state.showPodacst){
-            beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>;
-            // beitrag = <BeitragHook fetch_url={ fetch_url_latein_podcast}/>;
-            beitragArt = <div>
-                <div id="Beitragsart">
-                    <ul>
-                        <li onClick={this.changeBeitragPodcast}><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
-                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
-                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
-                    </ul>
-                </div>
-            </div>
-        }
-        if(this.state.showVideo){
-            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>;
-            beitragArt = <div>
-                <div id="Beitragsart">
-                    <ul>
-                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
-                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
-                        <li onClick={this.changeBeitragVideo}><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
-                    </ul>
-                </div>
-            </div>
+                </div></div>
         }
 
         return(
@@ -115,15 +89,6 @@ constructor(props){
                     </ul>
                 </div>
                 {beitragArt}
-
-                {/* <div id="Beitragsart">
-                    <ul>
-                        <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
-                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
-                        <li onClick={this.changeBeitragVideo}><p> Video </p></li>
-                    </ul>
-                </div> */}
-
 
                 <div id="content" style={{marginTop: "80px"}}>
                     {beitrag}

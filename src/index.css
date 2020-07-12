@@ -1,6 +1,7 @@
 body{
-  height: 100%;
-  width: 100%;
+  max-height: 812px;
+  max-width: 375px;
+  min-height: 500px;
   margin: 0;
   padding: 0;
   font-family: Ubuntu;
@@ -8,6 +9,11 @@ body{
 }
 #root{
   position: absolute;
+  display: flex;
+  max-height: 812px;
+  max-width: 375px;
+  /* height: 100%; */
+  /* width: 100%; */
 }
 #headerBar{
   position: fixed;
@@ -90,8 +96,6 @@ body{
   height: 35px;
   
 }
-
-
 
 #navBar ul li a:visited,
 #navBar ul li a{
