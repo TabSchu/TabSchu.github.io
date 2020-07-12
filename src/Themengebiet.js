@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BeitragHook from "./hooks/BeitragHook";
+import BeitragVideoHook from "./hooks/BeitragVideoHook";
 import BeitragPodcastHook from "./hooks/BeitragPodcastHook";
 import Zurueck from "./img/icon/Zurueck.png";
 import ReactDOM from 'react-dom';
@@ -38,6 +39,8 @@ constructor(props){
         
         let beitrag;
         let beitragArt;
+
+        // =<BeitragHook fetch_url={fetch_url_latein_artikel}/>;
         if(this.state.showArtikel){
             beitrag = <BeitragHook fetch_url={fetch_url_latein_artikel}/>;
             beitragArt = <div>
@@ -48,32 +51,29 @@ constructor(props){
                         <li onClick={this.changeBeitragVideo}><p> Video </p></li>
                     </ul>
                 </div>
-            </div>
+                </div>
         }
         if(this.state.showPodacst){
             beitrag = <BeitragPodcastHook fetch_url={ fetch_url_latein_podcast}/>;
-            // beitrag = <BeitragHook fetch_url={ fetch_url_latein_podcast}/>;
-            beitragArt = <div>
+            beitragArt= <div>
                 <div id="Beitragsart">
                     <ul>
-                        <li onClick={this.changeBeitragPodcast}><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
-                        <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
+                        <li onClick={this.changeBeitragPodcast} ><p style={{borderBottom:"2px solid #00B3A6"}}> Podcast </p></li>                    
+                        <li onClick={this.changeBeitragArtikel} ><p> Artikel </p></li>
                         <li onClick={this.changeBeitragVideo}><p> Video </p></li>
                     </ul>
-                </div>
-            </div>
+                </div></div>
         }
         if(this.state.showVideo){
-            beitrag = <BeitragHook fetch_url={fetch_url_latein_video}/>;
+            beitrag = <BeitragVideoHook fetch_url={fetch_url_latein_video}/>;
             beitragArt = <div>
                 <div id="Beitragsart">
                     <ul>
                         <li onClick={this.changeBeitragPodcast}><p> Podcast </p></li>                    
                         <li onClick={this.changeBeitragArtikel}><p> Artikel </p></li>
-                        <li onClick={this.changeBeitragVideo}><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
+                        <li onClick={this.changeBeitragVideo} ><p style={{borderBottom:"2px solid #00B3A6"}}> Video </p></li>
                     </ul>
-                </div>
-            </div>
+                </div></div>
         }
 
         return(
@@ -92,12 +92,11 @@ constructor(props){
 
                 <div id="content" style={{marginTop: "80px"}}>
                     {beitrag}
-                    
                 </div>
            </div>           
         )
-    }
-            
+    
+            }          
 changeBeitragArtikel (){
     this.setState({showArtikel: true});
     this.setState({showPodacst: false});
@@ -112,6 +111,6 @@ changeBeitragPodcast () {
     this.setState({showArtikel: false});
     this.setState({showPodacst: true});
     this.setState({showVideo: false});
-}  
-}
-export default Themengebiet;
+} 
+} 
+export default Themengebiet

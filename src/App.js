@@ -10,6 +10,8 @@ import Explore from "./Explore";
 import Merkliste from "./Merkliste";
 import Home from "./Home";
 import Artikel from "./Artikel";
+import Video from "./Video";
+import Podcast from "./Podcast";
 import NavBarExplore from "./NavBarExplore"
 import NavBarMerkliste from "./NavBarMerkliste"
 import {
@@ -96,6 +98,20 @@ render(){
                 <Route path="/artikel" render={props =>
                 <div>
                 <Artikel />
+                
+                </div>
+                }/>
+
+                <Route path="/video" render={props =>
+                <div>
+                <Video />
+                
+                </div>
+                }/>
+
+                <Route path="/podcast" render={props =>
+                <div>
+                <Podcast />
                 
                 </div>
                 }/>
