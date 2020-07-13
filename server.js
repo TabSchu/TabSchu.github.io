@@ -18,6 +18,22 @@
 
     app.use(express.static(path.join(__dirname, '/build/'))); //'/dist/zphere-app'
 
+    // Add a health check route in express
+    app.get('/_health', (req, res) => {
+        res.status(200).send('ok')
+    });
+
+    process.on
+    (
+        'uncaughtException',
+        function (err)
+        {
+            console.log(err)
+            //var stack = err.stack;
+            //we could also notify the err/stack to support via email or other APIs
+        }
+    );
+
     app.get('/', function(req, res)
     {
         res.sendFile('index.html', {root:__dirname+'/build/'}); //'/dist/zphere-app'
