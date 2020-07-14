@@ -224,3 +224,25 @@ app.get('/beitragFromMerklisteByUserID', function (req, res) {
             });
     });
 
+    app.post("/updateUser", function (request, response) {
+        console.log('request body: ');
+        console.dir(request.body);
+        const sql = "UPDATE user SET vorname = ? , nachname=? , geburtsdatum=?, wohnort=? WHERE id_user=1;";
+        const values = [request.body.userDaten.vorname, request.body.userDaten.nachname, request.body.userDaten.alter, request.body.userDaten.wohnort];
+        pool.query( sql, values,
+            function (error, results, fields) {
+            if (error) throw error;
+            response.send(results);
+            });
+    });
+
+    app.get('/userData', function (req, res) {
+        const sql = 'SELECT * FROM user WHERE id_user=1;';
+        pool.query(sql,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
+

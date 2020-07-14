@@ -18,36 +18,59 @@
   p{
     font-family: Ubuntu;
     
+    
   }
 
   input{
     font: Ubuntu;
   }
-  #contentProfil #xd p {
-
+ 
+  #profil{
+    width: 100%;
+    color:#A1A1A1;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
     border-bottom: 2px solid #A1A1A1;
     padding-bottom: 20px;
+    padding-right: 10px;
+  
     
+}
 
-  }
+#profil .icons {
+  /* float: right; */
+  position: absolute;
+  right: 25px;
+  
 
-  #contentProfil #xd img {
-    width: 25px;
-    height: 20px;
+}
+#profil .icons img{
+  /* float: right; */
+  width:23px;
+  height:23px;
+  margin-right:10px;
+  
 
-  }
+}
+
+  
+  
 
  
 
 
   select {
     width: 100%;
-    padding: 12px 5px;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     box-sizing: border-box;
     background-color: #212121;
     color: white;
     font-family: Ubuntu;
+    font-size: 18px;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
@@ -80,6 +103,16 @@
     padding: 7px 0;
     background: transparent;
     transition: border-color 0.2s;
+  }
+
+  button{
+    display: flex;
+    background-color:#212121;
+    color: white;
+    border: none;
+    margin-left: calc( 85vw / 2);
+    text-align: center;
+    outline: none !important;
   }
   
  

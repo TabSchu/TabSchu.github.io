@@ -29,8 +29,8 @@
     display: block; 
     text-decoration: none;
     float: left; 
-    margin-top: 5px;
-    width: calc(100% / 2); 
+    margin-top: 10px;
+    width: calc(100% / 4); 
     top: 100px;
     padding: 0;
     display: flex;

@@ -137,6 +137,8 @@ class Explore extends Component {
         this.setState({showThemengebiet: !this.state.showThemengebiet});
 
     }
+
+    
     handleChildsOpenFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
         this.setState({showFilterOverlay: !this.state.showFilterOverlay});
     }
