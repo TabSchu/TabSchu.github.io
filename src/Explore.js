@@ -132,6 +132,7 @@ class Explore extends Component {
             {searchBar}
             </div>
         }else{
+
             seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleThemengebietForChild}
                                    fetchUrl={this.state.fetch_url_search} />;
             // parentShallHandleShowThemengebiet={this.handleChildsShowThemengebiet}/>;
@@ -141,6 +142,7 @@ class Explore extends Component {
                <div>{seite}</div>
         )
     }
+
     handleChildsShowThemengebiet(subsportartID){    //console.log("in explore show themenbereich");
         this.setState({showThemengebiet: !this.state.showThemengebiet,
                             fetch_url_search: "http://localhost:8080/beitragBySubsportart?subsportart="+subsportartID
@@ -149,6 +151,7 @@ class Explore extends Component {
 
     handleThemengebietForChild(){
         this.setState({showThemengebiet: false});
+
     }
     sucheBeitrag(searchString) {
         if (searchString && searchString.length>0) {
@@ -157,6 +160,7 @@ class Explore extends Component {
                 fetch_url_search: "http://localhost:8080/beitragSuche?suche=" + searchString
             });
         }
+
     }
     handleChildsOpenFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
         this.setState({showFilterOverlay: !this.state.showFilterOverlay});
