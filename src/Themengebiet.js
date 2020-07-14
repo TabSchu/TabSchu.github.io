@@ -30,12 +30,10 @@ constructor(props){
 }
 
     render() {
- 
-     
-        let fetch_url = "http://localhost:8080/beitrag";
-        let fetch_url_latein_artikel = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Artikel";
-        let fetch_url_latein_video = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Video";
-        let fetch_url_latein_podcast = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Podcast";
+
+        let fetch_url_latein_artikel = this.props.fetchUrl+"&medientyp=Artikel";
+        let fetch_url_latein_video = this.props.fetchUrl+"&medientyp=Video";
+        let fetch_url_latein_podcast = this.props.fetchUrl+"&medientyp=Podcast";
         
         let beitrag;
         let beitragArt;
@@ -81,7 +79,7 @@ constructor(props){
                 <div id="headerBar">
                     <ul>
                         <li><img src={Zurueck} 
-                        onClick={this.props.parentShallShowThemengebiet}
+                        onClick={this.props.parentShallForChildsShowThemengebiet}
                             // style={{marginLeft: "15px"}}
                             /></li>                    
                         <li>Latein</li>
