@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {  Link } from "react-router-dom";
+//import config from "config"
 
 import BeitragHook from "./hooks/BeitragHook";
 import SubSportartHook from "./hooks/SubSportartHook";
@@ -42,7 +43,8 @@ class Explore extends Component {
                             { id: '5', active: false }, { id: '6', active: false }, { id: '7', active: false },
                             { id: '8', active: false }, { id: '9', active: false },  { id: '10', active: false }, { id: '11', active: false }
                         ],
-                        fetch_url_themenbereich:  "http://localhost:8080/themenbereichByTags"
+                        fetch_url_themenbereich:  "http://localhost:8080/themenbereichByTags",
+                        fetch_url_search: ""
 
         };
 
@@ -66,16 +68,19 @@ class Explore extends Component {
         } //else {   console.log("don't show FilterOverlay");  }
         
         if(showSearchBar){
-            searchBar = <SearchBar parentShallHideSearchBar = {this.handleSearchBarForChild} />
+            searchBar = <SearchBar parentShallHideSearchBar = {this.handleSearchBarForChild}
+                                   parentShallSearchForChildShowThemengebiet ={(searchString) => this.sucheBeitrag(searchString)}
+                        />
         }
         let content;
         let tagFilterActive = this.state.tagFilterActive;
         let themenbereiche;
         if (!tagFilterActive){
-            themenbereiche =  <ThemenbereichHook fetch_url={this.state.fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
+            themenbereiche =  <ThemenbereichHook fetch_url={this.state.fetch_url_themenbereich} fetch_url_beitrag={this.state.fetch_url_beitrag} filterListe={this.state.filterTagList} />;
             content = <div id="content" style={{marginTop:"80px"}}>
                         <h3>sportarten</h3>
-                        <SubSportartHook parentShallForGrandChildsShowThemengebiet={this.handleChildsShowThemengebiet} fetch_url={fetch_url_subsportart}/>
+                        <SubSportartHook parentShallForGrandChildsShowThemengebiet ={(id) => this.handleChildsShowThemengebiet(id)}
+                                         fetch_url={fetch_url_subsportart}/>
                         <h3>sportler</h3>
                         <PersonHook fetch_url={fetch_url_person_group}/>
                         <Link to="/artikel"> <h3>top story</h3></Link>
@@ -112,12 +117,12 @@ class Explore extends Component {
             <div id="Beitragsart" >
 
                 <ul style={{width: "auto", display: "flex", overflowX: "scroll", padding:"0 10px"}}>
-                    <li style={{width: "auto", margin:"0 10px"}}>Tutorials</li>
-                    <li style={{width: "auto", margin:"0 10px"}}>DIY</li>
-                    <li style={{width: "auto", margin:"0 10px"}}>runnershigh</li>
-                    <li style={{width: "auto", margin:"0 10px"}}>#FreshAndFruity</li>
-                    <li style={{width: "auto", margin:"0 10px"}}>Fortnite</li>
-                    <li style={{width: "auto", margin:"0 10px"}}>Corona</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("fit")}>fit</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("DIY")}>DIY</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("runnershigh")}>runnershigh</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("FreshAndFruity")}>#FreshAndFruity</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("Roberto")}>Roberto</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("Corona")}>Corona</li>
                 </ul>
             </div>
             {filterOverlayTags}
@@ -125,7 +130,8 @@ class Explore extends Component {
             {searchBar}
             </div>
         }else{
-            seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleChildsShowThemengebiet}/>;
+            seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleChildsShowThemengebiet}
+                                   fetchUrl={this.state.fetch_url_search} />;
             // parentShallHandleShowThemengebiet={this.handleChildsShowThemengebiet}/>;
         }
 
@@ -133,9 +139,18 @@ class Explore extends Component {
                <div>{seite}</div>
         )
     }
-    handleChildsShowThemengebiet(){    //console.log("in explore show themenbereich");
-        this.setState({showThemengebiet: !this.state.showThemengebiet});
-
+    handleChildsShowThemengebiet(subsportartID){    //console.log("in explore show themenbereich");
+        this.setState({showThemengebiet: !this.state.showThemengebiet,
+                            fetch_url_search: "http://localhost:8080/beitragBySubsportart?subsportart="+subsportartID
+                            });
+    }
+    sucheBeitrag(searchString) {
+        if (searchString && searchString.length>0) {
+            this.setState({
+                showThemengebiet: !this.state.showThemengebiet,
+                fetch_url_search: "http://localhost:8080/beitragSuche?suche=" + searchString
+            });
+        }
     }
     handleChildsOpenFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
         this.setState({showFilterOverlay: !this.state.showFilterOverlay});

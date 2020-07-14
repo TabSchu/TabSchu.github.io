@@ -44,13 +44,22 @@
     });
 
 
-    //db on hochschul server
+   /* //db on hochschul server
     const pool = mysql.createPool({
         host: "195.37.176.178",
         port: "20133",
         user: "BAPSportberichtPlattform",
         password: 'bflFo#Qi@0O~tq2z.;kVF+VX0;Ddi%^e',
         database: "BAP_Sportbericht_Plattform_DB"
+    });*/
+
+    //von Andy
+    const pool = mysql.createPool({
+        host: "192.168.110.143",
+        port: "3306",
+        user: "radiobremen",
+        password: 'N%20daSi',
+        database: "radiobremen"
     });
 
  /*   // local dev db
@@ -153,13 +162,31 @@ app.get('/beitragBySportart', function (req, res) {
 
     //http://localhost:8080/beitragByThemenbereich?themenbereich=6
     app.get('/beitragByThemenbereich', function (req, res) {
-        const themenbereich = req.query.themenbereich; //[6,4,10];
+        const themenbereich = req.query.themenbereich;
       //  console.log(themenbereich);
-        const sql = 'SELECT * FROM BAP_Sportbericht_Plattform_DB.beitrag b\n' +
-            'JOIN  BAP_Sportbericht_Plattform_DB.beitrag_themenbereich bt \n' +
-            'ON b.id_beitrag = bt.fk_beitrag\n' +
-            'WHERE bt.fk_themenbereich=?;';
-        const value = [themenbereich];
+        let sql;
+        let value;
+        //if einer der Beiträge enthält den Suchbegriff
+        //http://localhost:8080/beitragByThemenbereich?themenbereich=2&suche=fit
+        if(req.query.suche && req.query.suche.length>0) {
+            const suche = '%' + req.query.suche.trim() + '%'; //[6,4,10];
+            console.log(suche);
+            sql = 'SELECT b.*, s.sportart, k.kategorie  FROM beitrag b\n' +
+                'JOIN sportart s ON b.sport = s.id_sportart\n' +
+                'JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n' +
+                'JOIN beitrag_themenbereich bt ON bt.fk_beitrag=b.id_beitrag\n' +
+                'JOIN themenbereich t ON bt.fk_themenbereich=t.id_themenbereich\n' +
+                'WHERE (b.text LIKE ? OR b.titel LIKE ? OR b.teaser LIKE ?)\n' +
+                'AND t.id_themenbereich=?;';
+            value = [suche, suche, suche, themenbereich];
+        } else {
+            sql = 'SELECT * FROM beitrag b\n' +
+                'JOIN  beitrag_themenbereich bt \n' +
+                'ON b.id_beitrag = bt.fk_beitrag\n' +
+                'WHERE bt.fk_themenbereich=?;';
+            value = [themenbereich];
+        }
+
         pool.query(sql, value,
             function (error, results, fields) {
                 if (error) throw error;
@@ -183,6 +210,25 @@ app.get('/beitragFromMerklisteByUserID', function (req, res) {
             res.send(results);
         });
 });
+
+//http://localhost:8080/beitragSuche?suche=Roberto&medientyp=video
+app.get('/beitragSuche', function (req, res) {
+    const suche = '%'+req.query.suche.trim()+'%'; //[6,4,10];
+    const medientyp = req.query.medientyp;
+    console.log(suche);
+    const sql =  "SELECT b.*, s.sportart, k.kategorie  FROM beitrag b \n" +
+        "JOIN sportart s ON b.sport = s.id_sportart \n" +
+        "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie \n" +
+        "WHERE (b.text LIKE ? OR b.titel LIKE ? OR b.teaser LIKE ?)" +
+        "AND typ=?;";
+    const value = [suche, suche, suche, medientyp];
+    pool.query(sql, value,
+        function (error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+        });
+});
+
 
 
 
@@ -209,8 +255,23 @@ app.get('/beitragFromMerklisteByUserID', function (req, res) {
     });
 
     app.get('/themenbereich', function (req, res) {
-        const sql = 'SELECT * FROM themenbereich;';
-        pool.query(sql,
+        let sql;
+        let  value = [];
+            //http://localhost:8080/themenbereich?suche=fit
+        if(req.query.suche && req.query.suche.length>0)
+        {  //einer der Beiträge enthält den Suchbegriff
+            const suche = '%'+req.query.suche.trim()+'%'; //[6,4,10];
+            console.log(suche);
+            value = [suche, suche, suche];
+            sql = 'SELECT DISTINCT t.* FROM themenbereich t\n' +
+                'JOIN beitrag_themenbereich bt ON bt.fk_themenbereich = t.id_themenbereich\n' +
+                'JOIN beitrag b ON bt.fk_beitrag = b.id_beitrag\n' +
+                'WHERE b.text LIKE ? OR b.titel LIKE ? OR b.teaser LIKE ?;';
+        } else {
+            sql = 'SELECT * FROM themenbereich;';
+        }
+
+        pool.query(sql,value,
             function (error, results, fields) {
                 if (error) throw error;
                 res.send(results);
