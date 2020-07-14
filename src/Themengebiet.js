@@ -79,7 +79,7 @@ constructor(props){
                 <div id="headerBar">
                     <ul>
                         <li><img src={Zurueck} 
-                        onClick={this.props.parentShallShowThemengebiet}
+                        onClick={this.props.parentShallForChildsShowThemengebiet}
                             // style={{marginLeft: "15px"}}
                             /></li>                    
                         <li>Latein</li>

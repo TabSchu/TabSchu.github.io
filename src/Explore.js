@@ -31,6 +31,8 @@ class Explore extends Component {
  
         this.resetAllFilterItemsToFalse = this.resetAllFilterItemsToFalse.bind(this);
         this.handleChildsShowThemengebiet = this.handleChildsShowThemengebiet.bind(this);
+        this.handleThemengebietForChild = this.handleThemengebietForChild.bind(this);
+
         this.setUrlThemenbereich = this.setUrlThemenbereich.bind(this);
 
         this.state = {  showFilterOverlay: false,
@@ -130,7 +132,7 @@ class Explore extends Component {
             {searchBar}
             </div>
         }else{
-            seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleChildsShowThemengebiet}
+            seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleThemengebietForChild}
                                    fetchUrl={this.state.fetch_url_search} />;
             // parentShallHandleShowThemengebiet={this.handleChildsShowThemengebiet}/>;
         }
@@ -143,6 +145,10 @@ class Explore extends Component {
         this.setState({showThemengebiet: !this.state.showThemengebiet,
                             fetch_url_search: "http://localhost:8080/beitragBySubsportart?subsportart="+subsportartID
                             });
+    }
+
+    handleThemengebietForChild(){
+        this.setState({showThemengebiet: false});
     }
     sucheBeitrag(searchString) {
         if (searchString && searchString.length>0) {
