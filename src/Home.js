@@ -3,6 +3,9 @@ import BeitragHook from "./hooks/BeitragHook";
 import HeaderBar from "./HeaderBar";
 import FilterOverlaySportarten from "./FilterOverlaySportarten";
 import { Link } from "react-router-dom";
+import Artikel from './Artikel';
+import Video from './Video';
+import Podcast from './Podcast';
 
 
 class Home extends Component {
@@ -12,8 +15,17 @@ class Home extends Component {
         this.handleHideSportFilterForChild = this.handleHideSportFilterForChild.bind(this);
         this.handleToggleFilterForChild = this.handleToggleFilterForChild.bind(this);
 
+        this.showHome = this.showHome.bind(this);
+        this.showPodcast = this.showPodcast.bind(this);
+        this.showArtikel = this.showArtikel.bind(this);
+        this.showVideo = this.showVideo.bind(this);
+
         this.state = {  showFilterSportOverlay: false,
                         sportartFilterActive: false,
+                        openHome:true,
+                        openArtikel:false,
+                        openVideo:false,
+                        openPodcast:false,
                         filterSportartList: [
                             { id: '2', active: false },  { id: '3', active: false }, { id: '4', active: false },
                             { id: '5', active: false }, { id: '6', active: false }, { id: '7', active: false },
@@ -24,7 +36,7 @@ class Home extends Component {
     }
     render() {
         let fetch_url = "http://localhost:8080/beitragBySportart?";
-
+        // let seite;
         let FilterOverlaySportartenElement;
         if (this.state.showFilterSportOverlay) {
             FilterOverlaySportartenElement = <FilterOverlaySportarten
@@ -34,23 +46,58 @@ class Home extends Component {
                                             />
         }
 
-        return(
-            <div>
-                <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenSportFilterOverlayClick}
-                           filterActive={this.state.sportartFilterActive}
+        // else {
+           let seite;
+            if(this.state.openHome){
+                seite = <div>
+            <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenSportFilterOverlayClick}
+                       filterActive={this.state.sportartFilterActive}
+            />
+            {FilterOverlaySportartenElement}
+        <div id="content">
+          <div>
+                <BeitragHook /*merklisteActive={false}*/  fetch_url={this.state.fetch_url_filter_sportart}
+                showPodcast={this.showPodcast} 
+                showArtikel={this.showArtikel} 
+                showVideo={this.showVideo}
                 />
-                {FilterOverlaySportartenElement}
-            <div id="content">
-              
-                <div><Link to="/artikel">
-                    <BeitragHook /*merklisteActive={false}*/  fetch_url={this.state.fetch_url_filter_sportart}/>
-                    </Link>
-                </div>
-
             </div>
-           </div>
-           
+        </div>
+       </div>}
+               if(this.state.openArtikel){
+                seite = <div><Artikel showHome={this.showHome}/></div>;
+            }
+            if(this.state.openVideo) 
+                seite = <div><Video showHome={this.showHome}/></div>;
+            if(this.state.openPodcast) 
+                seite = <div><Podcast showHome={this.showHome}/></div>;
+    //    }
+        return(
+            <div>{seite}</div>
         )
+    }
+    showHome(){
+        this.setState({openHome: true});
+        this.setState({openPodcast: false});
+        this.setState({openArtikel: false});
+        this.setState({openVideo: false});
+    }
+    showPodcast(){
+        this.setState({openPodcast: true});
+        this.setState({openHome: false});
+        console.log("pod")
+    }
+
+    showArtikel(){
+        this.setState({openArtikel: true});
+        this.setState({openHome: false});
+        console.log("art")
+    }
+
+    showVideo(){
+        this.setState({openVideo: true});
+        this.setState({openHome: false});
+        console.log("video")
     }
 
     handleChildsOpenSportFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
