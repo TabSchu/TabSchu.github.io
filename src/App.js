@@ -3,12 +3,12 @@ import React, {Component} from "react";
 // import Form from './Form';
 import HeaderBar from "./HeaderBar";
 import NavBar from "./NavBar";
-import Beitrag from "./Beitrag";
 import Themengebiet from "./Themengebiet";
 import HeaderBarMyZphere from "./HeaderBarMyZphere";
 import Explore from "./Explore";
 import Merkliste from "./Merkliste";
 import Home from "./Home";
+import Profilseite from "./Profilseite";
 import Artikel from "./Artikel";
 import Video from "./Video";
 import Podcast from "./Podcast";
@@ -38,21 +38,23 @@ render(){
       return (
          <Router>
           <div>
-              
-            
-            
-
               <Switch> 
                 <Route path="/explore" render={props =>
                 <div>
 
                 <Explore/>
                 <NavBarExplore />
-              
-                
                 </div>
                 } 
                 />
+
+                <Route path="/profilseite" render={props => 
+                <div>
+                  <NavBar/>
+                  <Profilseite />
+                </div>  
+                }/>
+                
                 <Route path="/themengebiet/artikel" render={props =>
                 <div>
 

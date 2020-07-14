@@ -19,8 +19,7 @@ class Artikel extends Component {
         return(
             <div>
             <div id="banner">
-                <div id="zurueck"><Link to="/" > <img src={Zurueck} /></Link></div>
-                {/* Link to="/explore" */}
+                <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome}/></div>
             </div>
             <div id="contentArtikel" >                
                 <div id="titel">
@@ -53,7 +52,9 @@ class Artikel extends Component {
                     </ul>
                     <h3>Ähnliche Beiträge: </h3>
                 </div>
+                <div style={{width:"40vw", overflowX:"scroll"}}>
                 <StoryHook fetch_url={fetch_url_stories}/>
+                </div>
             </div>
             </div>
         )

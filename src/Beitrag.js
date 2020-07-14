@@ -11,39 +11,51 @@ import Play from './img/icon/Play.png'
 import Kopfhoerer from './img/icon/Kopfhoerer.png'
 class Beitrag extends Component {
 
+    constructor(props){
+        super(props);
+        this.openBeitrag = this.openBeitrag.bind(this);
+        this.handleBeitrag = this.handleBeitrag.bind(this);
+    }
     render() {
         var typ = ArtikelIcon;
         var playicon;
         var arr = [];
         arr = this.parseTeaserElement(arr);
         
-
+        var art;
 
         /*if(merklisteActive){ MerklisteIcon= ididid} */
         if (this.props.medientyp=="Video"){
             typ = VideoIcon;
             playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Play}/>;
+            art=this.props.showVideo;
         }else if (this.props.medientyp=="Podcast"){
             playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = AudioIcon;
+            art=this.props.showPodcast;
         }else if (this.props.medientyp=="Artikel"){
             //playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = ArtikelIcon;
+            var art=this.props.showArtikel;
         }
         var merkIcon = MerklisteIcon;
         if(this.props.isMerkliste){
             merkIcon = MerklisteIcon_ausgefuellt
         }
 
+        
+
         return(
-            <div className="beitrag"  key={this.props.beitrag_id}
+            //  <Link to={art}>
+            <div className="beitrag"  key={this.props.beitrag_id} 
+                onClick={art}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
                 <div className="beitraginhalt">
                     {playicon}
                     <div className="beitragstitel">
 
                         <div className="beitragskategorien">{this.props.kategorie} </div>
-                        <Link to="/artikel"> {this.props.titel}</Link>
+                        {this.props.titel}
                     </div>
                     <div className="teaser">
                         <ul>
@@ -53,8 +65,6 @@ class Beitrag extends Component {
                             <ul>
                                 <li> 
                                     <img src={typ} />
-                                    {/* <img src={ArtikelIcon} /> */}
-                                    {/* {this.props.medientyp} */}
                                     {this.props.sportart}
                                 </li>
                                 <li></li>
@@ -65,23 +75,16 @@ class Beitrag extends Component {
                     <div className="">
                     </div>
                 </div>
-            </div>
-          
-            
+            </div> 
+            // </Link>
         )
-
-        /*
-        * <p>{this.props.medientyp} </p>
-                                    <img className="iconBar" src={ArtikelIcon} />
-
-                                    <p key={this.props.sport_id} > {this.props.sportart}</p>
-
-          *
-          *
-          <li ><img className="iconBar" src={TeilenIcon} /> <img  className="iconBar" src={MerklisteIcon} /><button onClick={this.addBeitragZuMerkliste}>M</button> </li>
-        * */
     }
+    openBeitrag(){
 
+    }
+    handleBeitrag(){
+
+    }
     // ggf. gibt es keinen Teaser dann bleibt es leer, z.B. bei Audio
     parseTeaserElement(arr){
         if(this.props.teaser!=undefined){

@@ -20,7 +20,10 @@ function BeitragHook(props) {
 
                                 return (
                                     <div key={`beitrag_${id_beitrag}`}>
-                                        <Beitrag isMerkliste={props.isMerkliste}
+                                        <Beitrag isMerkliste={props.isMerkliste} 
+                                        showPodcast={props.showPodcast} 
+                                        showArtikel={props.showArtikel} 
+                                        showVideo={props.showVideo}
                                             id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
                                             kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
                                             />

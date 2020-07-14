@@ -30,6 +30,8 @@ class Explore extends Component {
  
         this.resetAllFilterItemsToFalse = this.resetAllFilterItemsToFalse.bind(this);
         this.handleChildsShowThemengebiet = this.handleChildsShowThemengebiet.bind(this);
+        this.handleThemengebietForChild = this.handleThemengebietForChild.bind(this);
+
         this.setUrlThemenbereich = this.setUrlThemenbereich.bind(this);
 
         this.state = {  showFilterOverlay: false,
@@ -125,7 +127,7 @@ class Explore extends Component {
             {searchBar}
             </div>
         }else{
-            seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleChildsShowThemengebiet}/>;
+            seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleThemengebietForChild}/>;
             // parentShallHandleShowThemengebiet={this.handleChildsShowThemengebiet}/>;
         }
 
@@ -135,7 +137,10 @@ class Explore extends Component {
     }
     handleChildsShowThemengebiet(){    //console.log("in explore show themenbereich");
         this.setState({showThemengebiet: !this.state.showThemengebiet});
+    }
 
+    handleThemengebietForChild(){
+        this.setState({showThemengebiet: false});
     }
     handleChildsOpenFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
         this.setState({showFilterOverlay: !this.state.showFilterOverlay});

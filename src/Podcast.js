@@ -16,8 +16,7 @@ class Podcast extends Component {
         return(
             <div>
             <div id="banner">
-                <div id="zurueck"><Link to="/" > <img src={Zurueck} /></Link></div>
-                {/* Link to="/explore" */}
+            <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome}/></div>
                 <img style={{height:"70px",opacity:"0.8", margin:"auto", position:"absolute", top:"65px", left:"calc(50vw - 31px)"}} src={Kopfhoerer}/>
             </div>
             <div id="contentArtikel" >                
@@ -41,9 +40,9 @@ class Podcast extends Component {
                     </ul>
                     <h3>Ähnliche Beiträge: </h3>
                 </div>
-                
+                <div style={{width:"40vh", overflowX:"scroll"}}>
                 <StoryHook fetch_url={fetch_url_stories}/>
-                                
+                </div>           
             </div>
             </div>
         )

@@ -114,3 +114,37 @@
     margin-left: 20px;
     margin-top: 10px;
 }
+#generelleInfos{
+    background-color: #444444;
+    width: 335px;
+    height: 115px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+#generelleInfos ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#generelleInfos ul li{
+    list-style: none;
+    margin-top: 5px;
+    line-height: 25px;
+    font-size: 18px;
+    display: flex;
+    align-content: center;
+}
+
+#generelleInfos ul li img{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    align-content: center;
+    justify-content: center;
+}
+#generelleInfos h3{
+    text-transform: none;
+    font-size: 24px;
+    margin: 12px;
+    margin-left: 0;
+}
