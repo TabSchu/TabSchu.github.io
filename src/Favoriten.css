@@ -5,7 +5,7 @@
     width: 100vw;
     height: calc(89vh - 100px);
     z-index: 1;
-    position: fixed;
+    overflow-x: auto;
 }
 
 
@@ -16,7 +16,7 @@
     width: 100vw;
     height: calc(83vh - 100px);
     z-index: 1;
-    position: fixed;
+    
 
 }
 
@@ -137,6 +137,9 @@
 .Sportler img{
   height: 50px;
   width: 50px;
+  border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
   
 }
 
