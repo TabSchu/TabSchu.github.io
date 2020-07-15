@@ -243,10 +243,39 @@ app.get('/beitragSuche', function (req, res) {
     });
 
     app.get('/person', function (req, res) {
-        // TODO: filter param fk_person_group
-        const fk_person_group = 1;
-        const sql = 'SELECT * FROM person WHERE fk_person_group = ?;';
-        const value = [fk_person_group];
+        let sql;
+        let  value = [];
+
+        // Person mit id x
+        if(req.query.id_person && req.query.id_person.length>0) {
+            sql = 'SELECT * FROM person WHERE id_person=?;';
+            value = [req.query.id_person];
+        //alle Personen
+        } else {
+            sql = 'SELECT * FROM person;';
+        }
+
+
+        pool.query(sql, value,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
+
+    app.get('/beitragByPerson', function (req, res) {
+        //http://localhost:8080/beitragByPerson?id_person=1
+
+         const  sql = 'SELECT b.*,  s.sportart, k.kategorie FROM person p\n' +
+                'JOIN beitrag_person bp ON bp.fk_person = p.id_person\n' +
+                'JOIN beitrag b ON b.id_beitrag = bp.fk_beitrag\n' +
+                'JOIN sportart s ON b.sport = s.id_sportart \n' +
+                'JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n' +
+                'WHERE p.id_person=? ;';
+         const   value = [req.query.id_person];
+
+
         pool.query(sql, value,
             function (error, results, fields) {
                 if (error) throw error;
