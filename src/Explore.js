@@ -72,7 +72,7 @@ class Explore extends Component {
     render() {
         let fetch_url_newest_beitrag = "http://localhost:8080/beitrag/newest";
         let fetch_url_subsportart = "http://localhost:8080/subsportart";
-        let fetch_url_person_group = "http://localhost:8080/person";
+        let fetch_url_person_group = "http://localhost:8080/personFavoritenByUser?id_person=1";
         let filterOverlayTags;
         let showFilterOverlay = this.state.showFilterOverlay;
         let searchBar;

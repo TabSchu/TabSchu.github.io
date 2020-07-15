@@ -263,6 +263,28 @@ app.get('/beitragSuche', function (req, res) {
             });
     });
 
+    ///personFavoritenByUser?id_person=1
+    app.get('/personFavoritenByUser', function (req, res) {
+        let sql;
+        let  value = [];
+
+        // Person mit id x
+        if(req.query.id_person && req.query.id_person.length>0) {
+            sql = 'SELECT * FROM person p\n' +
+                'JOIN user_folgt_person up ON up.fk_person = p.id_person\n' +
+                'WHERE up.fk_user=?;';
+            value = [req.query.id_person];
+            //alle Personen
+        }
+
+
+        pool.query(sql, value,
+            function (error, results, fields) {
+                if (error) throw error;
+                res.send(results);
+            });
+    });
+
 
     app.get('/beitragByPerson', function (req, res) {
         //http://localhost:8080/beitragByPerson?id_person=1
