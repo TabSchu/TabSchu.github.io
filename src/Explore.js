@@ -130,7 +130,7 @@ class Explore extends Component {
         }
 
         let seite;
-        if(!this.state.showThemengebiet||this.state.openHome){
+        if(!this.state.showThemengebiet){ //||this.state.openHome
             seite = <div id="explore">
             {/* <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenFilterOverlayClick} /> */}
 
