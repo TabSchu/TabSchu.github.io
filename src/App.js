@@ -128,7 +128,7 @@ render(){
                     
                 <Route path="/" exact render={props =>
                 <div>
-                   <NavBar />        
+                           
                   <Home />
                   <NavBar />
 
