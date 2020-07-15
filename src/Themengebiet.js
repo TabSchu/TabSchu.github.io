@@ -82,7 +82,7 @@ constructor(props){
                         onClick={this.props.parentShallForChildsShowThemengebiet}
                             // style={{marginLeft: "15px"}}
                             /></li>                    
-                        <li>Latein</li>
+                        <li>{this.props.titelThemengebiet}</li>
                         <li></li>
                     </ul>
                 </div>

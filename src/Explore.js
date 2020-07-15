@@ -60,7 +60,8 @@ class Explore extends Component {
                             { id: '8', active: false }, { id: '9', active: false },  { id: '10', active: false }, { id: '11', active: false }
                         ],
                         fetch_url_themenbereich:  "http://localhost:8080/themenbereichByTags",
-                        fetch_url_search: ""
+                        fetch_url_search: "",
+                        titelThemengebiet: ""
 
         };
 
@@ -99,7 +100,7 @@ class Explore extends Component {
                                         fetch_url={this.state.fetch_url_themenbereich} fetch_url_beitrag={this.state.fetch_url_beitrag} filterListe={this.state.filterTagList} />;
             content = <div id="content" style={{marginTop:"80px"}}>
                         <h3>sportarten</h3>
-                        <SubSportartHook parentShallForGrandChildsShowThemengebiet ={(id) => this.handleChildsShowThemengebiet(id)}
+                        <SubSportartHook parentShallForGrandChildsShowThemengebiet ={(id, titelThemengebiet) => this.handleChildsShowThemengebiet(id, titelThemengebiet)}
                                          fetch_url={fetch_url_subsportart}/>
                         <h3>sportler</h3>
                         <PersonHook fetch_url={fetch_url_person_group}/>
@@ -129,7 +130,7 @@ class Explore extends Component {
         }
 
         let seite;
-        if(!this.state.showThemengebiet||this.state.openHome){
+        if(!this.state.showThemengebiet){ //||this.state.openHome
             seite = <div id="explore">
             {/* <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenFilterOverlayClick} /> */}
 
@@ -163,7 +164,7 @@ class Explore extends Component {
         }else{
 
             seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleThemengebietForChild}
-                                   fetchUrl={this.state.fetch_url_search} />;
+                                   fetchUrl={this.state.fetch_url_search} titelThemengebiet={this.state.titelThemengebiet} />;
             // parentShallHandleShowThemengebiet={this.handleChildsShowThemengebiet}/>;
         }
         if(this.state.openArtikel){
@@ -198,23 +199,26 @@ class Explore extends Component {
         this.setState({openHome: false});
     }
 
-    handleChildsShowThemengebiet(subsportartID){    //console.log("in explore show themenbereich");
+    handleChildsShowThemengebiet(subsportartID, titelThemengebiet){    //console.log("in explore show themenbereich");
         this.setState({showThemengebiet: !this.state.showThemengebiet,
-                            fetch_url_search: "http://localhost:8080/beitragBySubsportart?subsportart="+subsportartID
+                            fetch_url_search: "http://localhost:8080/beitragBySubsportart?subsportart="+subsportartID,
+                            titelThemengebiet: titelThemengebiet
                             });
     }
 
-    handleThemengebietForChild(){
-        this.setState({showThemengebiet: false});
-
-    }
     sucheBeitrag(searchString) {
         if (searchString && searchString.length>0) {
             this.setState({
                 showThemengebiet: !this.state.showThemengebiet,
-                fetch_url_search: "http://localhost:8080/beitragSuche?suche=" + searchString
+                fetch_url_search: "http://localhost:8080/beitragSuche?suche=" + searchString,
+                titelThemengebiet: searchString
             });
         }
+
+    }
+
+    handleThemengebietForChild(){
+        this.setState({showThemengebiet: false});
 
     }
 

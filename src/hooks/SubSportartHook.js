@@ -15,7 +15,7 @@ function SubSportartHook(props) {
                     <div className="middleBlock">
                     {data.map(({ id_sub_sportart, titel, img_url }) => (
                         <div key={`sub_sportart${id_sub_sportart}`}>
-                            <SubSportart  parentShallShowThemengebiet ={() => props.parentShallForGrandChildsShowThemengebiet(id_sub_sportart)}
+                            <SubSportart  parentShallShowThemengebiet ={() => props.parentShallForGrandChildsShowThemengebiet(id_sub_sportart, titel)}
                                 id_sub_sportart={id_sub_sportart}  titel={titel}   img_url={img_url}
                             />
                         </div>
