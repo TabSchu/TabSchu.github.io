@@ -130,7 +130,7 @@ class Explore extends Component {
         }
 
         let seite;
-        if(!this.state.showThemengebiet){ //||this.state.openHome
+        if(this.state.openHome){
             seite = <div id="explore">
             {/* <HeaderBar parentShallHandleFilterClick={this.handleChildsOpenFilterOverlayClick} /> */}
 
@@ -161,7 +161,8 @@ class Explore extends Component {
             {content}
             {searchBar}
             </div>
-        }else{
+        }
+        if(this.state.showThemengebiet){
 
             seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleThemengebietForChild}
                                    fetchUrl={this.state.fetch_url_search} titelThemengebiet={this.state.titelThemengebiet} />;
@@ -200,12 +201,15 @@ class Explore extends Component {
     }
 
     handleChildsShowThemengebiet(subsportartID, titelThemengebiet){    //console.log("in explore show themenbereich");
-        this.setState({showThemengebiet: !this.state.showThemengebiet,
+        this.setState({showThemengebiet: true,
+            // !this.state.showThemengebiet,
                             fetch_url_search: "http://localhost:8080/beitragBySubsportart?subsportart="+subsportartID,
                             titelThemengebiet: titelThemengebiet
                             });
     }
-
+    handleThemengebietForChild(){
+        this.setState({showThemengebiet: false});
+    }
     sucheBeitrag(searchString) {
         if (searchString && searchString.length>0) {
             this.setState({
@@ -214,15 +218,10 @@ class Explore extends Component {
                 titelThemengebiet: searchString
             });
         }
-
     }
-
     handleThemengebietForChild(){
         this.setState({showThemengebiet: false});
-
     }
-
-    
     handleChildsOpenFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
         this.setState({showFilterOverlay: !this.state.showFilterOverlay});
     }
