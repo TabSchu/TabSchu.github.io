@@ -23,7 +23,11 @@ function ThemenbereichHook(props) {
                     {data.map(({ id_themenbereich, titel }) => (
                         <div key={`themenbereich_${id_themenbereich}`}>
                             <h3  className="titelThemenbereich" >{titel}</h3>
-                            <StoryHook fetch_url={fetch_url_stories+encodeURIComponent(id_themenbereich)}/>
+                            <StoryHook 
+                            showPodcast={props.showPodcast} 
+                            showArtikel={props.showArtikel} 
+                            showVideo={props.showVideo}
+                            fetch_url={fetch_url_stories+encodeURIComponent(id_themenbereich)}/>
                         </div>
                     ))}
                     </div>

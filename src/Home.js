@@ -85,19 +85,16 @@ class Home extends Component {
     showPodcast(){
         this.setState({openPodcast: true});
         this.setState({openHome: false});
-        console.log("pod")
     }
 
     showArtikel(){
         this.setState({openArtikel: true});
         this.setState({openHome: false});
-        console.log("art")
     }
 
     showVideo(){
         this.setState({openVideo: true});
         this.setState({openHome: false});
-        console.log("video")
     }
 
     handleChildsOpenSportFilterOverlayClick() { //  console.log("Filter clicked in my Child Component");
