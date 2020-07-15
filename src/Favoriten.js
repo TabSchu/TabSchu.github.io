@@ -3,26 +3,90 @@ import React, { Component } from 'react';
 import SportlerProfil from './img/icon/profil.png'
 import SucheIcon from './img/icon/suche_lupe.png'
 import SearchBarFav from "./SearchBarFav";
+import Sportler from "./Sportler"
+import SportlerBearbeiten from './SportlerBearbeiten';
+import ZurückFertigBar from './ZurückFertigBar';
 
 
 class Favoriten extends Component{
+
+     
      constructor(props){
           super(props);
+
+          this.handleChildsOpenSportlerBearbeitenClick = this.handleChildsOpenSportlerBearbeitenClick.bind(this);
+          this.handleSportlerBearbeitenForChild = this.handleSportlerBearbeitenForChild.bind(this);
 
 
           this.handleChildsOpenSerachBarClick = this.handleChildsOpenSerachBarClick.bind(this);
           this.handleSearchBarForChild = this.handleSearchBarForChild.bind(this);
 
+          this.handleChildsOpenZurückFertigBarClick = this.handleChildsOpenZurückFertigBarClick.bind(this);
+          this.handleZurückFertigBarForChild = this.handleZurückFertigBarForChild.bind(this);
+
+          this.twoFunctions = this.twoFunctions.bind(this);
+
           this.state = {
-               showSearchBar: false
+               showSearchBar: false,
+               showSportlerBearbeiten: false,
+               showZurückFertig: false
           }
      }
+
+     
+     twoFunctions(){
+          this.handleChildsOpenSportlerBearbeitenClick();
+           this.handleChildsOpenZurückFertigBarClick();
+
+     }
     render(){
+     const style = {
+          opacity: 0.5
+     }
      let searchBar;
      let showSearchBar = this.state.showSearchBar;
      if(showSearchBar){
           searchBar = <SearchBarFav parentShallHideSearchBar = {this.handleSearchBarForChild} />
       }
+
+     let sportlerBearbeiten;
+     let showSportlerBearbeiten = this.state.showSportlerBearbeiten;
+
+     if(showSportlerBearbeiten){
+
+          sportlerBearbeiten = <SportlerBearbeiten parentShallHideSportlerBearbeiten = {this.handleSportlerBearbeitenForChild} />
+          console.log("läuft auch")
+
+     } else {
+          sportlerBearbeiten =<div> <div id="Sportlerzeile">
+                              <div className="Sportler">
+                                   <img src={SportlerProfil} />
+                                   Werner Meiner
+                              </div>
+                         </div>
+                         <div id="Sportlerzeile">
+                         
+                         </div>
+                         <div id="Sportlerzeile">
+                         
+                         </div>
+                         <div id="Sportlerzeile">
+                         
+                         </div>
+                         <div id="Sportlerzeile">
+                              
+                                                  
+                         
+                         </div></div>
+     }
+
+     let zurückFertigBar;
+     let showZurückFertig = this.state.showZurückFertig;
+
+     if(showZurückFertig){
+          zurückFertigBar = <ZurückFertigBar parentShallHideZurückFertigBar = {this.handleZurückFertigBarForChild}
+           parentShallHideSportlerBearbeiten = {this.handleSportlerBearbeitenForChild}/>
+     }
 
       let inhalt;
 
@@ -31,91 +95,26 @@ class Favoriten extends Component{
           <ul>
           <li><img src={SucheIcon} onClick={this.handleChildsOpenSerachBarClick}/> 
           </li>
-          <li>+</li>
+          <li onClick = {this.twoFunctions}>+</li>
           <li>-</li>
           </ul>
           </div>
       <div className="untereLeiste">
           <ul>
-          <li>Sportarten</li>
+          <li style={{opacity: 0.5}}>Sportarten</li>
           <li>Sportler</li>
-          <li>Verein</li>
+          <li style={{opacity: 0.5}}>Verein</li>
           </ul>
       </div>
       <div id="Favoriten">
-          <div id="Sportlerzeile">
-               <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Dana Giesel                        
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Bastian Steiger                       
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Alex Mertens                       
-          </div>
-          </div>
-          <div id="Sportlerzeile">
-               <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Carsten Klug                        
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Peter Weser                        
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Volker Racho                        
-          </div>
-          </div>
-          <div id="Sportlerzeile">
-               <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Maria Sando                       
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Tim Campen                        
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Max Clausen                       
-          </div>
-          </div>
-          <div id="Sportlerzeile">
-               <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Felix Zweier                        
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Sarah Raftsen                        
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Petra Denna                        
-          </div>
-          </div>
-          <div id="Sportlerzeile">
-               <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Carla Sommer                       
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Peter Meyer                        
-          </div>
-          <div className="Sportler">
-               <img src={SportlerProfil}/>
-               Roman Tisch                        
-          </div>
-          </div>
+          
 
-          </div>
+          
           {searchBar}
+          {sportlerBearbeiten}
+          {zurückFertigBar}
+          
+          </div>
           </div>
 
           
@@ -136,6 +135,23 @@ handleChildsOpenSerachBarClick(){
 
  handleSearchBarForChild(){
      this.setState({showSearchBar: false});
+ }
+
+ handleChildsOpenSportlerBearbeitenClick(){
+      console.log("läuft");
+      this.setState({showSportlerBearbeiten: true})
+ }
+
+
+ handleSportlerBearbeitenForChild(){
+      this.setState({showSportlerBearbeiten: false})
+ }
+
+ handleChildsOpenZurückFertigBarClick(){
+      this.setState({showZurückFertig: !this.showZurückFertig})
+ }
+ handleZurückFertigBarForChild(){
+      this.setState({showZurückFertig: false})
  }
 }
 

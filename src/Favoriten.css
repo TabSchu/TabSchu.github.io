@@ -72,7 +72,7 @@
   width: 100vw;
   clear: both;
   color: #fff;
-  background: #707070;
+  background: #303030;
   border-radius: 10px;
 }
 
@@ -114,6 +114,7 @@
 
 }
 
+
 #Sportlerzeile:nth-last-child(1){
   border-bottom: 0px solid #212121;
 }
@@ -147,3 +148,33 @@
 
 
 }
+
+.SportlerWaagerecht{
+    display: grid;
+    grid-template-columns: 1;
+    grid-auto-flow: dense;
+    margin: 0;
+    grid-template-rows: minmax(90px, 100px);
+    padding: 5px 0;
+    top: 200px;
+    border-bottom: 1px solid #303030;
+    align-items: center;
+
+
+}
+
+.SportlerWaagerecht img{
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  margin-right: 30px;
+}
+
+.SportlerWaagerecht #SportlerReihe {
+  width: 100%;
+  font-size: 20px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+

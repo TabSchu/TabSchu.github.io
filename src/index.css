@@ -146,6 +146,7 @@ body{
 #searchBar img{
   width: 25px;
   height: 25px;
+  margin-right: 40px;
   
 }
 
@@ -155,10 +156,10 @@ body{
   border: 1px solid #707070;
   outline: none !important;
   border-radius: 10px;
-  font-weight: 100;
-  
+ 
   
 }
+
 
 
 
@@ -248,6 +249,38 @@ button{
   align-items: center;
   justify-content: center;
   
+}
+
+#ZurückFertigBar {
+  z-index: 2;
+  position: fixed;
+  top: 140px;
+  left: 0;
+  height: 40px;
+  width: 100vw;
+  clear: both;
+  color: #fff;
+  /* background: #212121; */
+  background-color: #212121;
+}
+#ZurückFertigBar ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#ZurückFertigBar ul li{
+  display: block; 
+  text-decoration: none;
+  float: left; 
+  margin: 0;
+  width: calc(100% /3); 
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .testHookDiv{
