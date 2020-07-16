@@ -22,7 +22,7 @@ class Profilseite extends Component {
     }
     render() {
        // let fetch_url = "http://localhost:8080/beitrag";
-        let fetch_url = "http://localhost:8080/beitragByPerson?id_person=1";
+        let fetch_url = "http://localhost:8080/beitragByPerson?id_person="+this.props.id_person;
         // TODO: id_person als prop reingeben
         let seite;
         if(this.state.openProfilInhalt){

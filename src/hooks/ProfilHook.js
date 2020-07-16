@@ -18,7 +18,7 @@ function ProfilHook(props) {
                             {data.map(({img_url, name, info1, info2, id_person}) => {
 return( 
                 <div key={`beitrag_${id_person}`}>
-                    <Profilseite showHome={props.showHome} 
+                    <Profilseite showHome={props.showHome} id_person={id_person}
                     img_url={img_url} name={name} info1={info1} info2={info2}/>
                 </div> 
             )
