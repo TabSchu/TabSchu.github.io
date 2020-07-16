@@ -10,27 +10,38 @@ import Zurueck from './img/icon/Zurueck.png'
 import StoryHook from "./hooks/StoryHook";
 import Kopfhoerer from './img/icon/Kopfhoerer.png'
 import InhaltHook from './hooks/InhaltHook';
+import data from './img/SurvivalOfTheFittest.mp4'
 
 class Podcast extends Component {
     constructor(props) {
         super(props);
         this.showStory = this.showStory.bind(this);
         this.closeStory = this.closeStory.bind(this);
-        this.state = { openStory: false }
+        this.playVideo = this.playVideo.bind(this);
+        this.state = {
+            openStory: false,
+            openDataVideo: false
+        }
     }
     render() {
         let fetch_url_stories = "http://localhost:8080/beitrag";
+        let dataVideo = <div id="banner" style={{ backgroundImage: "url(" + this.props.img_url + ")" }}>
+            <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome} /> </div>
 
+            <img style={{ height: "70px", opacity: "0.8", margin: "auto", position: "absolute", top: "65px", left: "calc(375px / 2 - 31px)" }} src={Kopfhoerer} onClick={this.playVideo} />
+        </div>
+        if (this.state.openDataVideo) {
+            dataVideo = <div id="banner" style={{ backgroundColor: "#212121", backgroundImage: "url()" }}>
+                <video style={{ width: "100%", height: "auto", position: "absolute", top: "0px", left: "0px" }} controls> <source src={data} /></video>
+                <div id="zurueck"style={{position:"relative", zIndex:"50"}}> <img src={Zurueck} onClick={this.props.showHome}/></div>
+            </div>
+        }
         let seite;
         if (this.state.openStory) {
             seite = <div><InhaltHook showHome={this.closeStory} fetch_url={this.state.url_beitrag} /></div>;
         } else {
             seite = <div key={this.props.beitrag_id}>
-                <div id="banner" style={{ backgroundImage: "url(" + this.props.img_url + ")" }}>
-                    <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome} /> </div>
-
-                    <img style={{ height: "70px", opacity: "0.8", margin: "auto", position: "absolute", top: "65px", left: "calc(50vw - 31px)" }} src={Kopfhoerer} />
-                </div>
+                {dataVideo}
                 <div id="contentArtikel" >
                     <div id="titel">
                         <h5>{this.props.kategorie}</h5>
@@ -48,15 +59,18 @@ class Podcast extends Component {
                         </ul>
                         <h3>Ähnliche Beiträge: </h3>
                     </div>
-                    <div style={{ width: "40vh", overflowX: "scroll" }}>
+                    {/* <div style={{ width: "40vh", overflowX: "scroll" }}> */}
                         <StoryHook fetch_url={fetch_url_stories} showInhalt={this.showStory} />
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         }
         return (
             <div>{seite}</div>
         )
+    }
+    playVideo() {
+        this.setState({ openDataVideo: true, });
     }
     showStory(id_beitrag) {
         this.setState({

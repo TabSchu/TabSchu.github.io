@@ -4,6 +4,7 @@
     background-color: #212121;
     padding: 3px 25px;
     padding-bottom: 50px;
+    max-width: 325px;
 }
 #banner{
     height: 30vh;
@@ -12,6 +13,7 @@
     background-size: 40vh 200px;
     background-repeat: no-repeat;
     background-size: cover;
+    max-width: 375px;
 }
 #titel{
     width: calc(100vw - 50px);
@@ -36,6 +38,7 @@
     margin: 10px 0;
     display: flex;
     align-items: center;
+    max-width: 325px;
 }
 #autor .icon{
     /* float: right; */
