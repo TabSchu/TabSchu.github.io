@@ -48,9 +48,9 @@ class Artikel extends Component {
                 </ul>
                 <h3>Ähnliche Beiträge: </h3>
             </div>
-            <div style={{width:"40vw", overflowX:"scroll"}}>
+            {/* <div style={{width:"300px", overflowX:"scroll"}}> */}
             <StoryHook fetch_url={fetch_url_stories}  showInhalt={this.showStory}/>
-            </div>
+            {/* </div> */}
         </div>
         </div>}
         return(
