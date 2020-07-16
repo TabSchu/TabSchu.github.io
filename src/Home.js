@@ -56,8 +56,7 @@ class Home extends Component {
         <div id="content">
           <div>
                 <BeitragHook /*merklisteActive={false}*/  fetch_url={this.state.fetch_url_filter_sportart}
-                showInhalt={this.showInhalt} 
-                />
+                showInhalt={this.showInhalt} />
             </div>
         </div>
        </div>}
@@ -75,7 +74,6 @@ class Home extends Component {
     }
 
     showInhalt(id_beitrag){
-        console.log("show");
         this.setState({openInhalt: true,
             url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
             openId:id_beitrag

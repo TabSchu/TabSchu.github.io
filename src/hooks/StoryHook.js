@@ -14,8 +14,7 @@ function StoryHook(props) {
 
                     {data.map(({ id_beitrag, titel, img_url, typ }) => (
                         <div style={{display:"flex", height: "190px"}} key={`beitrag_${id_beitrag}`}>
-                            <Story
-                                showInhalt={() => props.showInhalt(id_beitrag)}
+                            <Story showInhalt={() => props.showInhalt(id_beitrag)}
                                 id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  medientyp={typ}
                             />
                         </div>

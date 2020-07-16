@@ -9,12 +9,23 @@ import {
   import Zurueck    from './img/icon/Zurueck.png'
   import StoryHook from "./hooks/StoryHook";
   import Kopfhoerer from './img/icon/Kopfhoerer.png'
+  import InhaltHook from './hooks/InhaltHook';
 
 class Podcast extends Component { 
+    constructor(props){
+        super(props);
+        this.showStory=this.showStory.bind(this);
+        this.closeStory=this.closeStory.bind(this);
+        this.state = {  openStory: false}
+    } 
     render() {
         let fetch_url_stories = "http://localhost:8080/beitrag";
-        return(
-            <div key={this.props.beitrag_id}>
+        
+        let seite;
+        if(this.state.openStory){
+            seite = <div><InhaltHook showHome={this.closeStory} fetch_url={this.state.url_beitrag}/></div>;
+        }else{
+            seite=<div key={this.props.beitrag_id}>
             <div id="banner" style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
             <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome}/> </div>
             
@@ -38,12 +49,23 @@ class Podcast extends Component {
                     <h3>Ähnliche Beiträge: </h3>
                 </div>
                 <div style={{width:"40vh", overflowX:"scroll"}}>
-                <StoryHook fetch_url={fetch_url_stories}/>
+                <StoryHook fetch_url={fetch_url_stories}showInhalt={this.showStory}/>
                 </div>           
             </div>
             </div>
-        )
-    }
+        }
+        return(
+            <div>{seite}</div>
+            )
+        }
+        showStory(id_beitrag){
+                this.setState({openStory: true,
+                    url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
+                });
+        }
+        closeStory(){
+            this.setState({openStory: false});
+        }
 }
 
 export default Podcast;
