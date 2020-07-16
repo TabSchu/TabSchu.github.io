@@ -411,4 +411,22 @@ app.get('/beitragSuche', function (req, res) {
             });
     });
 
+    // http://localhost:8080/updateMerkliste?aktion=insert // bzw. aktion=delete
+    app.post("/updateMerkliste", function (request, response) {
+    let aktion = request.query.aktion;
+    let sql;
+    if(aktion=='delete'){
+        sql = "DELETE FROM merkliste  WHERE fk_beitrag_id=? AND fk_user_id=?;";
+    } else {
+        sql = "INSERT IGNORE INTO merkliste (fk_beitrag_id, fk_user_id) VALUES (?,?);";
+    }
+
+    const values = [request.body.beitrag_id, request.body.user_id];
+    pool.query( sql, values,
+        function (error, results, fields) {
+            if (error) throw error;
+            response.send(results);
+        });
+});
+
 
