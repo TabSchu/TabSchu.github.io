@@ -9,13 +9,20 @@ import TeilenIcon from './img/icon/Teilen.png'
 import {Link} from "react-router-dom";
 import Play from './img/icon/Play.png'
 import Kopfhoerer from './img/icon/Kopfhoerer.png'
+
 class Beitrag extends Component {
 
     constructor(props){
         super(props);
         this.openBeitrag = this.openBeitrag.bind(this);
         this.handleBeitrag = this.handleBeitrag.bind(this);
+        this.toggleBeitragAufMerkliste = this.toggleBeitragAufMerkliste.bind(this);
+        this.state = {
+            aufMerkliste: this.props.isMerkliste,
+            beitragId: this.props.id_beitrag
+        }
     }
+
     render() {
         var typ = ArtikelIcon;
         var playicon;
@@ -35,16 +42,12 @@ class Beitrag extends Component {
             //playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = ArtikelIcon;
         }
-        var merkIcon = MerklisteIcon;
-        if(this.props.isMerkliste){
-            merkIcon = MerklisteIcon_ausgefuellt
-        }
 
         
 
         return(
             //  <Link to={art}>
-            <div className="beitrag"  key={this.props.beitrag_id} 
+            <div className="beitrag"  key={this.props.id_beitrag}
                 onClick={this.props.showInhalt}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
                 <div className="beitraginhalt">
@@ -65,7 +68,11 @@ class Beitrag extends Component {
                                     {this.props.sportart}
                                 </li>
                                 <li></li>
-                                <li><img src={TeilenIcon} /> <img src={merkIcon} onClick={this.addBeitragZuMerkliste}/></li>
+                                <li>
+                                    <img src={TeilenIcon} />
+                                    <img src={this.state.aufMerkliste?MerklisteIcon_ausgefuellt:MerklisteIcon}
+                                         onClick={this.toggleBeitragAufMerkliste}/>
+                                </li>
                             </ul> 
                         </div>
                     </div> 
@@ -92,6 +99,31 @@ class Beitrag extends Component {
             });
         }
         return arr;
+    }
+
+    toggleBeitragAufMerkliste(event){
+        event.stopPropagation();
+        this.setState({aufMerkliste:!this.state.aufMerkliste},
+            //Callback: When asynchronous setStatus is finished:
+            () => {this.updateMerklisteStatus()
+        });
+
+    }
+
+    updateMerklisteStatus(){
+        console.log(this.state.aufMerkliste);
+        let aktion;
+        if(this.state.aufMerkliste){
+            aktion = "insert";
+        }
+        else { aktion = "delete";}
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ beitrag_id: this.state.beitragId, user_id: 1 })
+        };
+        fetch('http://localhost:8080/updateMerkliste?aktion='+aktion, requestOptions)
+            .then(response => response.json());
     }
 }
 

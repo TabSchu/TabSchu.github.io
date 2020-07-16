@@ -11,7 +11,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
-import BeitragPodcast from './BeitragPodcast';
+
 
 import AudioIcon from './img/icon/Audio.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'

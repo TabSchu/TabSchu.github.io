@@ -1,7 +1,6 @@
 import React from "react";
 import { useFetch } from "../hooks";
 import Beitrag from "../Beitrag";
-import BeitragPodcast from "../BeitragPodcast";
 function BeitragHook(props) {
     const [data, loading] = useFetch(
         props.fetch_url
