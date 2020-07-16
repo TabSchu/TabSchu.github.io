@@ -21,9 +21,7 @@ function BeitragHook(props) {
                                 return (
                                     <div key={`beitrag_${id_beitrag}`}>
                                         <Beitrag isMerkliste={merkliste!=null?true:false}
-
-                                        showInhalt={() => props.showInhalt(id_beitrag)}
-
+                                            showInhalt={() => props.showInhalt(id_beitrag)}
                                             id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
                                             kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
 

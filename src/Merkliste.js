@@ -3,7 +3,7 @@ import Beitrag from './Beitrag';
 import ArtikelTest from "./ArtikelTest";
 import BeitragHook from "./hooks/BeitragHook";
 import HeaderBarMyZphere from './HeaderBarMyZphere';
-import Artikel from "./Artikel";
+import InhaltHook from "./hooks/InhaltHook";
 
 
 
@@ -14,7 +14,15 @@ class Merkliste extends Component{
         super(props);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
-        this.state = {isLoggedIn: false};
+
+        
+        this.showHome = this.showHome.bind(this);
+        this.showInhalt = this.showInhalt.bind(this);
+        this.state = {  isLoggedIn: false,
+                        openHome:true,
+                        openInhalt:false,
+                        url_beitrag:"http://localhost:8080/beitrag/",
+                    };
     }
 
     handleLoginClick() {
@@ -34,12 +42,34 @@ class Merkliste extends Component{
         } else {
             button = <LoginButton onClick={this.handleLoginClick} />;
         }
+        let seite;
         let fetch_url = "http://localhost:8080/beitragFromMerklisteByUserID?user_id=1";
-        return (
+        if(this.state.openHome){
+            seite=<div><HeaderBarMyZphere />
             <div id="contentMerkliste">
-                 <BeitragHook  fetch_url={fetch_url}/>
-            </div>
+            <BeitragHook  fetch_url={fetch_url} showInhalt={this.showInhalt} />
+            </div></div>}
+        if(this.state.openInhalt){
+            seite = <div><InhaltHook showHome={this.showHome} fetch_url={this.state.url_beitrag}/></div>;
+        }
+        return (
+            <div>{seite}</div>
         );
+    }
+
+    showHome(){
+        this.setState({openHome: true});
+        this.setState({openInhalt: false});
+    }
+
+    showInhalt(id){
+        
+        console.log("show");
+        this.setState({openInhalt: true,
+            url_beitrag:"http://localhost:8080/beitrag/"+id
+        });
+        console.log(this.state.url_beitrag);
+        this.setState({openHome: false});
     }
 }
 

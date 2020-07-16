@@ -103,6 +103,16 @@
         });
     });
 
+    app.get('/person/:personid', function (req, res) {
+        const personid = req.params.personid;
+        const sql = 'SELECT * FROM person WHERE id_person=?;';    
+        pool.query(sql,personid, function (error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+
+        });
+    });
+
 
     app.get('/beitrag/newest', function (req, res) {
 

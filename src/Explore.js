@@ -5,6 +5,7 @@ import {  Link } from "react-router-dom";
 import BeitragHook from "./hooks/BeitragHook";
 import SubSportartHook from "./hooks/SubSportartHook";
 import PersonHook from "./hooks/PersonHook";
+import ProfilHook from "./hooks/ProfilHook";
 import InhaltHook from "./hooks/InhaltHook";
 import ThemenbereichHook from "./hooks/ThemenbereichHook";
 import FilterOverlayTags from "./FilterOverlayTags";
@@ -14,7 +15,6 @@ import Filter_ausgefuellt from "./img/icon/Filter_ausgefuellt.png";
 import Suche from "./img/icon/suche_lupe.png";
 import SearchBar from "./SearchBar";
 
-import Profilseite from './Profilseite';
 
 
 class Explore extends Component {
@@ -48,8 +48,8 @@ class Explore extends Component {
                         showSearchBar: false,
 
                         openHome:true,
-                        openinhalt:false,
                         openProfil:false,
+                        openInhalt:false,
 
                         filterTagList: [
                             { id: '1', active: false }, { id: '2', active: false },  { id: '3', active: false }, { id: '4', active: false },
@@ -157,8 +157,9 @@ class Explore extends Component {
         if(this.state.openInhalt){
             seite = <div><InhaltHook showHome={this.showHome} fetch_url={this.state.url_beitrag}/></div>;
         }
-        if(this.state.openProfil)
-        { seite = <div><Profilseite showHome={this.showHome}/></div> }
+        if(this.state.openProfil){
+            seite = <div><ProfilHook showHome={this.showHome} fetch_url={this.state.url_beitrag}/></div>;
+        }
             
         return(
                <div>{seite}</div>
@@ -174,12 +175,13 @@ class Explore extends Component {
     showInhalt(id_beitrag){
         this.setState({openInhalt: true,
             url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
-            openId:id_beitrag
         });
         this.setState({openHome: false});
     }
-    showProfil(){
-        this.setState({openProfil: true});
+    showProfil(id_person){
+        this.setState({openProfil: true,
+            url_beitrag:"http://localhost:8080/person/"+id_person,
+        });
         this.setState({openHome: false});
     }
     handleChildsShowThemengebiet(subsportartID, titelThemengebiet){    //console.log("in explore show themenbereich");

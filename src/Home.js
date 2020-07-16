@@ -75,6 +75,7 @@ class Home extends Component {
     }
 
     showInhalt(id_beitrag){
+        console.log("show");
         this.setState({openInhalt: true,
             url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
             openId:id_beitrag
