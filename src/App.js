@@ -108,28 +108,30 @@ class App extends Component {
               <div>
                 <Podcast />
 
-              </div>
-            } />
+                
+                </div>
+                }/>
 
-            <Route path="/favoriten" exact render={props =>
-              <div>
-                <Favoriten />
-                <HeaderBarMyZphere />
-                <NavBarMerkliste />
-              </div>
-            } />
+                <Route path="/favoriten" exact render={props =>
+                <div>
+                  <Favoriten />
+                  <HeaderBarMyZphere />
+                  <NavBarMerkliste />
+                </div>
+              } />
+                    
+                <Route path="/" exact render={props =>
+                <div>
+                  
+                  <NavBar />        
+                  <Home />
+                  <NavBar />
 
-            <Route path="/" exact render={props =>
-              <div>
-
-                <Home />
-                <NavBar />
-
-              </div>
-            } />
-          </Switch>
-        </div>
-      </Router>
+                </div>
+              } />       
+            </Switch>
+            </div>
+        </Router>
     )
   }
 }

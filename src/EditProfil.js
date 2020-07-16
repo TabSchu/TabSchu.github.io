@@ -8,23 +8,29 @@ import HeaderBarMyZphere from "./HeaderBarMyZphere"
 import Kamera from "./img/icon/kamera.png";
 import Galerie from "./img/icon/galerie.png";
 import Muelleimer from "./img/icon/Muelleimer.png";
+import ProfilnameHook from './hooks/ProfilnameHook';
 
 
 
 
 class EditProfil extends Component{
 
+    //let fetch_url_profilname = "http://localhost:8080/userData"
+    //<ProfilnameHook fetch_url = {fetch_url_profilname} />
+
     constructor(props){
         super(props);
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        //this.ladeDaten = this.ladeDaten.bind(this);
 
         
             this.state ={
                 vorname: '',
                 nachname: '',
-                alter: '',
+                geburtsdatum: '',
+                geschlecht: null,
                 wohnort:''
             }
         }
@@ -38,6 +44,7 @@ class EditProfil extends Component{
 
         handleSubmit(e){
             const userData = this.state;
+            console.log(userData)
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -49,42 +56,67 @@ class EditProfil extends Component{
 
 
             e.preventDefault()
+            window.location.reload();
             
         }
 
+        componentDidMount(){
+    
+            const requestOptions = {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            };
+            fetch('http://localhost:8080/userData', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({ vorname: data[0].vorname,  nachname: data[0].nachname,  geburtsdatum: data[0].geburtsdatum,  wohnort: data[0].wohnort }))
+                
+            
+        }
         
 
 
+
+        
+
+        //setStateFromDataBase(){
+        //    this.setState({vorname: <ProfilnameHook fetch_url = {fetch_url_profilname} />})
+        //}
+
+        
+
+        //<div > <p onClick = {this.ladeDaten}>wwedesgsgtrg</p></div>
     
 
     render(){
        
-       
+        let geschlecht = this.state.geschlecht;
+        let fetch_url_profilname = "http://localhost:8080/userData"
+        
+        
         
         return(
+            
+            
             <div id="contentProfil"> 
-
                 <form onSubmit = {this.handleSubmit}>
-        
-                   
-
+                    
                 <div id="profil">Profilbild bearbeiten<div className="icons"> <img src={Kamera}/> <img src={Galerie}/> <img src={Muelleimer}/>  </div></div> 
                 
                     <p>Vorname</p>
-                    <p><input type='input' class="form__field" name ='vorname'  onChange = {this.handleInputChange}    /> </p>
+                    <p><input type='input' class="form__field" name ='vorname'  onChange = {this.handleInputChange} Value={this.state.vorname} /> </p>
                     <p>Nachname</p>
-                    <p><input type='input' class="form__field" name='nachname' onChange =  {this.handleInputChange}  /></p>
+                    <p><input type='input' class="form__field" name='nachname' onChange =  {this.handleInputChange} Value={this.state.nachname} /></p>
                     <p>Geburtsdatum</p>
-                    <p><input type='input' class="form__field" name ='alter'    onChange = {this.handleInputChange}  /> </p>
+                    <p><input type='input' class="form__field" name ='alter'    onChange = {this.handleInputChange} Value={this.state.geburtsdatum} /> </p>
                     <p>Geschlecht</p>
-                    <select>
-                        <option value ="männlich">männlich</option>
-                        <option value ="weiblich">weiblich</option>
-                        <option value ="divers"  > divers </option>
+                    <select name="geschlecht" value={geschlecht} onChange={this.handleInputChange} >
+                        <option value ="männlich" name="geschlecht" > männlich</option>
+                        <option value ="weiblich" name="geschlecht">  weiblich</option>
+                        <option value ="divers"   name="geschlecht" > divers </option>
                     </select>
                     <p>Lebt in</p>
                     
-                    <p><input type='input' class="form__field" name ='wohnort'  onChange = {this.handleInputChange}  /> </p>
+                    <p><input type='input' class="form__field" name ='wohnort'  onChange = {this.handleInputChange} Value={this.state.wohnort} /> </p>
                     <button>Speichern</button>
                     </form>
                

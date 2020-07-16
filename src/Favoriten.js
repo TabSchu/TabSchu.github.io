@@ -57,7 +57,7 @@ class Favoriten extends Component{
      if(showSportlerBearbeiten){
 
           sportlerBearbeiten = <SportlerBearbeiten parentShallHideSportlerBearbeiten = {this.handleSportlerBearbeitenForChild} />
-          console.log("läuft auch")
+          //console.log("läuft auch")
 
      } else {
           sportlerBearbeiten =<div>
@@ -125,7 +125,7 @@ handleChildsOpenSerachBarClick(){
  }
 
  handleChildsOpenSportlerBearbeitenClick(){
-      console.log("läuft");
+      //console.log("läuft");
       this.setState({showSportlerBearbeiten: true})
  }
 

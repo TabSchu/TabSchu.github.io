@@ -10,12 +10,16 @@ import {
     Link
   } from "react-router-dom";
 import HeaderBarProfilEdit from './HeaderBarProfilEdit';
-import ProfilBearbeitenIcon from './img/profilBearbeiten.png'
+import ProfilBearbeitenIcon from './img/profilBearbeiten.png';
+import ProfilnameHook from './hooks/ProfilnameHook';
+
 
 class HeaderBarMyZphere extends Component {
 
    
     render() {
+
+        let fetch_url_profilname = "http://localhost:8080/userData"
         return(
         
        
@@ -23,7 +27,7 @@ class HeaderBarMyZphere extends Component {
             
             <div id="HeaderBarMyZphere">
                <ul>
-                   <p>Max Mustermann</p>
+                   <p><ProfilnameHook fetch_url = {fetch_url_profilname} /></p>
                    
                    <p><Link to="/editProfil"><img src={ProfilBearbeitenIcon} /></Link></p>
                    

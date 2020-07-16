@@ -10,6 +10,14 @@ class SportlerBearbeiten extends Component{
 
 
         <div id="Favoriten">
+            <div className="SportlerWaagerecht">
+                            <div id="SportlerReihe">
+                                <img src={SportlerProfil} />
+                                Werner Sommer
+                                <div id="checkbox"><input  type="checkbox" value="check"/>
+                                </div>        
+                            </div>
+                        </div>
             <FavoritenPersonBearbeitenHook fetch_url={fetch_url_person_favoriten}/>
         </div>
 

@@ -16,8 +16,8 @@ class ZurückFertigBar extends Component {
     twoFunctions(){
         this.props.parentShallHideSportlerBearbeiten();
         this.props.parentShallHideZurückFertigBar();
-      // parentShallHideZurückFertigBar
-       console.log('test zurück');
+      
+        //console.log('test zurück');
     }
 
 render(){

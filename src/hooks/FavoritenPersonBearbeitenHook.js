@@ -20,9 +20,10 @@ function FavoritenPersonBearbeitenHook(props) {
                             <div id="SportlerReihe">
                                 <img src={img_url} />
                                 {name}
-                                <input  type="checkbox" value={id_person}
+                                <div id="checkbox"><input  type="checkbox" value={id_person}
 
                                         checked={fk_user!=null ? true : false }/>
+                                </div>        
                             </div>
                         </div>
                     ))}

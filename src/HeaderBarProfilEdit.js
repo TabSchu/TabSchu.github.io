@@ -7,34 +7,22 @@ import {
     Link
   } from "react-router-dom";
   import EditProfil from './EditProfil.js'
+  import ProfilnameHook from './hooks/ProfilnameHook';
 
 class HeaderBarProfilEdit extends Component{
 
-  constructor(props){
-    super(props)
 
-    this.state = {
-      Name : "Max Mustermann"
-    }
-
-  }
-
-
-  onChangeName(newName){
-    this.setState({
-      Name : newName
-    })
-
-  }
+  
 
 
 render(){
+  let fetch_url_profilname = "http://localhost:8080/userData"
     return(
         <div id="HeaderBarProfilEdit">
             <div>
             <ul>
                 <Link to="/merkliste"><li> X </li></Link>                
-                <h1>{this.state.Name}</h1>
+                <h1><ProfilnameHook fetch_url = {fetch_url_profilname} /></h1>
                 <h2><img src={ProfilBildIcon}/></h2>
             </ul>
 
