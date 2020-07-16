@@ -8,7 +8,7 @@ function PersonHook(props) {
         props.fetch_url
     );
 
-// TODO: Titel und id der Personen-group einbinden: z.B. "Sportler" Überschrift
+
     // key={`person_group_${fk_person_group}`}
     return (
         <>
