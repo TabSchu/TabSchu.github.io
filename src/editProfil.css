@@ -111,7 +111,7 @@
     background-color:#212121;
     color: white;
     border: none;
-    margin-left: calc( 85vw / 2);
+    /* margin-left: calc( 85vw / 2); */
     text-align: center;
     outline: none !important;
   }

@@ -5,6 +5,7 @@
     left: 0;
     height: 185px;
     width: 100vw;
+    max-width: 375px;
     align-items: center;
     justify-content: center;
     clear: both;

@@ -16,6 +16,7 @@ body{
   display: flex;
   max-height: 812px;
   max-width: 375px;
+  width: 375px;
 }
 @media (min-width:400px){
   .smallBlock{
