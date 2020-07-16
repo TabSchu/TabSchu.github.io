@@ -116,7 +116,7 @@
 }
 #generelleInfos{
     background-color: #444444;
-    width: 335px;
+    width: calc(100vw - 40px);
     height: 115px;
     padding: 5px 10px;
     border-radius: 5px;

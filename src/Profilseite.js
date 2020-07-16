@@ -6,7 +6,8 @@ import {
     Route,
     Link
   } from "react-router-dom";
-  import SportlerProfil from './img/icon/profil.png'
+import SportlerProfil from './img/icon/profil.png'
+import Zurueck from "./img/icon/Zurueck.png";
 import BeitragHook from './hooks/BeitragHook';
 
 class Profilseite extends Component { 
@@ -16,15 +17,19 @@ class Profilseite extends Component {
         // TODO: id_person als prop reingeben
         return(
             <div>
-                <div id="HeaderBarMyZphere" style={{height:"120px"}}>
+                <div id="HeaderBarMyZphere" style={{height:"120px", position:"fixed"}}>
+                    
+                    <img src={Zurueck} onClick={this.props.showHome}
+                     style={{height:"25px", width:"auto", position:"absolute", top:"12.5px",left:"30px"}}/>
+                         
                     <ul>
-                        <p>Maria Schweiger</p>
+                        <p style={{top:"10.5px"}}>Maria Schweigers</p>
                         <p><img src={SportlerProfil} style={{height:"50px", width:"auto"}} /></p>
                     </ul>
                 </div>
                 
-                
-                <div id="content" style={{position:"absolute", top:"60px"}}> 
+ 
+                <div id="content" style={{position:"absolute", top:"70px", zIndex:"5"}}>                
                 <div id="generelleInfos">   
                 {/* <div id="info" style={{height:"125px"}}> */}
                     <h3>Generelle Infos</h3>

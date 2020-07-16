@@ -90,6 +90,19 @@
 
         });
     });
+    app.get('/beitrag/:beitragid', function (req, res) {
+        const beitragid = req.params.beitragid;
+        const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+            "JOIN sportart s ON b.sport = s.id_sportart\n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n"+
+            "where id_beitrag = ?"
+        pool.query(sql,beitragid, function (error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+
+        });
+    });
+
 
     app.get('/beitrag/newest', function (req, res) {
 

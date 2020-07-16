@@ -43,13 +43,6 @@ render(){
                 </div>
                 } 
                 />
-
-                <Route path="/profilseite" render={props => 
-                <div>
-                  <NavBar/>
-                  <Profilseite />
-                </div>  
-                }/>
                 
                 <Route path="/themengebiet/artikel" render={props =>
                 <div>
@@ -103,6 +96,12 @@ render(){
                 <Video />
                 
                 </div>
+                }/>
+                
+                <Route path="/profilseite" render={props => 
+                <div>
+                  <Profilseite />
+                </div>  
                 }/>
 
                 <Route path="/podcast" render={props =>
