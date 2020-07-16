@@ -31,10 +31,6 @@ class App extends Component {
 
 render(){
 
-  let fetch_url_latein_artikel = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Artikel";
-  let fetch_url_latein_video = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Video";
-  let fetch_url_latein_podcast = "http://localhost:8080/beitragBySubsportart?subsportart=1&medientyp=Podcast";
-
       return (
          <Router>
           <div>
@@ -65,7 +61,6 @@ render(){
                 />    
                 <Route path="/themengebiet/podcast" render={props =>
                 <div>
-                  {/* <BeitragHook medientyp={"Podcast"} fetch_url={fetch_url_latein_podcast}/> */}
                 <Themengebiet/>
 
                 </div>
@@ -74,7 +69,6 @@ render(){
                 />  
                 <Route path="/themengebiet/video" render={props =>
                 <div>
-                  {/* <BeitragHook medientyp={"Video"} fetch_url={fetch_url_latein_video}/> */}
                 <Themengebiet/>
                 
                 </div>

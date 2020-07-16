@@ -93,9 +93,10 @@
 
     app.get('/beitrag/newest', function (req, res) {
 
-        const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+        const sql = "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
-            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie \n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+            "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
             "WHERE b.id_beitrag=1;"; //"ORDER BY id_beitrag DESC LIMIT 1;";
         pool.query(sql, function (error, results, fields) {
             if (error) throw error;
@@ -108,10 +109,11 @@
         app.get('/beitragBySubsportart', function (req, res) {
             const subsportart = req.query.subsportart;
             const medientyp = req.query.medientyp;
-            const sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+            const sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
                 "JOIN sportart s ON b.sport = s.id_sportart\n" +
                 "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n" +
-                "JOIN beitrag_subsportart sb ON sb.fk_beitrag = b.id_beitrag\n" +
+                "JOIN beitrag_subsportart sb ON sb.fk_beitrag = b.id_beitrag " +
+                "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
                 "WHERE sb.fk_subsportart=? AND b.typ=?  ; ";
             const value = [subsportart, medientyp ];
             pool.query(sql, value,
@@ -128,15 +130,16 @@ app.get('/beitragBySportart', function (req, res) {
     let sql;
     let  value = [];
     if(sportart && sportart.length>0) {
-        sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+        sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
             "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n" +
-            "WHERE b.sport IN (?);";
+            "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag WHERE b.sport IN (?);";
         value = [sportart];
     } else {
-        sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+        sql = "SELECT DISTINCT b.*, s.sportart, k.kategorie,  m.fk_user_id as merkliste FROM beitrag b\n" +
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
-            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie";
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+            " LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag";
     }
 
     pool.query(sql, value,
@@ -151,7 +154,12 @@ app.get('/beitragBySportart', function (req, res) {
     app.get('/beitragByTags', function (req, res) {
         const tags = req.query.tags; //[6,4,10];
        // console.log(tags);
-        const sql = 'SELECT DISTINCT b.*, s.sportart, k.kategorie FROM beitrag b JOIN sportart s ON b.sport = s.id_sportart JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie JOIN beitrag_tag bt  ON bt.fk_beitrag_id = b.id_beitrag WHERE fk_tag_id IN (?);';
+        const sql = 'SELECT DISTINCT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste' +
+            ' FROM beitrag b JOIN sportart s ON b.sport = s.id_sportart ' +
+            'JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie ' +
+            'JOIN beitrag_tag bt  ON bt.fk_beitrag_id = b.id_beitrag ' +
+            'LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag' +
+            'WHERE fk_tag_id IN (?);';
         const value = [tags];
             pool.query(sql, value,
             function (error, results, fields) {
@@ -171,18 +179,19 @@ app.get('/beitragBySportart', function (req, res) {
         if(req.query.suche && req.query.suche.length>0) {
             const suche = '%' + req.query.suche.trim() + '%'; //[6,4,10];
             console.log(suche);
-            sql = 'SELECT b.*, s.sportart, k.kategorie  FROM beitrag b\n' +
+            sql = 'SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste  FROM beitrag b\n' +
                 'JOIN sportart s ON b.sport = s.id_sportart\n' +
                 'JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n' +
                 'JOIN beitrag_themenbereich bt ON bt.fk_beitrag=b.id_beitrag\n' +
                 'JOIN themenbereich t ON bt.fk_themenbereich=t.id_themenbereich\n' +
-                'WHERE (b.text LIKE ? OR b.titel LIKE ? OR b.teaser LIKE ?)\n' +
+                'WHERE (b.text LIKE ? OR b.titel LIKE ? OR b.teaser LIKE ?)' +
+                'LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n' +
                 'AND t.id_themenbereich=?;';
             value = [suche, suche, suche, themenbereich];
         } else {
-            sql = 'SELECT * FROM beitrag b\n' +
-                'JOIN  beitrag_themenbereich bt \n' +
-                'ON b.id_beitrag = bt.fk_beitrag\n' +
+            sql = 'SELECT  b.*, bt.*, m.fk_user_id as merkliste  FROM beitrag b\n' +
+                ' JOIN  beitrag_themenbereich bt ON b.id_beitrag = bt.fk_beitrag \n' +
+                ' LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag ' +
                 'WHERE bt.fk_themenbereich=?;';
             value = [themenbereich];
         }
@@ -198,7 +207,7 @@ app.get('/beitragBySportart', function (req, res) {
 app.get('/beitragFromMerklisteByUserID', function (req, res) {
     const fk_user_id = req.query.user_id; //[6,4,10];
     console.log(fk_user_id);
-    const sql =  "SELECT b.*, s.sportart, k.kategorie FROM beitrag b \n" +
+    const sql =  "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b \n" +
             "JOIN sportart s ON b.sport = s.id_sportart \n" +
             "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie \n" +
             "JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
@@ -216,9 +225,10 @@ app.get('/beitragSuche', function (req, res) {
     const suche = '%'+req.query.suche.trim()+'%'; //[6,4,10];
     const medientyp = req.query.medientyp;
     console.log(suche);
-    const sql =  "SELECT b.*, s.sportart, k.kategorie  FROM beitrag b \n" +
+    const sql =  "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b \n" +
         "JOIN sportart s ON b.sport = s.id_sportart \n" +
-        "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie \n" +
+        "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+        "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
         "WHERE (b.text LIKE ? OR b.titel LIKE ? OR b.teaser LIKE ?)" +
         "AND typ=?;";
     const value = [suche, suche, suche, medientyp];
@@ -267,11 +277,12 @@ app.get('/beitragSuche', function (req, res) {
     app.get('/beitragByPerson', function (req, res) {
         //http://localhost:8080/beitragByPerson?id_person=1
 
-         const  sql = 'SELECT b.*,  s.sportart, k.kategorie FROM person p\n' +
+         const  sql = 'SELECT b.*,  s.sportart, k.kategorie, m.fk_user_id as merkliste  FROM person p\n' +
                 'JOIN beitrag_person bp ON bp.fk_person = p.id_person\n' +
                 'JOIN beitrag b ON b.id_beitrag = bp.fk_beitrag\n' +
                 'JOIN sportart s ON b.sport = s.id_sportart \n' +
-                'JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n' +
+                'JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie ' +
+                ' LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n' +
                 'WHERE p.id_person=? ;';
          const   value = [req.query.id_person];
 
