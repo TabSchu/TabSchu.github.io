@@ -26,21 +26,20 @@ class Profilseite extends Component {
         // TODO: id_person als prop reingeben
         let seite;
         if(this.state.openProfilInhalt){
-            seite = <div><InhaltHook showHome={this.showHome} fetch_url={this.state.url_beitrag}/></div>;
+            seite = <div><InhaltHook showHome={this.showProfilHome} fetch_url={this.state.url_beitrag}/></div>;
         }else{seite = <div>
-            <div id="HeaderBarMyZphere" style={{height:"120px", position:"fixed"}}>
-                    
-            <img src={Zurueck} onClick={this.props.showHome}
-             style={{height:"25px", width:"auto", position:"absolute", top:"12.5px",left:"30px"}}/>
-                 
-            <ul>
-                <p style={{top:"10.5px"}}>{this.props.name}</p>
-                <p><img src={this.props.img_url} style={{height:"50px", width:"auto", borderRadius:"10px"
-                // backgroundImage: "url(" + this.props.img_url + ")" img src={SportlerProfil} 
-                }} /></p>
-            </ul>
+                
+                <div id="HeaderBarMyZphere" style={{height:"120px", position:"fixed"}}>
+                <ul>
+                    <p style={{top:"10.5px"}}>{this.props.name}</p>
+                    <p><img src={this.props.img_url} style={{height:"50px", width:"auto", borderRadius:"10px"
+                    // backgroundImage: "url(" + this.props.img_url + ")" img src={SportlerProfil} 
+                    }} /></p>
+                </ul>
             </div>
-        
+            
+            <img src={Zurueck} onClick={this.props.showHome}
+                style={{zIndex:"50",height:"25px", width:"auto", position:"absolute",top:"12.5px",left:"30px",position:"fixed"}}/>
         <div id="content" style={{position:"absolute", top:"70px", zIndex:"5"}}>                
         <div id="generelleInfos">   
         {/* <div id="info" style={{height:"125px"}}> */}
