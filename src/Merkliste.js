@@ -37,7 +37,7 @@ class Merkliste extends Component{
         let fetch_url = "http://localhost:8080/beitragFromMerklisteByUserID?user_id=1";
         return (
             <div id="contentMerkliste">
-                 <BeitragHook  isMerkliste={true} fetch_url={fetch_url}/>
+                 <BeitragHook  fetch_url={fetch_url}/>
             </div>
         );
     }

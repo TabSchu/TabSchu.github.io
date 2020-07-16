@@ -16,16 +16,17 @@ function BeitragHook(props) {
                 <div>
                     {/* <div className="bigBlock">
                         <div className="bigBox"> */}
-                            {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport }) => {//(
+                            {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport, merkliste }) => {//(
 
                                 return (
                                     <div key={`beitrag_${id_beitrag}`}>
-                                        <Beitrag isMerkliste={props.isMerkliste} 
+                                        <Beitrag isMerkliste={merkliste!=null?true:false}
                                         showPodcast={props.showPodcast} 
                                         showArtikel={props.showArtikel} 
                                         showVideo={props.showVideo}
                                             id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
                                             kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
+
                                             />
                                     </div>
                                 )

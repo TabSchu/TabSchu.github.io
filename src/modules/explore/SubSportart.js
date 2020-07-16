@@ -16,14 +16,6 @@ class SubSportart extends Component {
 
     }
 }
-/*
-  id_sub_sportart={id_sub_sportart}  name={titel}   img_url={img_url}
-* <div className="middleBox">
-                            <div className="boxcontent"><Link to="/artikel">
-                                <h4>Breakdance</h4></Link>
-                            </div>
-                        </div>
-* */
 
 
 export default SubSportart;

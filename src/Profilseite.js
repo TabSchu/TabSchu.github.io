@@ -11,7 +11,9 @@ import BeitragHook from './hooks/BeitragHook';
 
 class Profilseite extends Component { 
     render() {
-        let fetch_url = "http://localhost:8080/beitrag";
+       // let fetch_url = "http://localhost:8080/beitrag";
+        let fetch_url = "http://localhost:8080/beitragByPerson?id_person=1";
+        // TODO: id_person als prop reingeben
         return(
             <div>
                 <div id="HeaderBarMyZphere" style={{height:"120px"}}>
