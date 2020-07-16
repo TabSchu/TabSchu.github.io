@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 class Person extends Component {
     render() {
         return (
-            <div className="smallBox"  key={this.props.id_person}
+            <div className="smallBox"  key={this.props.id_person} onClick={this.props.showProfil}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
 
                 <div className="boxcontent">

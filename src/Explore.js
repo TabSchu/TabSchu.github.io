@@ -5,6 +5,7 @@ import {  Link } from "react-router-dom";
 import BeitragHook from "./hooks/BeitragHook";
 import SubSportartHook from "./hooks/SubSportartHook";
 import PersonHook from "./hooks/PersonHook";
+import InhaltHook from "./hooks/InhaltHook";
 import ThemenbereichHook from "./hooks/ThemenbereichHook";
 import FilterOverlayTags from "./FilterOverlayTags";
 import Themengebiet from './Themengebiet';
@@ -13,9 +14,7 @@ import Filter_ausgefuellt from "./img/icon/Filter_ausgefuellt.png";
 import Suche from "./img/icon/suche_lupe.png";
 import SearchBar from "./SearchBar";
 
-import Artikel from './Artikel';
-import Video from './Video';
-import Podcast from './Podcast';
+import Profilseite from './Profilseite';
 
 
 class Explore extends Component {
@@ -40,9 +39,8 @@ class Explore extends Component {
         this.setUrlThemenbereich = this.setUrlThemenbereich.bind(this);
 
         this.showHome = this.showHome.bind(this);
-        this.showPodcast = this.showPodcast.bind(this);
-        this.showArtikel = this.showArtikel.bind(this);
-        this.showVideo = this.showVideo.bind(this);
+        this.showInhalt = this.showInhalt.bind(this);
+        this.showProfil = this.showProfil.bind(this);
 
         this.state = {  showFilterOverlay: false,
                         tagFilterActive: false,
@@ -50,9 +48,8 @@ class Explore extends Component {
                         showSearchBar: false,
 
                         openHome:true,
-                        openArtikel:false,
-                        openVideo:false,
-                        openPodcast:false,
+                        openinhalt:false,
+                        openProfil:false,
 
                         filterTagList: [
                             { id: '1', active: false }, { id: '2', active: false },  { id: '3', active: false }, { id: '4', active: false },
@@ -70,7 +67,7 @@ class Explore extends Component {
 
 
     render() {
-        let fetch_url_newest_beitrag = "http://localhost:8080/beitrag/newest";
+        let fetch_url_newest_beitrag = "http://localhost:8080/beitrag/2";
         let fetch_url_subsportart = "http://localhost:8080/subsportart";
         let fetch_url_person_group = "http://localhost:8080/person";
         let filterOverlayTags;
@@ -93,38 +90,26 @@ class Explore extends Component {
         let tagFilterActive = this.state.tagFilterActive;
         let themenbereiche;
         if (!tagFilterActive){
-            themenbereiche =  <ThemenbereichHook 
-                                        showPodcast={this.showPodcast} 
-                                        showArtikel={this.showArtikel} 
-                                        showVideo={this.showVideo}
+            themenbereiche =  <ThemenbereichHook showInhalt={this.showInhalt} 
                                         fetch_url={this.state.fetch_url_themenbereich} fetch_url_beitrag={this.state.fetch_url_beitrag} filterListe={this.state.filterTagList} />;
             content = <div id="content" style={{marginTop:"80px"}}>
                         <h3>sportarten</h3>
                         <SubSportartHook parentShallForGrandChildsShowThemengebiet ={(id, titelThemengebiet) => this.handleChildsShowThemengebiet(id, titelThemengebiet)}
                                          fetch_url={fetch_url_subsportart}/>
                         <h3>sportler</h3>
-                        <PersonHook fetch_url={fetch_url_person_group}/>
+                        <PersonHook fetch_url={fetch_url_person_group}  showProfil={this.showProfil} />
                         <Link to="/artikel"> <h3>top story</h3></Link>
-                        <BeitragHook  fetch_url={fetch_url_newest_beitrag}
-                                        showPodcast={this.showPodcast} 
-                                        showArtikel={this.showArtikel} 
-                                        showVideo={this.showVideo}
+                        <BeitragHook  fetch_url={fetch_url_newest_beitrag} showInhalt={this.showInhalt} 
                         />
                         {themenbereiche}
                     </div>
         } else {
-            themenbereiche =  <ThemenbereichHook 
-                                showPodcast={this.showPodcast} 
-                                showArtikel={this.showArtikel} 
-                                showVideo={this.showVideo}
+            themenbereiche =  <ThemenbereichHook showInhalt={this.showInhalt} 
                                 fetch_url={this.state.fetch_url_themenbereich} filterListe={this.state.filterTagList} />;
             //<Link to="/artikel"></Link>
             content = <div id="content" style={{marginTop:"80px"}}>
                             <h3>top story</h3>
-                        <BeitragHook fetch_url={fetch_url_newest_beitrag}
-                                        showPodcast={this.showPodcast} 
-                                        showArtikel={this.showArtikel} 
-                                        showVideo={this.showVideo}/>
+                        <BeitragHook fetch_url={fetch_url_newest_beitrag} showInhalt={this.showInhalt} />
                         {themenbereiche}
                     </div>
         }
@@ -165,41 +150,38 @@ class Explore extends Component {
         if(this.state.showThemengebiet){
 
             seite = <Themengebiet  parentShallForChildsShowThemengebiet={this.handleThemengebietForChild}
+            showInhalt={this.showInhalt} 
                                    fetchUrl={this.state.fetch_url_search} titelThemengebiet={this.state.titelThemengebiet} />;
             // parentShallHandleShowThemengebiet={this.handleChildsShowThemengebiet}/>;
         }
-        if(this.state.openArtikel){
-            seite = <div><Artikel showHome={this.showHome}/></div>;
+        if(this.state.openInhalt){
+            seite = <div><InhaltHook showHome={this.showHome} fetch_url={this.state.url_beitrag}/></div>;
         }
-        if(this.state.openVideo) 
-            seite = <div><Video showHome={this.showHome}/></div>;
-        if(this.state.openPodcast) 
-            seite = <div><Podcast showHome={this.showHome}/></div>;
-
+        if(this.state.openProfil)
+        { seite = <div><Profilseite showHome={this.showHome}/></div> }
+            
         return(
                <div>{seite}</div>
         )
     }
     showHome(){
+        
+        console.log("Home");
         this.setState({openHome: true});
-        this.setState({openPodcast: false});
-        this.setState({openArtikel: false});
-        this.setState({openVideo: false});
+        this.setState({openInhalt: false});
+        this.setState({openProfil: false});
     }
-    showPodcast(){
-        this.setState({openPodcast: true});
+    showInhalt(id_beitrag){
+        this.setState({openInhalt: true,
+            url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
+            openId:id_beitrag
+        });
         this.setState({openHome: false});
     }
-
-    showArtikel(){
-        this.setState({openArtikel: true});
+    showProfil(){
+        this.setState({openProfil: true});
         this.setState({openHome: false});
     }
-    showVideo(){
-        this.setState({openVideo: true});
-        this.setState({openHome: false});
-    }
-
     handleChildsShowThemengebiet(subsportartID, titelThemengebiet){    //console.log("in explore show themenbereich");
         this.setState({showThemengebiet: true,
             // !this.state.showThemengebiet,

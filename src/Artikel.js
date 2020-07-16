@@ -1,5 +1,4 @@
 import React, { Component, useState } from 'react'
-import HeaderBar from "./HeaderBar";
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,34 +13,23 @@ import {
   import StoryHook from "./hooks/StoryHook";
 
 class Artikel extends Component { 
+    constructor(props){
+        super(props);
+    }
     render() {
         let fetch_url_stories = "http://localhost:8080/beitrag";
         return(
-            <div>
-            <div id="banner">
-                <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome}/></div>
+            <div key={this.props.beitrag_id}>
+            <div id="banner" style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
+                <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome}/> </div>
             </div>
             <div id="contentArtikel" >                
                 <div id="titel">
-                    <h5>Breaking News:</h5>
-                    <h3>Weltmeisterschaft der Tanz-Formation Latein</h3>
+                    <h5>{this.props.kategorie}</h5>
+                    <h3>{this.props.titel}</h3>
                 </div>
-                <div id="autor"><img src={SportlerProfil}/> Katharina Schövel<div className="icon"> <img src={TeilenIcon}/> <img src={MerklisteIcon}/>  </div></div>
-                <div id="text">Samstag, 10. Dezember 2016
-                    NDR/RB-Fernsehen
-                    Samstag, 10. Dezember 2016,
-                    23.10-0.15 Uhr Livesendung des Finales im NDR/RB-Fernsehen
-                    ab 20.45 Uhr Livestream der Zwischenrunde auf www.radiobremen.de
-                    Sportclub live:
-                    Weltmeisterschaft der Tanz-Formationen Latein
-                    Übertragung aus der Bremer Stadthalle
-                    In Bremen geht es wieder einmal rund. Auf dem Tanzparkett präsentieren sich die besten Tanzformationen der Welt in der Kategorie Latein und tanzen um den Titel des Weltmeisters.
-                    Die Lateinformation des Bremer Grün Gold Clubs ist international das Maß aller Dinge: sieben Mal Weltmeister, zuletzt vier Mal in Folge. Auch in diesem Jahr gilt der Titelverteidiger mit Heimvorteil als Favorit.
-                    Für Spannung ist dennoch gesorgt, denn die Konkurrenz brennt darauf, endlich einmal diese Bremer Formation zu schlagen – ein Tanzabend im Hochglanzformat.
-                    Kommentar: Carsten Flügel
-                    Moderation: Felix Krömer
-                    In einem unkommentierten Livestream auf www.radiobremen.de können Tanzsportbegeisterte die Zwischenrunde ab 20.45 Uhr verfolgen.
-                    Das Finale zeigt das NDR/RB-Fernsehen von 23.10 bis 00.15 Uhr.
+                <div id="autor"><img src={SportlerProfil}/> Team zphere <div className="icon"> <img src={TeilenIcon}/> <img src={MerklisteIcon}/>  </div></div>
+                <div id="text">{this.props.text}
                     </div>
                 <div id="info">
                     <div id="hashtag">#Meister #tanzen</div>
@@ -62,3 +50,5 @@ class Artikel extends Component {
 }
 
 export default Artikel;
+
+ 

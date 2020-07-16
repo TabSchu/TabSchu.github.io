@@ -28,15 +28,12 @@ class Beitrag extends Component {
         if (this.props.medientyp=="Video"){
             typ = VideoIcon;
             playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Play}/>;
-            art=this.props.showVideo;
         }else if (this.props.medientyp=="Podcast"){
             playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = AudioIcon;
-            art=this.props.showPodcast;
         }else if (this.props.medientyp=="Artikel"){
             //playicon = <img style={{float:"left", marginTop:"10px",marginLeft:"10px"}} src={Kopfhoerer}/>;
             typ = ArtikelIcon;
-            var art=this.props.showArtikel;
         }
         var merkIcon = MerklisteIcon;
         if(this.props.isMerkliste){
@@ -48,7 +45,7 @@ class Beitrag extends Component {
         return(
             //  <Link to={art}>
             <div className="beitrag"  key={this.props.beitrag_id} 
-                onClick={art}
+                onClick={this.props.showInhalt}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
                 <div className="beitraginhalt">
                     {playicon}

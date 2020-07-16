@@ -3,6 +3,7 @@ import BeitragHook from "./hooks/BeitragHook";
 import HeaderBar from "./HeaderBar";
 import FilterOverlaySportarten from "./FilterOverlaySportarten";
 import { Link } from "react-router-dom";
+import InhaltHook from "./hooks/InhaltHook";
 import Artikel from './Artikel';
 import Video from './Video';
 import Podcast from './Podcast';
@@ -16,26 +17,24 @@ class Home extends Component {
         this.handleToggleFilterForChild = this.handleToggleFilterForChild.bind(this);
 
         this.showHome = this.showHome.bind(this);
-        this.showPodcast = this.showPodcast.bind(this);
-        this.showArtikel = this.showArtikel.bind(this);
-        this.showVideo = this.showVideo.bind(this);
-
+        this.showInhalt = this.showInhalt.bind(this);
         this.state = {  showFilterSportOverlay: false,
                         sportartFilterActive: false,
                         openHome:true,
-                        openArtikel:false,
-                        openVideo:false,
-                        openPodcast:false,
+                        openInhalt:false,
                         filterSportartList: [
                             { id: '2', active: false },  { id: '3', active: false }, { id: '4', active: false },
                             { id: '5', active: false }, { id: '6', active: false }, { id: '7', active: false },
                             { id: '8', active: false }
                         ],
+                        
+                        url_beitrag:"http://localhost:8080/beitrag",
                         fetch_url_filter_sportart:  "http://localhost:8080/beitragBySportart"
         };
     }
     render() {
         let fetch_url = "http://localhost:8080/beitragBySportart?";
+        
         // let seite;
         let FilterOverlaySportartenElement;
         if (this.state.showFilterSportOverlay) {
@@ -57,20 +56,14 @@ class Home extends Component {
         <div id="content">
           <div>
                 <BeitragHook /*merklisteActive={false}*/  fetch_url={this.state.fetch_url_filter_sportart}
-                showPodcast={this.showPodcast} 
-                showArtikel={this.showArtikel} 
-                showVideo={this.showVideo}
+                showInhalt={this.showInhalt} 
                 />
             </div>
         </div>
        </div>}
-               if(this.state.openArtikel){
-                seite = <div><Artikel showHome={this.showHome}/></div>;
+            if(this.state.openInhalt){
+                seite = <div><InhaltHook showHome={this.showHome} fetch_url={this.state.url_beitrag}/></div>;
             }
-            if(this.state.openVideo) 
-                seite = <div><Video showHome={this.showHome}/></div>;
-            if(this.state.openPodcast) 
-                seite = <div><Podcast showHome={this.showHome}/></div>;
     //    }
         return(
             <div>{seite}</div>
@@ -78,22 +71,14 @@ class Home extends Component {
     }
     showHome(){
         this.setState({openHome: true});
-        this.setState({openPodcast: false});
-        this.setState({openArtikel: false});
-        this.setState({openVideo: false});
-    }
-    showPodcast(){
-        this.setState({openPodcast: true});
-        this.setState({openHome: false});
+        this.setState({openInhalt: false});
     }
 
-    showArtikel(){
-        this.setState({openArtikel: true});
-        this.setState({openHome: false});
-    }
-
-    showVideo(){
-        this.setState({openVideo: true});
+    showInhalt(id_beitrag){
+        this.setState({openInhalt: true,
+            url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
+            openId:id_beitrag
+        });
         this.setState({openHome: false});
     }
 

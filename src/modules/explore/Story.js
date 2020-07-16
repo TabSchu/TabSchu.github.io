@@ -6,18 +6,13 @@ import VideoIcon from '../../img/icon/Video.png'
 class Story extends Component {
     render() {
         var typ = ArtikelIcon;
-        var art;
         if (this.props.medientyp=="Video"){
-            art=this.props.showVideo;
             typ = VideoIcon;
         }else if (this.props.medientyp=="Podcast"){
-            art=this.props.showPodcast;
             typ = AudioIcon;
-        }else if (this.props.medientyp=="Artikel"){
-            art=this.props.showArtikel;
         }
         return (
-            <div className="story"  key={this.props.beitrag_id}  onClick={art}
+            <div className="story"  key={this.props.beitrag_id}  onClick={this.props.showInhalt}
                  style={{backgroundImage: "url(" + this.props.img_url + ")"}}>
 
                 <div className="boxcontent" style={{display:"flex"}}>
