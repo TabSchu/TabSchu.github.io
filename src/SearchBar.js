@@ -6,7 +6,7 @@ import SubSportart from "./modules/explore/SubSportart";
 class SearchBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {value:''}
+        this.state = {value:'zphere'}
 
         this.handleChange = this.handleChange.bind(this);
         this.keyPress = this.keyPress.bind(this);
@@ -26,8 +26,8 @@ render(){
 
     <div id="searchBar">
         <ul>
-        <li><img src={Suche} onClick ={() => this.props.parentShallSearchForChildShowThemengebiet(this.state.value)}  /></li>
-        <li><input type ="text" value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} ></input></li>
+        <li><img src={Suche} onClick ={() => this.props.parentShallSearchForChildShowThemengebiet(this.state.value)}  />
+        <input type ="text" placeholder={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} ></input></li>
         <li onClick={this.props.parentShallHideSearchBar}>zurück</li>
         
         </ul>

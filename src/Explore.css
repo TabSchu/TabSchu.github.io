@@ -1,6 +1,7 @@
 #content{
     margin-top: 50px;
     width: calc(100vw - 20px); 
+    max-width: 355px;
     height: auto;
     min-height: 100vh;
     /* padding abziehen */
@@ -15,10 +16,12 @@ h3{
 }
 .smallBlock{
     display: flex;
-    min-width: 85vw;
-    overflow: auto;
+    max-width: calc((85vw * 100)/375px);
+    /* min-width: 85vw; */
+    overflow-y: hidden;
+    overflow-x: auto;
     width: auto;
-    height: 90px;
+
     margin: 18px 0;
     padding-right: 18px;
 }
@@ -34,12 +37,13 @@ h3{
 }
 .middleBlock{
     display: flex;
-    min-width: 85vw;
+    max-width: calc((85vw * 100)/375px);
+    /* min-width: 85vw; */
     overflow: auto;
     overflow-y: hidden;
     margin: 0;
     width: auto;
-    height: 190px;
+    
     padding: 0;
 }
 .middleBox{
@@ -90,7 +94,8 @@ h3{
 }
 .stories{
     display: flex;
-    min-width: 85vw;
+    /* width: 85vw; */
+    max-width: calc((85vw * 100)/375px);
     overflow: auto;
     overflow-y: hidden;
     width: auto;
@@ -116,6 +121,7 @@ h3{
     position: absolute;
     top: 50px;
     width: 100vw;
+    max-width: 375px;
     height: calc(100vh - 100px);
     z-index: 1;
     position: fixed;
@@ -128,6 +134,8 @@ h3{
     height: auto;
     max-height: 40vh;
     width: 100vw;
+    max-width: 375px;
+    max-width: 375px;
 }
 #filterblock #close{
     height: 25px;

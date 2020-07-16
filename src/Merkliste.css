@@ -10,8 +10,9 @@
 
 
 #contentMerkliste{
-    margin-top: 140px;
+    /* margin-top: 140px; */
     width: calc(100vw - 20px);
+    max-width: calc(375px - 20px);
     height: auto;
     min-height: 100vh;
     /* padding abziehen */

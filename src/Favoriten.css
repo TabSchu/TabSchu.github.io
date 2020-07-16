@@ -3,7 +3,8 @@
     position: absolute;
     top: 140px;
     width: 100vw;
-    height: calc(89vh - 100px);
+    max-width: 375px;
+    height: calc(100vh - 190px);
     z-index: 1;
     overflow-x: auto;
 }
@@ -12,16 +13,14 @@
 #Favoriten{
    background: #212121;
     position: absolute;
-    top: 210px;
+    top: 70px;
     width: 100vw;
-    height: calc(83vh - 100px);
+    max-width: 375px;
+    height: auto;
+    overflow-x: hidden;
+    /* min-height: calc(100vh - 190px); */
     z-index: 1;
-    
-
 }
-
-
-
 
 .obereLeiste{
   position: absolute;
@@ -29,6 +28,7 @@
   left: 0;
   height: 40px;
   width: 100vw;
+  max-width: 375px;
   clear: both;
   color: #fff;
   background: #212121;
@@ -70,6 +70,7 @@
   left: 0;
   height: 30px;
   width: 100vw;
+  max-width: 375px;
   clear: both;
   color: #fff;
   background: #303030;
