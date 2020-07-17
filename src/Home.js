@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import BeitragHook from "./hooks/BeitragHook";
 import HeaderBar from "./HeaderBar";
 import FilterOverlaySportarten from "./FilterOverlaySportarten";
-import { Link } from "react-router-dom";
 import InhaltHook from "./hooks/InhaltHook";
-import Artikel from './Artikel';
-import Video from './Video';
-import Podcast from './Podcast';
+import config from "./config";
 
 
 class Home extends Component {
@@ -28,12 +25,12 @@ class Home extends Component {
                             { id: '8', active: false }
                         ],
                         
-                        url_beitrag:"http://localhost:8080/beitrag",
-                        fetch_url_filter_sportart:  "http://localhost:8080/beitragBySportart"
+                        url_beitrag:config.basisURL+"/beitrag",
+                        fetch_url_filter_sportart:  config.basisURL+"/beitragBySportart"
         };
     }
     render() {
-        let fetch_url = "http://localhost:8080/beitragBySportart?";
+        let fetch_url = config.basisURL+"/beitragBySportart?";
         
         // let seite;
         let FilterOverlaySportartenElement;
@@ -75,7 +72,7 @@ class Home extends Component {
 
     showInhalt(id_beitrag){
         this.setState({openInhalt: true,
-            url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
+            url_beitrag:config.basisURL+"/beitrag/"+id_beitrag,
             openId:id_beitrag
         });
         this.setState({openHome: false});
@@ -141,7 +138,7 @@ class Home extends Component {
         });
         addFilterToURL = addFilterToURL.slice(0, -1);
         //z.B. "http://localhost:8080/beitragBySportart?sportart[]=2&sportart[]=3";
-        let default_fetch_url = "http://localhost:8080/beitragBySportart";
+        let default_fetch_url = config.basisURL+"/beitragBySportart";
         let fetchURLwithFilter =default_fetch_url+addFilterToURL;
         this.setState({fetch_url_filter_sportart:fetchURLwithFilter});
         console.log(fetchURLwithFilter);
@@ -157,7 +154,7 @@ class Home extends Component {
             return { filterSportartList };
         });
         // reset filter in url:
-        this.setState({fetch_url_filter_sportart : "http://localhost:8080/beitragBySportart"});
+        this.setState({fetch_url_filter_sportart : config.basisURL+"/beitragBySportart"});
     };
 
 

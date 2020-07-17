@@ -1,5 +1,5 @@
 export const config = {
-    URL: 'http://localhost',
-    PORT: 8080,
-    apiUrl: 'http://localhost/8080'
+    basisURL: "http://localhost:8080" // "http://lp4hsb.ddns.net:8080"
 };
+
+export default config;

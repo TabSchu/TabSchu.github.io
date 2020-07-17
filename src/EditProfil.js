@@ -9,13 +9,14 @@ import Kamera from "./img/icon/kamera.png";
 import Galerie from "./img/icon/galerie.png";
 import Muelleimer from "./img/icon/Muelleimer.png";
 import ProfilnameHook from './hooks/ProfilnameHook';
+import config from "./config";
 
 
 
 
 class EditProfil extends Component{
 
-    //let fetch_url_profilname = "http://localhost:8080/userData"
+    //let fetch_url_profilname = config.basisURL+"/userData"
     //<ProfilnameHook fetch_url = {fetch_url_profilname} />
 
     constructor(props){
@@ -50,7 +51,7 @@ class EditProfil extends Component{
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userDaten: userData })
             };
-            fetch('http://localhost:8080/updateUser', requestOptions)
+            fetch(config.basisURL+'/updateUser', requestOptions)
                 .then(response => response.json());
                 //.then(data => this.setState({ postId: data.id }));
 
@@ -66,7 +67,7 @@ class EditProfil extends Component{
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' }
             };
-            fetch('http://localhost:8080/userData', requestOptions)
+            fetch(config.basisURL+'/userData', requestOptions)
                 .then(response => response.json())
                 .then(data => this.setState({ vorname: data[0].vorname,  nachname: data[0].nachname,  geburtsdatum: data[0].geburtsdatum,  wohnort: data[0].wohnort }))
                 
@@ -90,7 +91,7 @@ class EditProfil extends Component{
     render(){
        
         let geschlecht = this.state.geschlecht;
-        let fetch_url_profilname = "http://localhost:8080/userData"
+        let fetch_url_profilname = config.basisURL+"/userData"
         
         
         

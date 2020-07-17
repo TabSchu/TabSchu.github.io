@@ -8,6 +8,7 @@ import {
   } from "react-router-dom";
   import EditProfil from './EditProfil.js'
   import ProfilnameHook from './hooks/ProfilnameHook';
+import config from "./config";
 
 class HeaderBarProfilEdit extends Component{
 
@@ -16,7 +17,7 @@ class HeaderBarProfilEdit extends Component{
 
 
 render(){
-  let fetch_url_profilname = "http://localhost:8080/userData"
+  let fetch_url_profilname = config.basisURL+"/userData"
     return(
         <div id="HeaderBarProfilEdit">
             <div>

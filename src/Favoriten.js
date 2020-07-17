@@ -7,6 +7,7 @@ import Sportler from "./Sportler"
 import SportlerBearbeiten from './SportlerBearbeiten';
 import ZurückFertigBar from './ZurückFertigBar';
 import FavoritenPersonHook from "./hooks/FavoritenPersonHook";
+import config from "./config";
 
 
 class Favoriten extends Component{
@@ -52,7 +53,7 @@ class Favoriten extends Component{
 
      let sportlerBearbeiten;
      let showSportlerBearbeiten = this.state.showSportlerBearbeiten;
-     let fetch_url_person_favoriten = "http://localhost:8080/personFavoritenByUser?id_person=1";
+     let fetch_url_person_favoriten = config.basisURL+"/personFavoritenByUser?id_person=1";
 
      if(showSportlerBearbeiten){
 

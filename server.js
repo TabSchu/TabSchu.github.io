@@ -92,9 +92,10 @@
     });
     app.get('/beitrag/:beitragid', function (req, res) {
         const beitragid = req.params.beitragid;
-        const sql = "SELECT b.*, s.sportart, k.kategorie FROM beitrag b\n" +
+        const sql = "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
             "JOIN sportart s ON b.sport = s.id_sportart\n" +
             "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie\n"+
+            "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
             "where id_beitrag = ?"
         pool.query(sql,beitragid, function (error, results, fields) {
             if (error) throw error;
@@ -105,7 +106,7 @@
 
     app.get('/person/:personid', function (req, res) {
         const personid = req.params.personid;
-        const sql = 'SELECT * FROM person WHERE id_person=?;';    
+        const sql = 'SELECT * FROM person WHERE id_person=?;';
         pool.query(sql,personid, function (error, results, fields) {
             if (error) throw error;
             res.send(results);
@@ -114,19 +115,65 @@
     });
 
 
-    app.get('/beitrag/newest', function (req, res) {
+    app.get('/beitragTopstory', function (req, res) {
+        let sql;
+        let  value = [];
 
-        const sql = "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
-            "JOIN sportart s ON b.sport = s.id_sportart\n" +
-            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
-            "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
-            "WHERE b.id_beitrag=1;"; //"ORDER BY id_beitrag DESC LIMIT 1;";
-        pool.query(sql, function (error, results, fields) {
+        // mit filter tags (auf Seite explore)
+        if(req.query.tags && req.query.tags.length>0) {
+            sql = "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
+                "JOIN sportart s ON b.sport = s.id_sportart\n" +
+                "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+                'JOIN beitrag_tag bt  ON bt.fk_beitrag_id = b.id_beitrag ' +
+                "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
+                "WHERE fk_tag_id IN (?) ORDER BY id_beitrag DESC LIMIT 1;";
+            const tags = req.query.tags;
+            value = [tags];
+        } else {
+            sql = "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
+                "JOIN sportart s ON b.sport = s.id_sportart\n" +
+                "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+                "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
+                "WHERE b.id_beitrag=1;"; //"ORDER BY id_beitrag DESC LIMIT 1;";
+        }
+
+
+        pool.query(sql, value,function (error, results, fields) {
             if (error) throw error;
             res.send(results);
 
         });
     });
+
+app.get('/beitragTodaysSpecial', function (req, res) {
+    let sql;
+    let  value = [];
+
+    // mit filter tags (auf Seite explore)
+    if(req.query.tags && req.query.tags.length>0) {
+        sql = "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
+            "JOIN sportart s ON b.sport = s.id_sportart\n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+            'JOIN beitrag_tag bt  ON bt.fk_beitrag_id = b.id_beitrag ' +
+            "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
+            "WHERE fk_tag_id IN (?) ORDER BY id_beitrag ASC LIMIT 1;";
+        const tags = req.query.tags;
+        value = [tags];
+    } else {
+        sql = "SELECT b.*, s.sportart, k.kategorie, m.fk_user_id as merkliste FROM beitrag b\n" +
+            "JOIN sportart s ON b.sport = s.id_sportart\n" +
+            "JOIN beitragskategorie k ON b.kategorie = k.id_beitragskategorie " +
+            "LEFT JOIN merkliste m ON m.fk_beitrag_id = b.id_beitrag \n" +
+            "WHERE b.id_beitrag=17;"; //"ORDER BY id_beitrag DESC LIMIT 1;";
+    }
+
+
+    pool.query(sql, value,function (error, results, fields) {
+        if (error) throw error;
+        res.send(results);
+
+    });
+});
 
     //beitragBySubsportart?subsportart=1&medientyp=Artikel
         app.get('/beitragBySubsportart', function (req, res) {

@@ -6,9 +6,9 @@ import VideoIcon from './img/icon/Video.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'
 import MerklisteIcon_ausgefuellt from './img/icon/Merkliste_ausgefuellt.png'
 import TeilenIcon from './img/icon/Teilen.png'
-import {Link} from "react-router-dom";
 import Play from './img/icon/Play.png'
 import Kopfhoerer from './img/icon/Kopfhoerer.png'
+import config from "./config";
 
 class Beitrag extends Component {
 
@@ -69,7 +69,7 @@ class Beitrag extends Component {
                                 </li>
                                 <li></li>
                                 <li>
-                                    <img src={TeilenIcon} />
+                                    <img src={TeilenIcon} onClick={this.teilen} />
                                     <img src={this.state.aufMerkliste?MerklisteIcon_ausgefuellt:MerklisteIcon}
                                          onClick={this.toggleBeitragAufMerkliste}/>
                                 </li>
@@ -122,8 +122,13 @@ class Beitrag extends Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ beitrag_id: this.state.beitragId, user_id: 1 })
         };
-        fetch('http://localhost:8080/updateMerkliste?aktion='+aktion, requestOptions)
+        fetch(config.basisURL+'/updateMerkliste?aktion='+aktion, requestOptions)
             .then(response => response.json());
+    }
+
+    teilen(event){
+        event.stopPropagation();
+        alert("Coming soon! \nBald kannst du Beiträge auf Social Media teilen!");
     }
 }
 

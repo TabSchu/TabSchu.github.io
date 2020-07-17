@@ -1,16 +1,14 @@
 import React, { Component, useState } from 'react'
-import {
-    BrowserRouter as Router,
-    Link
-} from "react-router-dom";
 import SportlerProfil from './img/icon/profil.png'
 import MerklisteIcon from './img/icon/Merkliste_leer.png'
+import MerklisteIcon_ausgefuellt from "./img/icon/Merkliste_ausgefuellt.png";
 import TeilenIcon from './img/icon/Teilen.png'
 import Zurueck from './img/icon/Zurueck.png'
 import StoryHook from "./hooks/StoryHook";
 import Kopfhoerer from './img/icon/Kopfhoerer.png'
 import InhaltHook from './hooks/InhaltHook';
 // import data from './img/SurvivalOfTheFittest.mp4'
+import config from "./config";
 
 class Podcast extends Component {
     constructor(props) {
@@ -18,13 +16,16 @@ class Podcast extends Component {
         this.showStory = this.showStory.bind(this);
         this.closeStory = this.closeStory.bind(this);
         this.playVideo = this.playVideo.bind(this);
+        this.toggleBeitragAufMerkliste = this.toggleBeitragAufMerkliste.bind(this);
         this.state = {
             openStory: false,
-            openDataVideo: false
+            openDataVideo: false,
+            aufMerkliste: this.props.isMerkliste,
+            beitragId: this.props.id_beitrag
         }
     }
     render() {
-        let fetch_url_stories = "http://localhost:8080/beitrag";
+        let fetch_url_stories = config.basisURL+"/beitrag";
         let dataVideo = <div id="banner" style={{ backgroundImage: "url(" + this.props.img_url + ")" }}>
             <div id="zurueck"> <img src={Zurueck} onClick={this.props.showHome} /> </div>
 
@@ -47,7 +48,8 @@ class Podcast extends Component {
                         <h5>{this.props.kategorie}</h5>
                         <h3>{this.props.titel}</h3>
                     </div>
-                    <div id="autor"><img src={SportlerProfil} /> Team zphere <div className="icon"> <img src={TeilenIcon} /> <img src={MerklisteIcon} />  </div></div>
+                    <div id="autor"><img src={SportlerProfil} /> Team zphere <div className="icon"> <img src={TeilenIcon}  onClick={this.teilen} />
+                    <img src={this.state.aufMerkliste?MerklisteIcon_ausgefuellt:MerklisteIcon}  onClick={this.toggleBeitragAufMerkliste}/>  </div></div>
                     <div id="text">{this.props.text}
                     </div>
                     <div id="info">
@@ -75,11 +77,41 @@ class Podcast extends Component {
     showStory(id_beitrag) {
         this.setState({
             openStory: true,
-            url_beitrag: "http://localhost:8080/beitrag/" + id_beitrag,
+            url_beitrag: config.basisURL+"/beitrag/" + id_beitrag,
         });
     }
     closeStory() {
         this.setState({ openStory: false });
+    }
+
+    toggleBeitragAufMerkliste(event){
+        event.stopPropagation();
+        this.setState({aufMerkliste:!this.state.aufMerkliste},
+            //Callback: When asynchronous setStatus is finished:
+            () => {this.updateMerklisteStatus()
+            });
+
+    }
+
+    updateMerklisteStatus(){
+        console.log(this.state.aufMerkliste);
+        let aktion;
+        if(this.state.aufMerkliste){
+            aktion = "insert";
+        }
+        else { aktion = "delete";}
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ beitrag_id: this.state.beitragId, user_id: 1 })
+        };
+        fetch(config.basisURL+'/updateMerkliste?aktion='+aktion, requestOptions)
+            .then(response => response.json());
+    }
+
+    teilen(event){
+        event.stopPropagation();
+        alert("Coming soon! \nBald kannst du Beiträge auf Social Media teilen!");
     }
 }
 

@@ -12,6 +12,7 @@ import {
 import HeaderBarProfilEdit from './HeaderBarProfilEdit';
 import ProfilBearbeitenIcon from './img/profilBearbeiten.png';
 import ProfilnameHook from './hooks/ProfilnameHook';
+import config from "./config";
 
 
 class HeaderBarMyZphere extends Component {
@@ -19,7 +20,7 @@ class HeaderBarMyZphere extends Component {
    
     render() {
 
-        let fetch_url_profilname = "http://localhost:8080/userData"
+        let fetch_url_profilname = config.basisURL+"/userData"
         return(
         
        

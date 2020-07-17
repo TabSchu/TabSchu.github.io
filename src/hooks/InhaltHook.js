@@ -15,7 +15,7 @@ function InhaltHook(props) {
                 "Loading..."
             ) : (
                 <div>
-                            {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport ,text }) => {
+                            {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport ,text, merkliste }) => {
 let inhalt;
     if(typ=="Artikel"){
         inhalt=
@@ -23,7 +23,7 @@ let inhalt;
         showHome={props.showHome} 
         id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
         kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
-        text={text}
+        text={text} isMerkliste={merkliste!=null?true:false}
         />}
     if(typ=="Podcast"){
         inhalt=
@@ -31,7 +31,7 @@ let inhalt;
         showHome={props.showHome} 
         id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
         kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
-        text={text}
+        text={text} isMerkliste={merkliste!=null?true:false}
         />}
     if(typ=="Video"){
         inhalt=
@@ -39,7 +39,7 @@ let inhalt;
         showHome={props.showHome} 
         id_beitrag={id_beitrag}  titel={titel}   img_url={img_url}  teaser={teaser}
         kategorie={kategorie}  medientyp={typ}   sport_id={sport}  sportart={sportart}
-        text={text}
+        text={text} isMerkliste={merkliste!=null?true:false}
         />}
 return( 
                 <div key={`beitrag_${id_beitrag}`}>
