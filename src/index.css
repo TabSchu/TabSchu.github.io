@@ -17,17 +17,26 @@ body{
   max-height: 812px;
   max-width: 375px;
   width: 375px;
+  scrollbar-color: rgb(000, 000, 000, 0.7) transparent;
+  scrollbar-width: thin;
 }
 @media (min-width:400px){
   .smallBlock{
-    height: 105px;
+    height: 95px;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(000, 000, 000, 0.7) transparent;
   }
   .middleBlock,
   .stories{
-    height: 210px;
+    height: 200px;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(000, 000, 000, 0.7) transparent;
   }
+  #Beitragsart ul,
   #Beitragsart{
     height: 35px;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(000, 000, 000, 0.7) transparent;
   }
 }
 @media (max-width:400px){
@@ -42,13 +51,15 @@ body{
     height: 30px;
   }
 }
-::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece,
 ::-webkit-scrollbar{
-  width: 1px;
-  /* background-color: transparent; */
-  background-color: rgb(000, 000, 000, 0.2);;
+  height: 3px;
+  background-color: transparent;
+}
+/* ::-webkit-scrollbar-thumb, */
+/* ::-webkit-scrollbar-track, */
+/* ::-webkit-scrollbar-track-piece, */
+::-webkit-scrollbar-thumb{
+  background-color: rgb(000, 000, 000, 0.7);
 } 
 #headerBar{
   position: fixed;
@@ -213,7 +224,7 @@ body{
   z-index: 2;
   position: fixed;
   top: 140px;
-  left: 0;
+  /* left: 0; */
   height: 40px;
   width: 100vw;
   max-width: 375px;

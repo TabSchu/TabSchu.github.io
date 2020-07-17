@@ -43,7 +43,7 @@ h3{
     overflow-y: hidden;
     margin: 0;
     width: auto;
-    
+    scrollbar-color:  rgb(000, 000, 000, 0.7);
     padding: 0;
 }
 .middleBox{
@@ -99,7 +99,7 @@ h3{
     overflow: auto;
     overflow-y: hidden;
     width: auto;
-    height: 190px;
+    /* height: 190px; */
     margin: 5px 0 18px 0;
 }
 .story{
