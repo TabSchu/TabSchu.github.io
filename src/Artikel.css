@@ -17,12 +17,13 @@
 }
 #titel{
     width: calc(100vw - 50px);
-    
+    height: auto;
+    padding-bottom: 0;
     max-width: 325px;
     font-size: 21px;
     padding:  10px 0;
     border-bottom: 2px solid #A1A1A1;
-    height: 100px;
+    /* height: 100px; */
 }
 #titel h5{
     /* font-size: 12px; */
@@ -31,6 +32,9 @@
     margin: 0;
     margin-bottom: 4px;
     /* color:rgba(255, 255, 255, 0.7); */
+}
+#titel h3{
+    margin: 0;
 }
 #autor{
     width: 100%;
