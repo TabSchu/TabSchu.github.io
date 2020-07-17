@@ -17,7 +17,7 @@ function FavoritenPersonHook(props) {
         let children = [];
         //Sportler: Inner loop to create children
         for (let j = 0; j < 3; j++) {
-            children.push(<div key={`sportler_${data[j+k].id_person}`} className="Sportler"><img src={data[j+k].img_url} />{data[j+k].name}</div>)
+            children.push(<div key={`sportler_${data[j+k].id_person}`} className="Sportler"><img src={data[j+k].img_url}/>{data[j+k].name}</div>)
           // ${k}
         }
         k = k+3;
@@ -30,7 +30,7 @@ function FavoritenPersonHook(props) {
         //Sportler: Inner loop to create children
         for (let j = 0; j < anzahlInResteZeile; j++) {
             children.push(
-                <div className="Sportler" key={`sportler_${data[j+k].id_person}`} ><img src={data[j+k].img_url} />{data[j+k].name}</div>
+                <div className="Sportler" key={`sportler_${data[j+k].id_person}`} ><img src={data[j+k].img_url} />{data[j+k].name}<div className="blauPunkt"></div></div>
             )
         }
         //Sportlerzeile: Create the parent and add the children

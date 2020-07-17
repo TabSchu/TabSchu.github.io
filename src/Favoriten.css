@@ -123,7 +123,7 @@
 
 
 .Sportler{
-
+  position: relative;
     display: grid;
     min-height: 90px;
     min-width: 60px;
@@ -194,3 +194,15 @@
   margin-left: 300px;
 }
 
+.blauPunkt{
+  background-color: #00B3A6;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  z-index: 30;
+  /* position: relative; */
+  margin-left: 40px;
+  top: 5px;
+  position: absolute;
+  /* margin-bottom: 80px; */
+}
