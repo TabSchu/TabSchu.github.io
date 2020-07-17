@@ -13,7 +13,7 @@ import {
   import StoryHook from "./hooks/StoryHook";
   import Play from './img/icon/Play.png'
 import InhaltHook from './hooks/InhaltHook';
-import data from './img/SurvivalOfTheFittest.mp4'
+// import data from './img/SurvivalOfTheFittest.mp4'
 
 class Video extends Component {
     constructor(props){
@@ -34,7 +34,7 @@ class Video extends Component {
     </div>; 
         if(this.state.openDataVideo){
             dataVideo =<div id="banner" style={{backgroundColor:"#212121",backgroundImage: "url()"}}>
-                            <video  style={{width:"100%", height:"auto", position:"absolute",top:"0px",left:"0"}} controls> <source src={data}/></video>
+                            {/* <video  style={{width:"100%", height:"auto", position:"absolute",top:"0px",left:"0"}} controls> <source src={data}/></video> */}
                             <div id="zurueck"style={{position:"relative", zIndex:"50"}}> <img src={Zurueck} onClick={this.props.showHome}/></div>
                         </div> 
         }
