@@ -4,18 +4,7 @@ import BeitragVideoHook from "./hooks/BeitragVideoHook";
 import BeitragPodcastHook from "./hooks/BeitragPodcastHook";
 import InhaltHook from "./hooks/InhaltHook";
 import Zurueck from "./img/icon/Zurueck.png";
-import ReactDOM from 'react-dom';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-
-
-import AudioIcon from './img/icon/Audio.png'
-import MerklisteIcon from './img/icon/Merkliste_leer.png'
-import TeilenIcon from './img/icon/Teilen.png'
+import config from "./config";
 
 
 class Themengebiet extends Component {
@@ -121,7 +110,7 @@ constructor(props){
     showInhalt(id_beitrag){
         console.log("inhalt")
         this.setState({openInhalt: true,
-            url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
+            url_beitrag:config.basisURL+"/beitrag/"+id_beitrag,
             openId:id_beitrag
         });
         this.setState({openHome: false});

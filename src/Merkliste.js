@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect} from 'react'
-import Beitrag from './Beitrag';
-import ArtikelTest from "./ArtikelTest";
+import config from "./config";
 import BeitragHook from "./hooks/BeitragHook";
 import HeaderBarMyZphere from './HeaderBarMyZphere';
 import InhaltHook from "./hooks/InhaltHook";
@@ -21,7 +20,7 @@ class Merkliste extends Component{
         this.state = {  isLoggedIn: false,
                         openHome:true,
                         openInhalt:false,
-                        url_beitrag:"http://localhost:8080/beitrag/",
+                        url_beitrag:config.basisURL+"/beitrag/",
                     };
     }
 
@@ -43,7 +42,7 @@ class Merkliste extends Component{
             button = <LoginButton onClick={this.handleLoginClick} />;
         }
         let seite;
-        let fetch_url = "http://localhost:8080/beitragFromMerklisteByUserID?user_id=1";
+        let fetch_url = config.basisURL+"/beitragFromMerklisteByUserID?user_id=1";
         if(this.state.openHome){
             seite=<div><HeaderBarMyZphere />
             <div id="contentMerkliste">
@@ -66,7 +65,7 @@ class Merkliste extends Component{
         
         console.log("show");
         this.setState({openInhalt: true,
-            url_beitrag:"http://localhost:8080/beitrag/"+id
+            url_beitrag:config.basisURL+"/beitrag/"+id
         });
         console.log(this.state.url_beitrag);
         this.setState({openHome: false});

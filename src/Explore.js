@@ -14,6 +14,7 @@ import Filter_leer from "./img/icon/Filter_leer.png";
 import Filter_ausgefuellt from "./img/icon/Filter_ausgefuellt.png";
 import Suche from "./img/icon/suche_lupe.png";
 import SearchBar from "./SearchBar";
+import config from "./config";
 
 
 
@@ -42,6 +43,8 @@ class Explore extends Component {
         this.showInhalt = this.showInhalt.bind(this);
         this.showProfil = this.showProfil.bind(this);
 
+
+
         this.state = {  showFilterOverlay: false,
                         tagFilterActive: false,
                         showThemengebiet: false,
@@ -56,9 +59,11 @@ class Explore extends Component {
                             { id: '5', active: false }, { id: '6', active: false }, { id: '7', active: false },
                             { id: '8', active: false }, { id: '9', active: false },  { id: '10', active: false }, { id: '11', active: false }
                         ],
-                        fetch_url_themenbereich:  "http://localhost:8080/themenbereichByTags",
+                        fetch_url_themenbereich:  config.basisURL+"/themenbereichByTags",
                         fetch_url_search: "",
-                        titelThemengebiet: ""
+                        titelThemengebiet: "",
+                        fetch_url_topstory: config.basisURL+"/beitragTopstory",
+                        fetch_url_todaysSpecial: config.basisURL+"/beitragTodaysSpecial"
 
         };
 
@@ -67,9 +72,8 @@ class Explore extends Component {
 
 
     render() {
-        let fetch_url_newest_beitrag = "http://localhost:8080/beitrag/2";
-        let fetch_url_subsportart = "http://localhost:8080/subsportart";
-        let fetch_url_person_group = "http://localhost:8080/personFavoritenByUser?id_person=1";
+        let fetch_url_subsportart = config.basisURL+"/subsportart";
+        let fetch_url_person_group = config.basisURL+"/personFavoritenByUser?id_person=1";
         let filterOverlayTags;
         let showFilterOverlay = this.state.showFilterOverlay;
         let searchBar;
@@ -99,9 +103,10 @@ class Explore extends Component {
                         <h3>sportler</h3>
                         <PersonHook fetch_url={fetch_url_person_group}  showProfil={this.showProfil} />
                         <Link to="/artikel"> <h3>top story</h3></Link>
-                        <BeitragHook  fetch_url={fetch_url_newest_beitrag} showInhalt={this.showInhalt} 
-                        />
+                        <BeitragHook  fetch_url={this.state.fetch_url_topstory} showInhalt={this.showInhalt}/>
                         {themenbereiche}
+                        <h3>Today's Special</h3>
+                        <BeitragHook  fetch_url={this.state.fetch_url_todaysSpecial} showInhalt={this.showInhalt}/>
                     </div>
         } else {
             themenbereiche =  <ThemenbereichHook showInhalt={this.showInhalt} 
@@ -109,8 +114,10 @@ class Explore extends Component {
             //<Link to="/artikel"></Link>
             content = <div id="content" style={{marginTop:"80px"}}>
                             <h3>top story</h3>
-                        <BeitragHook fetch_url={fetch_url_newest_beitrag} showInhalt={this.showInhalt} />
+                        <BeitragHook fetch_url={this.state.fetch_url_topstory} showInhalt={this.showInhalt} />
                         {themenbereiche}
+                        <h3>Today's Special</h3>
+                        <BeitragHook  fetch_url={this.state.fetch_url_todaysSpecial} showInhalt={this.showInhalt}/>
                     </div>
         }
 
@@ -174,20 +181,20 @@ class Explore extends Component {
     }
     showInhalt(id_beitrag){
         this.setState({openInhalt: true,
-            url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
+            url_beitrag:config.basisURL+"/beitrag/"+id_beitrag,
         });
         this.setState({openHome: false});
     }
     showProfil(id_person){
         this.setState({openProfil: true,
-            url_beitrag:"http://localhost:8080/person/"+id_person,
+            url_beitrag:config.basisURL+"/person/"+id_person,
         });
         this.setState({openHome: false});
     }
     handleChildsShowThemengebiet(subsportartID, titelThemengebiet){    //console.log("in explore show themenbereich");
         this.setState({showThemengebiet: true,
             // !this.state.showThemengebiet,
-                            fetch_url_search: "http://localhost:8080/beitragBySubsportart?subsportart="+subsportartID,
+                            fetch_url_search: config.basisURL+"/beitragBySubsportart?subsportart="+subsportartID,
                             titelThemengebiet: titelThemengebiet
                             });
     }
@@ -198,7 +205,7 @@ class Explore extends Component {
         if (searchString && searchString.length>0) {
             this.setState({
                 showThemengebiet: !this.state.showThemengebiet,
-                fetch_url_search: "http://localhost:8080/beitragSuche?suche=" + searchString,
+                fetch_url_search: config.basisURL+"/beitragSuche?suche=" + searchString,
                 titelThemengebiet: searchString
             });
         }
@@ -272,10 +279,14 @@ class Explore extends Component {
             }
         });
         addFilterToURL = addFilterToURL.slice(0, -1);
-        //z.B. "http://localhost:8080/themenbereichByTags?tags[]=9&tags[]=11";
-        let default_fetch_url = "http://localhost:8080/themenbereichByTags";
+        //z.B. config.basisURL+"/themenbereichByTags?tags[]=9&tags[]=11";
+        let default_fetch_url = config.basisURL+"/themenbereichByTags";
         let fetchURLwithFilter =default_fetch_url+addFilterToURL;
-        this.setState({fetch_url_themenbereich:fetchURLwithFilter});
+        this.setState({fetch_url_themenbereich:fetchURLwithFilter,
+                             fetch_url_topstory:config.basisURL+"/beitragTopstory"+addFilterToURL,
+                             fetch_url_todaysSpecial: config.basisURL+"/beitragTodaysSpecial"+addFilterToURL
+            }
+        );
         //console.log(fetchURLwithFilter);
     }
 
@@ -289,7 +300,10 @@ class Explore extends Component {
             return { filterTagList };
         });
         // reset filter in url:
-        this.setState({fetch_url_themenbereich : "http://localhost:8080/themenbereichByTags"});
+        this.setState({fetch_url_themenbereich : config.basisURL+"/themenbereichByTags",
+                            fetch_url_topstory:config.basisURL+"/beitragTopstory",
+                            fetch_url_todaysSpecial: config.basisURL+"/beitragTodaysSpecial"
+                        });
     };
 
 }

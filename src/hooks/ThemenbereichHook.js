@@ -1,11 +1,12 @@
 import React from "react";
 import { useFetch } from "../hooks";
 import StoryHook from "./StoryHook";
+import config from "./../config";
 
 function ThemenbereichHook(props) {
 
 
-    let fetch_url_stories =`http://localhost:8080/beitragByThemenbereich?themenbereich=`;
+    let fetch_url_stories =config.basisURL+`/beitragByThemenbereich?themenbereich=`;
     //http://localhost:8080/themenbereichByTags?tags[]=10&tags[]=6
     // fetchURLwithFilter
     let [data, loading] = useFetch(

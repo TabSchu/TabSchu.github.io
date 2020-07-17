@@ -1,15 +1,9 @@
 import React, { Component, useState } from 'react'
-import HeaderBar from "./HeaderBar";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 import SportlerProfil from './img/icon/profil.png'
 import Zurueck from "./img/icon/Zurueck.png";
 import BeitragHook from './hooks/BeitragHook';
 import InhaltHook from './hooks/InhaltHook';
+import config from "./config";
 
 class Profilseite extends Component { 
     constructor(props){
@@ -22,7 +16,7 @@ class Profilseite extends Component {
     }
     render() {
        // let fetch_url = "http://localhost:8080/beitrag";
-        let fetch_url = "http://localhost:8080/beitragByPerson?id_person="+this.props.id_person;
+        let fetch_url = config.basisURL+"/beitragByPerson?id_person="+this.props.id_person;
         // TODO: id_person als prop reingeben
         let seite;
         if(this.state.openProfilInhalt){
@@ -39,7 +33,7 @@ class Profilseite extends Component {
             </div>
             
             <img src={Zurueck} onClick={this.props.showHome}
-                style={{zIndex:"50",height:"25px", width:"auto", position:"absolute",top:"12.5px",left:"30px",position:"fixed"}}/>
+                style={{zIndex:"50",height:"25px",  position:"absolute", width:"auto",top:"12.5px",left:"30px",position:"fixed"}}/>
         <div id="content" style={{position:"absolute", top:"70px", zIndex:"5"}}>                
         <div id="generelleInfos">   
         {/* <div id="info" style={{height:"125px"}}> */}
@@ -63,7 +57,7 @@ class Profilseite extends Component {
     }
     showInhaltProfil(id_beitrag){
         this.setState({openProfilInhalt: true,
-            url_beitrag:"http://localhost:8080/beitrag/"+id_beitrag,
+            url_beitrag:config.basisURL+"/beitrag/"+id_beitrag,
         });
     }
 }
