@@ -36,7 +36,7 @@ class Artikel extends Component {
                 <h5>{this.props.kategorie}</h5>
                 <h3>{this.props.titel}</h3>
             </div>
-            <div id="autor"><img src={SportlerProfil}/> Team zphere <div className="icon"> <img src={TeilenIcon}  onClick={this.teilen} />
+            <div id="autor"><img src={SportlerProfil} style={{marginRight:"10px"}}/> Team zphere <div className="icon"> <img src={TeilenIcon}  onClick={this.teilen} />
             <img src={this.state.aufMerkliste?MerklisteIcon_ausgefuellt:MerklisteIcon}  onClick={this.toggleBeitragAufMerkliste}/>  </div></div>
             <div id="text">{this.props.text}
                 </div>

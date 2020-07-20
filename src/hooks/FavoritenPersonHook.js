@@ -7,8 +7,8 @@ function FavoritenPersonHook(props) {
     );
 
     let meineAnzahl = data.length;
-    let anzahlVolleZeile = Math.floor(meineAnzahl/3);
-    let anzahlInResteZeile = meineAnzahl%3;
+    let anzahlVolleZeile = Math.floor(meineAnzahl / 3);
+    let anzahlInResteZeile = meineAnzahl % 3;
     let table = [];
     let k = 0;
 
@@ -17,10 +17,14 @@ function FavoritenPersonHook(props) {
         let children = [];
         //Sportler: Inner loop to create children
         for (let j = 0; j < 3; j++) {
-            children.push(<div key={`sportler_${data[j+k].id_person}`} className="Sportler"><img src={data[j+k].img_url}/>{data[j+k].name}</div>)
-          // ${k}
+            let blau;
+            if (data[j + k].activities) {
+                blau = <div className="blauPunkt" ></div>;
+            }
+            children.push(<div key={`sportler_${data[j + k].id_person}`} className="Sportler"><img src={data[j + k].img_url} />{data[j + k].name}{blau}</div>)
+            // ${k}
         }
-        k = k+3;
+        k = k + 3;
         //Sportlerzeile: Create the parent and add the children
         table.push(<div id='Sportlerzeile' >{children}</div>)
     }
@@ -29,8 +33,14 @@ function FavoritenPersonHook(props) {
         let children = [];
         //Sportler: Inner loop to create children
         for (let j = 0; j < anzahlInResteZeile; j++) {
+            let blau;
+            if (data[j + k].activities) {
+                blau = <div className="blauPunkt" ></div>;
+            }
             children.push(
-                <div className="Sportler" key={`sportler_${data[j+k].id_person}`} ><img src={data[j+k].img_url} />{data[j+k].name}<div className="blauPunkt"></div></div>
+                <div className="Sportler" key={`sportler_${data[j + k].id_person}`} ><img src={data[j + k].img_url} />{data[j + k].name}
+                    {blau}
+                </div>
             )
         }
         //Sportlerzeile: Create the parent and add the children
@@ -43,8 +53,8 @@ function FavoritenPersonHook(props) {
             {loading ? (
                 "Loading..."
             ) : (
-                <div>{table}</div>
-            )}
+                    <div>{table}</div>
+                )}
         </>
     );
 
