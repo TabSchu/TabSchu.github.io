@@ -15,18 +15,30 @@ function FavoritenPersonBearbeitenHook(props) {
                 "Loading..."
             ) : (
                 <div>
-                    {data.map(({ id_person, name, img_url, fk_user }) => (
-                        <div className="SportlerWaagerecht" key={`person_${id_person}`}>
+                    {data.map(({ id_person, name, img_url, fk_user }) => { 
+                        let follow=true
+                        if(fk_user == null) {
+                            follow=false
+                            }
+                            
+                        let inhalt = <div>
+                            <div className="SportlerWaagerecht" key={`person_${id_person}`}>
                             <div id="SportlerReihe">
                                 <img src={img_url} />
                                 {name}
-                                <div id="checkbox"><input  type="checkbox" value={id_person}
-
-                                        checked={fk_user!=null ? true : false }/>
+                                <div id="checkbox"><input onClick={() => {props.changeSportler(id_person,fk_user);}}
+                                type="checkbox" value={id_person}
+                                        defaultChecked={follow}
+                                        />
                                 </div>        
                             </div>
+                            </div>
                         </div>
-                    ))}
+                        return(
+                            <div>{inhalt}</div>
+                        )
+                        
+                        })}
 
                 </div>
             )}

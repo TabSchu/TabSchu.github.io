@@ -19,10 +19,31 @@ class SportlerBearbeiten extends Component{
                                 </div>        
                             </div>
                         </div>
-            <FavoritenPersonBearbeitenHook fetch_url={fetch_url_person_favoriten}/>
+            <FavoritenPersonBearbeitenHook fetch_url={fetch_url_person_favoriten} changeSportler={this.changeSportler}/>
         </div>
 
         )
+    }
+    changeSportler(id,option){
+        if (option!=null){
+            const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            };
+            console.log("remove: " + id);
+            fetch(config.basisURL+'/removeUser/'+id, requestOptions)
+                    .then(response => response.json());
+        }else{
+            console.log(id)
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                };
+                console.log("add: " + id)
+                fetch(config.basisURL+'/addUser/'+id, requestOptions)
+                        .then(response => response.json());
+        }
+        // window.location.reload();
     }
 }
 

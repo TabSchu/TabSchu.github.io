@@ -33,7 +33,7 @@ class Profilseite extends Component {
             </div>
             
             <img src={Zurueck} onClick={this.props.showHome}
-                style={{zIndex:"50",height:"25px",  position:"absolute", width:"auto",top:"12.5px",left:"30px",position:"fixed"}}/>
+                style={{zIndex:"50",height:"25px", width:"auto",top:"12.5px",marginLeft:"30px",position:"fixed"}}/>
         <div id="content" style={{position:"absolute", top:"70px", zIndex:"5"}}>                
         <div id="generelleInfos">   
         {/* <div id="info" style={{height:"125px"}}> */}

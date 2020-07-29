@@ -448,6 +448,20 @@ app.get('/beitragSuche', function (req, res) {
             response.send(results);
             });
     });
+    app.delete('/removeUser/:id', function(req, res) {
+        const sql = " DELETE FROM user_folgt_person WHERE fk_person = ?";
+        pool.query(sql, req.params.id, function(error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+        });
+    });
+    app.post('/addUser/:id', function(req, res) {
+        const sql = " INSERT into user_folgt_person (fk_user, fk_person) VALUES (1, ? )" ;
+        pool.query(sql, req.params.id, function(error, results, fields) {
+            if (error) throw error;
+            res.send(results);
+        });
+    });
 
     app.get('/userData', function (req, res) {
         const sql = 'SELECT * FROM user WHERE id_user=1;';

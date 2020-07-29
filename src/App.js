@@ -115,7 +115,7 @@ class App extends Component {
                 <Route path="/favoriten" exact render={props =>
                 <div>
                   <Favoriten />
-                  <HeaderBarMyZphere />
+                  
                   <NavBarMerkliste />
                 </div>
               } />

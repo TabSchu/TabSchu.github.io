@@ -11,6 +11,7 @@
 
 #contentMerkliste{
     /* margin-top: 140px; */
+    margin-top: 130px;
     width: calc(100vw - 20px);
     max-width: calc(375px - 20px);
     height: auto;

@@ -15,7 +15,7 @@ function InhaltHook(props) {
                 "Loading..."
             ) : (
                 <div>
-                            {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport ,text, merkliste }) => {
+                {data.map(({ id_beitrag, titel, img_url, kategorie, teaser, typ, sportart, sport ,text, merkliste }) => {
 let inhalt;
     if(typ=="Artikel"){
         inhalt=

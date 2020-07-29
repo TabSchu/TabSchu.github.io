@@ -45,7 +45,7 @@ class Merkliste extends Component{
         let fetch_url = config.basisURL+"/beitragFromMerklisteByUserID?user_id=1";
         if(this.state.openHome){
             seite=<div><HeaderBarMyZphere />
-            <div id="contentMerkliste">
+            <div id="contentMerkliste" >
             <BeitragHook  fetch_url={fetch_url} showInhalt={this.showInhalt} />
             </div></div>}
         if(this.state.openInhalt){

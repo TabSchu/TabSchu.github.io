@@ -8,6 +8,8 @@ import SportlerBearbeiten from './SportlerBearbeiten';
 import ZurückFertigBar from './ZurückFertigBar';
 import FavoritenPersonHook from "./hooks/FavoritenPersonHook";
 import config from "./config";
+import ProfilHook from "./hooks/ProfilHook";
+import HeaderBarMyZphere from "./HeaderBarMyZphere";
 
 
 class Favoriten extends Component{
@@ -28,10 +30,15 @@ class Favoriten extends Component{
 
           this.twoFunctions = this.twoFunctions.bind(this);
 
+          this.showProfil=this.showProfil.bind(this);
+          this.showHome=this.showHome.bind(this);
           this.state = {
+               openProfil: false,
+               openHome:true,
                showSearchBar: false,
                showSportlerBearbeiten: false,
-               showZurückFertig: false
+               showZurückFertig: false,
+               sportlerURL:""
           }
      }
 
@@ -58,12 +65,11 @@ class Favoriten extends Component{
      if(showSportlerBearbeiten){
 
           sportlerBearbeiten = <SportlerBearbeiten parentShallHideSportlerBearbeiten = {this.handleSportlerBearbeitenForChild} />
-          //console.log("läuft auch")
 
      } else {
           sportlerBearbeiten =<div>
 
-                             <FavoritenPersonHook fetch_url={fetch_url_person_favoriten}/>
+                             <FavoritenPersonHook fetch_url={fetch_url_person_favoriten}  showProfil={this.showProfil}/>
 
                          </div>
      }
@@ -78,7 +84,9 @@ class Favoriten extends Component{
 
       let inhalt;
 
-      inhalt = <div id="contentFavoriten">
+     if(this.state.openHome){
+          inhalt = <div><HeaderBarMyZphere />
+          <div id="contentFavoriten">
           <div className="obereLeiste">
           <ul>
           <li><img src={SucheIcon} onClick={this.handleChildsOpenSerachBarClick}/> 
@@ -103,8 +111,11 @@ class Favoriten extends Component{
           {zurückFertigBar}
           
           </div>
-          </div>
-
+          </div></div>
+      }
+     if(this.state.openProfil){
+          inhalt = <div><ProfilHook showHome={this.showHome} fetch_url={this.state.sportlerURL}/></div>;
+      }
           
           return(
             
@@ -116,7 +127,16 @@ class Favoriten extends Component{
         )
     
 }
-
+showHome(){
+     this.setState({openHome: true});
+     this.setState({openProfil: false});
+ }
+showProfil(id){
+     console.log("Favoriten" + id)
+     this.setState({openProfil: true,
+                    openHome: false,
+                    sportlerURL: config.basisURL+"/person/"+id});
+}
 handleChildsOpenSerachBarClick(){
      this.setState({showSearchBar: !this.state.showSearchBar});
  }
@@ -129,7 +149,6 @@ handleChildsOpenSerachBarClick(){
       //console.log("läuft");
       this.setState({showSportlerBearbeiten: true})
  }
-
 
  handleSportlerBearbeitenForChild(){
       this.setState({showSportlerBearbeiten: false})

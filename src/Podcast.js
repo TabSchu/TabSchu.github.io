@@ -7,7 +7,7 @@ import Zurueck from './img/icon/Zurueck.png'
 import StoryHook from "./hooks/StoryHook";
 import Kopfhoerer from './img/icon/Kopfhoerer.png'
 import InhaltHook from './hooks/InhaltHook';
-// import data from './img/SurvivalOfTheFittest.mp4'
+import data from './img/SurvivalOfTheFittest.mp4'
 import config from "./config";
 
 class Podcast extends Component {
@@ -33,7 +33,7 @@ class Podcast extends Component {
         </div>
         if (this.state.openDataVideo) {
             dataVideo = <div id="banner" style={{ backgroundColor: "#212121", backgroundImage: "url()" }}>
-                {/* <video style={{ width: "100%", height: "auto", position: "absolute", top: "0px", left: "0px" }} controls> <source src={data} /></video> */}
+                <video style={{ width: "100%", height: "auto", position: "absolute", top: "0px", left: "0px" }} controls> <source src={data} /></video>
                 <div id="zurueck"style={{position:"relative", zIndex:"50"}}> <img src={Zurueck} onClick={this.props.showHome}/></div>
             </div>
         }

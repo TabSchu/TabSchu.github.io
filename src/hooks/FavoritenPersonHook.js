@@ -21,7 +21,11 @@ function FavoritenPersonHook(props) {
             if (data[j + k].activities) {
                 blau = <div className="blauPunkt" ></div>;
             }
-            children.push(<div key={`sportler_${data[j + k].id_person}`} className="Sportler"><img src={data[j + k].img_url} />{data[j + k].name}{blau}</div>)
+            let id= data[j + k].id_person;
+            children.push(
+            <div let key={`sportler_${data[j + k].id_person}`} 
+            onClick={() => props.showProfil(id)} 
+            className="Sportler"><img src={data[j + k].img_url} />{data[j + k].name}{blau}</div>)
             // ${k}
         }
         k = k + 3;
@@ -37,8 +41,11 @@ function FavoritenPersonHook(props) {
             if (data[j + k].activities) {
                 blau = <div className="blauPunkt" ></div>;
             }
+            let id= data[j + k].id_person;
             children.push(
-                <div className="Sportler" key={`sportler_${data[j + k].id_person}`} ><img src={data[j + k].img_url} />{data[j + k].name}
+                <div className="Sportler" key={`sportler_${data[j + k].id_person}`} 
+                onClick={() => props.showProfil(id)} 
+                ><img src={data[j + k].img_url} />{data[j + k].name}
                     {blau}
                 </div>
             )
@@ -57,9 +64,6 @@ function FavoritenPersonHook(props) {
                 )}
         </>
     );
-
-
 }
-
 
 export default FavoritenPersonHook;
