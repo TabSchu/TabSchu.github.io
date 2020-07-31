@@ -142,11 +142,11 @@ class Explore extends Component {
 
                 <ul style={{width: "auto", display: "flex", overflowX: "scroll", padding:"0 10px"}}>
                     <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("fit")}>fit</li>
-                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("DIY")}>DIY</li>
-                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("runnershigh")}>runnershigh</li>
-                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("FreshAndFruity")}>#FreshAndFruity</li>
                     <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("Roberto")}>Roberto</li>
-                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("Corona")}>Corona</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("Bremen")}>Bremen</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("#FreshAndFruity")}>#FreshAndFruity</li>
+                    <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("Salsa")}>Salsa</li>
+                    {/* <li style={{width: "auto", margin:"0 10px"}} onClick ={() => this.sucheBeitrag("Corona")}>Corona</li> */}
                 </ul>
             </div>
             {filterOverlayTags}

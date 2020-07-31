@@ -7,7 +7,7 @@ import Zurueck from './img/icon/Zurueck.png'
 import StoryHook from "./hooks/StoryHook";
 import Kopfhoerer from './img/icon/Kopfhoerer.png'
 import InhaltHook from './hooks/InhaltHook';
-import data from './img/SurvivalOfTheFittest.mp4'
+import data from './img/RunnersHigh.mp4'
 import config from "./config";
 
 class Podcast extends Component {
